@@ -30,7 +30,11 @@ const ctas = [
   },
 ];
 
-export function TripleCTA() {
+interface TripleCTAProps {
+  onOpenLeadForm: () => void;
+}
+
+export function TripleCTA({ onOpenLeadForm }: TripleCTAProps) {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
@@ -57,9 +61,9 @@ export function TripleCTA() {
               <div className="w-16 h-16 text-forest mb-6">{cta.icon}</div>
               <h3 className="text-forest mb-4">{cta.title}</h3>
               <p className="text-small text-ink-light mb-8 flex-1">{cta.description}</p>
-              <Link href={cta.href} className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-ui text-xs font-bold tracking-[0.08em] uppercase rounded-lg border-2 transition-all duration-300 hover:-translate-y-0.5 ${cta.btnCls}`}>
+              <button onClick={onOpenLeadForm} className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-ui text-xs font-bold tracking-[0.08em] uppercase rounded-lg border-2 transition-all duration-300 hover:-translate-y-0.5 ${cta.btnCls}`}>
                 {cta.btnText}
-              </Link>
+              </button>
             </div>
           ))}
         </div>

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Hero } from "@/components/sections/Hero";
 import { Story } from "@/components/sections/Story";
 import { Investment } from "@/components/sections/Investment";
@@ -12,17 +15,20 @@ import { TripleCTA } from "@/components/sections/TripleCTA";
 import { ImageBanner } from "@/components/sections/ImageBanner";
 import { QuickFacts } from "@/components/sections/QuickFacts";
 import { FAQ } from "@/components/sections/FAQ";
+import { LeadForm } from "@/components/LeadForm";
 
 export default function Home() {
+  const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
+
   return (
     <>
-      <Hero />
+      <Hero onOpenLeadForm={() => setIsLeadFormOpen(true)} />
       
       {/* AI-optimized Quick Facts - Answer-first content for AI citation */}
       <QuickFacts />
       
       <Story />
-      <Investment />
+      <Investment onOpenLeadForm={() => setIsLeadFormOpen(true)} />
 
       {/* Cinematic banner — mature timber atmosphere */}
       <ImageBanner
@@ -47,7 +53,7 @@ export default function Home() {
       <Timeline />
       <Outcomes />
       <WhyLandowners />
-      <LandQualifies />
+      <LandQualifies onOpenLeadForm={() => setIsLeadFormOpen(true)} />
       <HonestTruth />
       
       {/* Comprehensive FAQ with Schema markup for SEO */}
@@ -61,7 +67,9 @@ export default function Home() {
         id="closing-banner"
       />
 
-      <TripleCTA />
+      <TripleCTA onOpenLeadForm={() => setIsLeadFormOpen(true)} />
+
+      <LeadForm isOpen={isLeadFormOpen} onClose={() => setIsLeadFormOpen(false)} />
     </>
   );
 }

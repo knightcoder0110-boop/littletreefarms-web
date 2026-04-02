@@ -20,7 +20,7 @@ export function HonestTruth() {
       </div>
       <div
         className="absolute inset-0 z-[1]"
-        style={{ background: "linear-gradient(180deg, rgba(10,20,12,0.58) 0%, rgba(10,20,12,0.52) 40%, rgba(10,20,12,0.65) 100%)" }}
+        style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.70) 40%, rgba(0,0,0,0.80) 100%)" }}
       />
 
       <div className="relative z-[2] max-w-[800px] mx-auto px-6 w-full">

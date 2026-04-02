@@ -39,7 +39,11 @@ const cards = [
   },
 ];
 
-export function Investment() {
+interface InvestmentProps {
+  onOpenLeadForm: () => void;
+}
+
+export function Investment({ onOpenLeadForm }: InvestmentProps) {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
@@ -79,12 +83,12 @@ export function Investment() {
         </div>
 
         <div className="text-center">
-          <Link
-            href="/seedlings"
+          <button
+            onClick={onOpenLeadForm}
             className="inline-flex items-center gap-2 px-8 py-4 font-ui text-sm font-bold tracking-[0.08em] uppercase rounded-lg border-2 border-forest text-forest transition-all duration-300 hover:bg-forest hover:text-cream hover:-translate-y-0.5"
           >
             Request Walnut Seedlings →
-          </Link>
+          </button>
         </div>
       </div>
     </section>

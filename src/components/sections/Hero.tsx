@@ -3,7 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export function Hero() {
+interface HeroProps {
+  onOpenLeadForm: () => void;
+}
+
+export function Hero({ onOpenLeadForm }: HeroProps) {
   return (
     <section className="relative min-h-dvh flex items-center justify-center overflow-hidden" id="hero">
       {/* Background image */}
@@ -44,13 +48,13 @@ export function Hero() {
             Landowners across North America are quietly turning unused fields and forgotten pastures into generational timber wealth — with one of nature&apos;s most valuable hardwood trees.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 max-md:flex-col max-md:w-full">
-            <Link
-              href="/guide"
+            <button
+              onClick={onOpenLeadForm}
               className="inline-flex items-center gap-2 px-9 py-4 font-ui text-sm font-bold tracking-[0.08em] uppercase rounded-lg bg-gold text-forest-dark border-2 border-gold transition-all duration-300 hover:bg-gold-dark hover:border-gold-dark hover:-translate-y-0.5 max-md:w-full justify-center"
             >
               Download Free Planting Guide
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </Link>
+            </button>
             <a
               href="#story"
               className="inline-flex items-center gap-2 px-9 py-4 font-ui text-sm font-bold tracking-[0.08em] uppercase rounded-lg bg-transparent text-gold border-2 border-gold/30 transition-all duration-300 hover:bg-gold/10 hover:border-gold hover:-translate-y-0.5 max-md:w-full justify-center"

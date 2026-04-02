@@ -18,7 +18,11 @@ const CheckIcon = () => (
   </svg>
 );
 
-export function LandQualifies() {
+interface LandQualifiesProps {
+  onOpenLeadForm: () => void;
+}
+
+export function LandQualifies({ onOpenLeadForm }: LandQualifiesProps) {
   const { ref, isVisible } = useScrollAnimation();
   const c1 = useAnimatedCounter(218,  2000);
   const c2 = useAnimatedCounter(1744, 2000);
@@ -60,9 +64,9 @@ export function LandQualifies() {
               You don&apos;t need to convert your entire farm. Even one acre — planted thoughtfully — begins a process that compounds over time.
             </p>
 
-            <Link href="/your-land" className="inline-flex items-center gap-2 px-8 py-4 font-ui text-sm font-bold tracking-[0.08em] uppercase rounded-lg bg-forest text-cream border-2 border-forest transition-all duration-300 hover:bg-forest-light hover:border-forest-light hover:-translate-y-0.5 hover:shadow-lg">
+            <button onClick={onOpenLeadForm} className="inline-flex items-center gap-2 px-8 py-4 font-ui text-sm font-bold tracking-[0.08em] uppercase rounded-lg bg-forest text-cream border-2 border-forest transition-all duration-300 hover:bg-forest-light hover:border-forest-light hover:-translate-y-0.5 hover:shadow-lg">
               Check If Your Land Qualifies →
-            </Link>
+            </button>
           </div>
 
           {/* Stats grid */}
