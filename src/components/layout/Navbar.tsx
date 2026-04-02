@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
+import { businessInfo } from "@/lib/config/business";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -43,21 +45,20 @@ export function Navbar() {
         />
 
         <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo - Rectangular format */}
           <Link
             href="/"
-            className={`flex items-center gap-3 z-[1001] transition-opacity hover:opacity-80 ${isScrolled ? "text-forest" : "text-cream"}`}
+            className="flex items-center z-[1001] transition-opacity hover:opacity-80"
             aria-label="Home"
           >
-            <svg className="w-9 h-9 shrink-0" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-              <path d="M16 2C16 2 6 10 6 18C6 23.5 10.5 28 16 28C21.5 28 26 23.5 26 18C26 10 16 2 16 2Z" fill="currentColor" opacity="0.2"/>
-              <path d="M16 6C16 6 10 12 10 17C10 20.3 12.7 23 16 23C19.3 23 22 20.3 22 17C22 12 16 6 16 6Z" fill="currentColor" opacity="0.4"/>
-              <path d="M16 28V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-              <path d="M13 18L16 14L19 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <div className="flex flex-col leading-tight">
-              <span className="font-display text-[1.2rem] font-bold tracking-[-0.01em]">Little Tree Farm</span>
-              <span className={`kicker-label !text-[0.62rem] ${isScrolled ? "text-gold-dark" : "text-gold"}`}>Timber Investment</span>
+            <div className="w-36 h-12 shrink-0 relative">
+              <Image
+                src={isScrolled ? "/little-tree-farms-logo.png" : "/little-tree-farms-logo-dark-theme.png"}
+                alt="Little Tree Farm Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
           </Link>
 

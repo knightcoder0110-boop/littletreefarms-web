@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { businessInfo } from "@/lib/config/business";
 
 const learnLinks = [
   { href: "/the-investment", label: "The Investment" },
@@ -37,30 +39,37 @@ export function Footer() {
 
           {/* Brand col */}
           <div className="flex flex-col gap-6">
-            <Link href="/" className="flex items-center gap-3 text-cream transition-opacity hover:opacity-80">
-              <svg className="w-9 h-9 shrink-0" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-                <path d="M16 2C16 2 6 10 6 18C6 23.5 10.5 28 16 28C21.5 28 26 23.5 26 18C26 10 16 2 16 2Z" fill="currentColor" opacity="0.2"/>
-                <path d="M16 6C16 6 10 12 10 17C10 20.3 12.7 23 16 23C19.3 23 22 20.3 22 17C22 12 16 6 16 6Z" fill="currentColor" opacity="0.4"/>
-                <path d="M16 28V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-              </svg>
-              <span className="font-display text-2xl font-bold">Little Tree Farm</span>
+            <Link
+              href="/"
+              className="flex flex-col items-start gap-4 text-cream transition-opacity hover:opacity-80"
+              aria-label="Home"
+            >
+              <div className="w-32 h-32 shrink-0 relative">
+                <Image
+                  src="/little-tree-farms-logo-dark-theme.png"
+                  alt="Little Tree Farm Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <span className="font-display text-2xl font-bold">{businessInfo.name}</span>
             </Link>
             <p className="text-intro text-white/90 max-w-[26ch] font-medium">
-              Helping landowners grow generational wealth, one acre at a time.
+              {businessInfo.tagline}
             </p>
             <div className="flex flex-col gap-2 mt-1">
               <p className="text-white/50">
-                175 Sarty Road, Wentzell Lake<br/>Nova Scotia, B0R 1E0
+                {businessInfo.address.street}<br/>{businessInfo.address.city}, {businessInfo.address.state} {businessInfo.address.postalCode}
               </p>
               <a
-                href="mailto:info@littletreefarmns.com"
+                href={`mailto:${businessInfo.contact.email}`}
                 className="text-white/85 transition-colors hover:text-cream"
               >
-                info@littletreefarmns.com
+                {businessInfo.contact.email}
               </a>
             </div>
             <a
-              href="https://littletreefarmns.com"
+              href={businessInfo.mainUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 font-ui text-sm font-bold text-gold transition-colors hover:text-gold-light"
@@ -124,7 +133,7 @@ export function Footer() {
         {/* ── Bottom bar ── */}
         <div className="flex flex-wrap justify-between items-center gap-6 pt-8 max-[600px]:flex-col max-[600px]:text-center">
           <p className="font-ui text-xs text-white/35">
-            © {new Date().getFullYear()} Little Tree Farm. All Rights Reserved.
+            © {new Date().getFullYear()} {businessInfo.name}. All Rights Reserved.
           </p>
           <p className="font-ui text-xs text-white/22 max-w-[50ch] text-right max-[600px]:text-center">
             Timber investment involves risk. Returns are not guaranteed and depend on site conditions, management, and market timing.

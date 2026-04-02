@@ -10,11 +10,17 @@ import { LandQualifies } from "@/components/sections/LandQualifies";
 import { HonestTruth } from "@/components/sections/HonestTruth";
 import { TripleCTA } from "@/components/sections/TripleCTA";
 import { ImageBanner } from "@/components/sections/ImageBanner";
+import { QuickFacts } from "@/components/sections/QuickFacts";
+import { FAQ } from "@/components/sections/FAQ";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      
+      {/* AI-optimized Quick Facts - Answer-first content for AI citation */}
+      <QuickFacts />
+      
       <Story />
       <Investment />
 
@@ -43,6 +49,9 @@ export default function Home() {
       <WhyLandowners />
       <LandQualifies />
       <HonestTruth />
+      
+      {/* Comprehensive FAQ with Schema markup for SEO */}
+      <FAQ />
 
       {/* Final emotional banner before CTA */}
       <ImageBanner
