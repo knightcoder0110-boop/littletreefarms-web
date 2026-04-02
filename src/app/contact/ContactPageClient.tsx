@@ -342,19 +342,33 @@ export default function ContactPageClient() {
             </h2>
           </div>
 
-          <div className="aspect-video rounded-2xl bg-forest-light/30 border border-cream/10 flex items-center justify-center">
-            <div className="text-center p-8">
-              <svg className="w-16 h-16 text-gold/30 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <div className="aspect-video rounded-2xl bg-forest-light/30 border border-cream/10 overflow-hidden">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3603.4996230543584!2d-64.63293992309549!3d44.46987497107524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b576327436e1aab%3A0xd48284e687c1d457!2sLittle%20Tree%20Farm%2C%20Nut%20Trees%2C%20Fruit%20Trees%20and%20Plant%20Nursery!5e1!3m2!1sen!2sin!4v1775128330986!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Little Tree Farm Location"
+              className="w-full h-full"
+            />
+          </div>
+          
+          <div className="text-center mt-6">
+            <a
+              href={businessInfo.social.googleMaps}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-gold hover:text-gold-light transition-colors font-ui text-sm font-bold"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
               </svg>
-              <p className="text-cream/50 mb-2">Map integration placeholder</p>
-              <p className="text-cream/30 text-sm">
-                {businessInfo.location.latitude}, {businessInfo.location.longitude}
-              </p>
-              <p className="text-cream/50 text-sm mt-4">
-                {businessInfo.address.street}, {businessInfo.address.city}, {businessInfo.address.state}
-              </p>
-            </div>
+              View on Google Maps
+            </a>
           </div>
         </div>
       </section>

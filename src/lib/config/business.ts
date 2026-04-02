@@ -26,19 +26,19 @@ export const businessInfo = {
   // Address (Exact format for NAP consistency)
   address: {
     street: "175 Sarty Road",
-    city: "Wentzell Lake",
+    city: "New Germany",
     state: "Nova Scotia",
     stateCode: "NS",
     country: "Canada",
     countryCode: "CA",
     postalCode: "B0R 1E0",
-    full: "175 Sarty Road, Wentzell Lake, Nova Scotia, B0R 1E0, Canada",
+    full: "175 Sarty Road, New Germany, Nova Scotia, B0R 1E0, Canada",
   },
   
   // Geographic Info
   location: {
-    latitude: 44.6819, // UPDATE with actual coordinates
-    longitude: -63.7443, // UPDATE with actual coordinates
+    latitude: 44.469979, // Exact from Google Maps
+    longitude: -64.630365, // Exact from Google Maps
     timezone: "America/Halifax",
     hardinessZone: "5b", // Nova Scotia zone for black walnut
     region: "Atlantic Canada",
@@ -67,13 +67,15 @@ export const businessInfo = {
     seasonalNote: "Spring planting season hours may vary. Contact us to confirm availability.",
   },
   
-  // Social Media (sameAs for Schema)
+  // Social Media & Profiles (sameAs for Schema)
   social: {
     facebook: "https://www.facebook.com/littletreefarmns/",
     instagram: "https://www.instagram.com/littletreefarmns/",
     twitter: "",
     linkedin: "",
     youtube: "https://www.youtube.com/@littletreefarmns",
+    googleMaps: "https://maps.app.goo.gl/DWejXBtATfJiyrXC9",
+    googleMyBusiness: "https://www.google.com/maps/place/Little+Tree+Farm,+Nut+Trees,+Fruit+Trees+and+Plant+Nursery",
   },
   
   // Services & Products
