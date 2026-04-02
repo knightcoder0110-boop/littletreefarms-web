@@ -7,11 +7,11 @@ import { businessInfo } from "@/lib/config/business";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/the-investment", label: "The Investment" },
-  { href: "/planting-system", label: "Planting System" },
-  { href: "/returns-calculator", label: "Calculator" },
-  { href: "/blog", label: "Blog" },
+  { href: "/about", label: "About" },
+  { href: "/seedlings", label: "Seedlings" },
+  { href: "/calculator", label: "Calculator" },
   { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Navbar() {

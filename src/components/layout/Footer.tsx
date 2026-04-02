@@ -3,18 +3,17 @@ import Image from "next/image";
 import { businessInfo } from "@/lib/config/business";
 
 const learnLinks = [
-  { href: "/the-investment", label: "The Investment" },
-  { href: "/planting-system", label: "Planting System" },
-  { href: "/returns-calculator", label: "Returns Calculator" },
+  { href: "/about", label: "About Us" },
   { href: "/faq", label: "FAQ" },
-  { href: "/blog", label: "Blog" },
+  { href: "/guide", label: "Planting Guide" },
+  { href: "/calculator", label: "Returns Calculator" },
 ];
 
 const startLinks = [
   { href: "/guide", label: "Download Free Guide" },
-  { href: "/growers", label: "Join Growers List" },
-  { href: "/seedlings", label: "Request Seedlings" },
-  { href: "/your-land", label: "Check Your Land" },
+  { href: "/seedlings", label: "Order Seedlings" },
+  { href: "/nova-scotia", label: "Nova Scotia" },
+  { href: "/ontario", label: "Ontario" },
 ];
 
 export function Footer() {
@@ -88,9 +87,9 @@ export function Footer() {
                 title: "Hours & Info",
                 links: [
                   { href: "/faq", label: "Frequently Asked Questions" },
-                  { href: "/blog", label: "Timber Investment Blog" },
-                  { href: "/growers", label: "Growers Community" },
                   { href: "/contact", label: "Contact Us" },
+                  { href: "/nova-scotia", label: "Nova Scotia Customers" },
+                  { href: "/ontario", label: "Ontario Customers" },
                 ],
               },
             ].map((col) => (
@@ -123,10 +122,10 @@ export function Footer() {
               <p className="text-white/85 font-medium">Join the growers list. No spam, ever.</p>
             </div>
             <Link
-              href="/growers"
+              href="/guide"
               className="shrink-0 inline-flex items-center gap-2 px-6 py-3 font-ui text-xs font-bold tracking-[0.08em] uppercase rounded-xl bg-gold text-forest-dark border-2 border-gold transition-all duration-300 hover:bg-gold-dark hover:border-gold-dark hover:-translate-y-0.5"
             >
-              Join Growers List →
+              Download Free Guide →
             </Link>
           </div>
         </div>
