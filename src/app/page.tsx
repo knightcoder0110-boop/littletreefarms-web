@@ -24,9 +24,6 @@ export default function Home() {
     <>
       <Hero onOpenLeadForm={() => setIsLeadFormOpen(true)} />
       
-      {/* AI-optimized Quick Facts - Answer-first content for AI citation */}
-      <QuickFacts />
-      
       <Story />
       <Investment onOpenLeadForm={() => setIsLeadFormOpen(true)} />
 
@@ -51,6 +48,10 @@ export default function Home() {
       />
 
       <Timeline />
+
+      {/* AI-optimized Quick Facts - Answer-first content for AI citation */}
+      <QuickFacts />
+
       <Outcomes />
       <WhyLandowners />
       <LandQualifies onOpenLeadForm={() => setIsLeadFormOpen(true)} />
