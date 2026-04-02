@@ -1,0 +1,67 @@
+# robots.txt - Little Tree Farms Investment Site
+# https://investment.littletreefarmns.com
+
+# Allow all general crawlers
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /404/
+
+# ============================================
+# AI CRAWLERS - Allow for GEO Optimization
+# ============================================
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google AI
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft / Bing AI
+User-agent: BingBot
+Allow: /
+
+User-agent: MicrosoftPreview
+Allow: /
+
+# Other AI crawlers
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# ============================================
+# Crawl Rate Limits
+# ============================================
+
+Crawl-delay: 1
+
+# ============================================
+# Sitemap Location
+# ============================================
+
+Sitemap: https://investment.littletreefarmns.com/sitemap.xml
