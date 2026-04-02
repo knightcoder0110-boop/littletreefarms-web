@@ -45,16 +45,16 @@ export function Footer() {
               </svg>
               <span className="font-display text-2xl font-bold">Little Tree Farm</span>
             </Link>
-            <p className="font-display text-[1.2rem] text-white/90 leading-relaxed max-w-[26ch] font-medium">
+            <p className="text-intro text-white/90 max-w-[26ch] font-medium">
               Helping landowners grow generational wealth, one acre at a time.
             </p>
             <div className="flex flex-col gap-2 mt-1">
-              <p className="font-display text-[1.1rem] text-white/50 leading-relaxed">
+              <p className="text-white/50">
                 175 Sarty Road, Wentzell Lake<br/>Nova Scotia, B0R 1E0
               </p>
               <a
                 href="mailto:info@littletreefarmns.com"
-                className="font-display text-[1.1rem] text-white/85 transition-colors hover:text-cream"
+                className="text-white/85 transition-colors hover:text-cream"
               >
                 info@littletreefarmns.com
               </a>
@@ -85,7 +85,7 @@ export function Footer() {
               },
             ].map((col) => (
               <div key={col.title}>
-                <h4 className="font-ui text-[0.75rem] font-bold uppercase tracking-[0.18em] text-gold mb-6">
+                <h4 className="kicker-label !text-[0.75rem] text-gold mb-6">
                   {col.title}
                 </h4>
                 <ul className="flex flex-col gap-2">
@@ -93,7 +93,7 @@ export function Footer() {
                     <li key={l.label}>
                       <Link
                         href={l.href}
-                        className="block font-display text-[1.25rem] text-white/85 py-1 transition-colors hover:text-cream font-medium"
+                        className="block font-display text-xl text-white/85 py-1 transition-colors hover:text-cream font-medium"
                       >
                         {l.label}
                       </Link>
@@ -109,8 +109,8 @@ export function Footer() {
         <div className="py-10 border-b border-white/[0.06] max-[640px]:py-7">
           <div className="flex items-center justify-between gap-10 max-[640px]:flex-col max-[640px]:text-center max-[640px]:gap-6">
             <div>
-              <p className="font-display text-[1.25rem] font-bold text-cream mb-1">Want timber market updates?</p>
-              <p className="font-display text-[1.1rem] text-white/85 font-medium">Join the growers list. No spam, ever.</p>
+              <p className="font-display text-xl font-bold text-cream mb-1">Want timber market updates?</p>
+              <p className="text-white/85 font-medium">Join the growers list. No spam, ever.</p>
             </div>
             <Link
               href="/growers"

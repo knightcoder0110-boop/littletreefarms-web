@@ -44,19 +44,19 @@ export function LandQualifies() {
             ref={ref}
             className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <span className="inline-block font-ui text-[0.7rem] font-bold tracking-[0.15em] uppercase text-gold-dark mb-4">Your Land Qualifies</span>
-            <h2 className="text-[clamp(2rem,1.6rem+1.8vw,3rem)] text-ink mb-8">You Might Be Surprised How Much Land Qualifies</h2>
+            <span className="kicker-label text-gold-dark mb-4 inline-block">Your Land Qualifies</span>
+            <h2 className="text-ink mb-8">You Might Be Surprised How Much Land Qualifies</h2>
 
             <ul className="mb-8">
               {qualifications.map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-[clamp(1rem,0.9rem+0.3vw,1.1rem)] text-ink py-3 border-b border-black/[0.05] last:border-0">
+                <li key={i} className="flex items-center gap-3 text-ink py-3 border-b border-black/[0.05] last:border-0">
                   <CheckIcon />
                   {item}
                 </li>
               ))}
             </ul>
 
-            <p className="font-display text-[clamp(1rem,0.9rem+0.3vw,1.1rem)] text-ink-light italic mb-8 leading-relaxed">
+            <p className="text-ink-light italic mb-8">
               You don&apos;t need to convert your entire farm. Even one acre — planted thoughtfully — begins a process that compounds over time.
             </p>
 
@@ -70,7 +70,7 @@ export function LandQualifies() {
             {stats.map((stat, i) => (
               <div key={i} ref={stat.ref} className="text-center py-8 px-5 bg-white rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <span className="block font-display text-[clamp(1.8rem,1.5rem+1vw,2.4rem)] font-bold text-forest leading-none mb-2">{stat.value}</span>
-                <span className="font-ui text-[0.65rem] text-ink-muted uppercase tracking-[0.06em] font-semibold leading-snug">{stat.label}</span>
+                <span className="kicker-label !text-[0.65rem] text-ink-muted leading-snug block">{stat.label}</span>
               </div>
             ))}
           </div>

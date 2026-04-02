@@ -40,9 +40,9 @@ export function TripleCTA() {
           ref={ref}
           className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <span className="inline-block font-ui text-[0.7rem] font-bold tracking-[0.15em] uppercase text-gold-dark mb-4">Ready to Start?</span>
-          <h2 className="text-[clamp(2rem,1.6rem+1.8vw,3rem)] text-ink mb-6">See What Your Land Could Grow</h2>
-          <p className="mx-auto text-[clamp(1.05rem,0.9rem+0.5vw,1.2rem)] max-w-[52ch] text-ink-light">
+          <span className="kicker-label text-gold-dark mb-4 inline-block">Ready to Start?</span>
+          <h2 className="text-ink mb-6">See What Your Land Could Grow</h2>
+          <p className="text-intro max-w-[52ch] mx-auto text-ink-light">
             These offers are low-pressure and completely free. We&apos;re here to help you make a smart decision for your land — on your timeline.
           </p>
         </div>
@@ -55,8 +55,8 @@ export function TripleCTA() {
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <div className="w-16 h-16 text-forest mb-6">{cta.icon}</div>
-              <h3 className="text-xl text-forest mb-4 font-display font-semibold">{cta.title}</h3>
-              <p className="text-[clamp(0.95rem,0.85rem+0.3vw,1.05rem)] text-ink-light leading-relaxed mb-8 flex-1">{cta.description}</p>
+              <h3 className="text-forest mb-4">{cta.title}</h3>
+              <p className="text-small text-ink-light mb-8 flex-1">{cta.description}</p>
               <Link href={cta.href} className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-ui text-xs font-bold tracking-[0.08em] uppercase rounded-lg border-2 transition-all duration-300 hover:-translate-y-0.5 ${cta.btnCls}`}>
                 {cta.btnText}
               </Link>

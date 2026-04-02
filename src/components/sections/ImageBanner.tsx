@@ -22,7 +22,7 @@ export function ImageBanner({ src, alt, quote, attribution, id }: ImageBannerPro
       />
       <div className="relative z-10 text-center px-6 max-w-[900px]">
         <blockquote
-          className="font-display text-[clamp(1.6rem,1.2rem+1.8vw,2.6rem)] italic font-normal text-cream leading-[1.4]"
+          className="text-3xl italic font-normal text-cream leading-snug max-md:text-2xl"
           style={{ textShadow: "0 2px 24px rgba(0,0,0,0.4)" }}
         >
           <span className="text-gold text-[1.1em] inline-block">&ldquo;</span>
@@ -30,7 +30,7 @@ export function ImageBanner({ src, alt, quote, attribution, id }: ImageBannerPro
           <span className="text-gold text-[1.1em] inline-block">&rdquo;</span>
         </blockquote>
         {attribution && (
-          <p className="!font-ui !text-sm font-medium text-white/65 tracking-[0.1em] uppercase mt-6">
+          <p className="kicker-label !text-sm text-white/65 mt-6">
             — {attribution}
           </p>
         )}

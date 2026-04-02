@@ -33,16 +33,14 @@ export function Hero() {
           className="text-center max-w-[860px]"
           style={{ animation: "fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) both" }}
         >
-          <span className="inline-block font-ui text-xs font-bold tracking-[0.2em] uppercase text-gold mb-6">
+          <span className="kicker-label text-gold mb-6 inline-block">
             Black Walnut Timber Investment
           </span>
-          <h1
-            className="font-display text-[clamp(3.5rem,3rem+3vw,5.8rem)] font-bold text-cream leading-[1.05] tracking-[-0.02em] mb-8"
-          >
+          <h1 className="text-cream tracking-[-0.02em] mb-8">
             What If the Best Investment You Ever Made Was Already{" "}
             <em className="text-gold not-italic">Growing in Your Backyard?</em>
           </h1>
-          <p className="text-lg md:text-xl text-white/75 leading-relaxed max-w-[600px] mx-auto mb-10 !font-ui">
+          <p className="text-intro text-white/75 max-w-[600px] mx-auto mb-10">
             Landowners across North America are quietly turning unused fields and forgotten pastures into generational timber wealth — with one of nature&apos;s most valuable hardwood trees.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 max-md:flex-col max-md:w-full">

@@ -21,9 +21,9 @@ export function Timeline() {
           ref={ref}
           className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <span className="inline-block font-ui text-[0.7rem] font-bold tracking-[0.15em] uppercase text-gold-dark mb-4">The Timeline</span>
-          <h2 className="text-[clamp(2rem,1.6rem+1.8vw,3rem)] text-ink mb-6">Patience Is the Price of Admission</h2>
-          <p className="mx-auto text-[clamp(1.05rem,0.9rem+0.5vw,1.2rem)] max-w-[45ch] text-ink-light">Here&apos;s what the journey looks like.</p>
+          <span className="kicker-label text-gold-dark mb-4 inline-block">The Timeline</span>
+          <h2 className="text-ink mb-6">Patience Is the Price of Admission</h2>
+          <p className="text-intro mx-auto max-w-[45ch] text-ink-light">Here&apos;s what the journey looks like.</p>
         </div>
 
         <div className="relative max-w-[680px] mx-auto max-[600px]:max-w-full">
@@ -45,12 +45,12 @@ export function Timeline() {
               </div>
 
               <div className="bg-white border-l-4 border-gold rounded-xl px-8 py-6 shadow-sm transition-all duration-300 hover:shadow-md hover:translate-x-1 max-[600px]:px-5">
-                <span className="inline-block font-ui text-[0.65rem] font-bold uppercase tracking-[0.12em] text-gold-dark mb-2">{stage.years}</span>
-                <h3 className="text-xl text-forest mb-3 font-display font-semibold">{stage.title}</h3>
-                <p className="text-[clamp(1rem,0.9rem+0.3vw,1.1rem)] text-ink-light leading-[1.8] !max-w-none mb-4">{stage.description}</p>
+                <span className="kicker-label !text-[0.65rem] text-gold-dark mb-2 block">{stage.years}</span>
+                <h3 className="text-forest mb-3">{stage.title}</h3>
+                <p className="text-ink-light mb-4">{stage.description}</p>
                 <div className="inline-flex items-baseline gap-2 px-4 py-2 bg-parchment rounded-full">
                   <span className="font-display text-[clamp(1.3rem,1.1rem+0.5vw,1.6rem)] font-bold text-forest leading-none">{stage.trees}</span>
-                  <span className="font-ui text-[0.65rem] text-ink-muted font-semibold uppercase tracking-[0.06em]">trees/acre</span>
+                  <span className="kicker-label !text-[0.65rem] text-ink-muted">trees/acre</span>
                 </div>
               </div>
             </div>

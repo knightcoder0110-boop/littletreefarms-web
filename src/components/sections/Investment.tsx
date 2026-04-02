@@ -54,12 +54,12 @@ export function Investment() {
           ref={ref}
           className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <span className="inline-block font-ui text-[0.7rem] font-bold tracking-[0.15em] uppercase text-gold-dark mb-4">A Different Kind of Investment</span>
-          <h2 className="text-[clamp(2rem,1.6rem+1.8vw,3rem)] text-ink mb-6">
+          <span className="kicker-label text-gold-dark mb-4 inline-block">A Different Kind of Investment</span>
+          <h2 className="text-ink mb-6">
             This Investment Doesn&apos;t Fluctuate With the Market.<br />
             <em className="text-forest not-italic italic">It Just Grows.</em>
           </h2>
-          <p className="mx-auto text-[clamp(1.05rem,0.9rem+0.5vw,1.2rem)] max-w-[55ch] text-ink-light">
+          <p className="text-intro max-w-[55ch] mx-auto text-ink-light">
             Black walnut timber is one of the most quietly powerful long-term investments available to landowners today. Not because of some complicated financial scheme. But because of simple biology and simple economics.
           </p>
         </div>
@@ -72,8 +72,8 @@ export function Investment() {
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <div className="w-14 h-14 text-forest mb-5">{card.icon}</div>
-              <h3 className="text-xl text-forest mb-3 font-display font-semibold">{card.title}</h3>
-              <p className="text-[clamp(1rem,0.9rem+0.3vw,1.1rem)] text-ink-light leading-[1.8]">{card.text}</p>
+              <h3 className="text-forest mb-3">{card.title}</h3>
+              <p className="text-ink-light">{card.text}</p>
             </div>
           ))}
         </div>

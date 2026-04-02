@@ -21,8 +21,8 @@ export function WhyLandowners() {
           ref={ref}
           className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <span className="inline-block font-ui text-[0.7rem] font-bold tracking-[0.15em] uppercase text-gold mb-4">Why Landowners Love This System</span>
-          <h2 className="text-[clamp(2rem,1.6rem+1.8vw,3rem)] text-cream mb-4">Four Reasons This Makes Sense for Your Land</h2>
+          <span className="kicker-label text-gold mb-4 inline-block">Why Landowners Love This System</span>
+          <h2 className="text-cream mb-4">Four Reasons This Makes Sense for Your Land</h2>
         </div>
 
         <div className="grid grid-cols-2 gap-6 max-md:grid-cols-1">
@@ -33,8 +33,8 @@ export function WhyLandowners() {
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <span className="inline-block font-display text-[3rem] font-bold text-gold opacity-35 leading-none mb-4">{reason.number}</span>
-              <h3 className="text-xl text-cream mb-3 font-display font-semibold">{reason.title}</h3>
-              <p className="text-[clamp(1rem,0.9rem+0.3vw,1.1rem)] text-white/88 leading-[1.8] font-medium !max-w-none">{reason.description}</p>
+              <h3 className="text-cream mb-3">{reason.title}</h3>
+              <p className="text-white/88 font-medium">{reason.description}</p>
             </div>
           ))}
         </div>

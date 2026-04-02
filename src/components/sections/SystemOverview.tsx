@@ -26,9 +26,9 @@ export function SystemOverview() {
           ref={ref}
           className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <span className="inline-block font-ui text-[0.7rem] font-bold tracking-[0.15em] uppercase text-gold-dark mb-4">The System</span>
-          <h2 className="text-[clamp(2rem,1.6rem+1.8vw,3rem)] text-ink mb-6">How the Planting System Works</h2>
-          <p className="mx-auto text-[clamp(1.05rem,0.9rem+0.5vw,1.2rem)] max-w-[50ch] text-ink-light">Clear, proven, and built for timber value.</p>
+          <span className="kicker-label text-gold-dark mb-4 inline-block">The System</span>
+          <h2 className="text-ink mb-6">How the Planting System Works</h2>
+          <p className="text-intro max-w-[50ch] mx-auto text-ink-light">Clear, proven, and built for timber value.</p>
         </div>
 
         <div className="flex flex-col gap-6 mb-16">
@@ -40,8 +40,8 @@ export function SystemOverview() {
             >
               <div className="shrink-0 w-14 h-14 flex items-center justify-center bg-parchment rounded-xl text-2xl">{step.icon}</div>
               <div>
-                <h3 className="text-xl text-forest mb-2 font-display font-semibold">{step.title}</h3>
-                <p className="text-[clamp(1rem,0.9rem+0.3vw,1.1rem)] text-ink-light leading-[1.8] !max-w-none">{step.description}</p>
+                <h3 className="text-forest mb-2">{step.title}</h3>
+                <p className="text-ink-light">{step.description}</p>
               </div>
             </div>
           ))}
@@ -50,22 +50,22 @@ export function SystemOverview() {
         {/* Explanation */}
         <div className="grid grid-cols-[1.5fr_1fr] gap-12 items-center p-10 bg-parchment rounded-2xl mb-12 max-md:grid-cols-1 max-md:gap-8 max-md:p-6">
           <div>
-            <h3 className="text-[clamp(1.4rem,1.2rem+0.5vw,1.7rem)] text-ink mb-4">Why Tight Spacing Matters</h3>
-            <p className="text-[clamp(1rem,0.9rem+0.3vw,1.1rem)] text-ink-light leading-[1.8] mb-4 !max-w-none">
+            <h3 className="text-ink mb-4">Why Tight Spacing Matters</h3>
+            <p className="text-ink-light mb-4">
               When trees are planted close together, they compete for light. That competition drives them upward, producing tall, straight trunks with minimal branching in the lower sections. This is what creates high-value timber.
             </p>
-            <p className="text-[clamp(1rem,0.9rem+0.3vw,1.1rem)] text-ink-light leading-[1.8] !max-w-none">
+            <p className="text-ink-light">
               A wide-open-grown walnut tree spreads its branches low and wide — beautiful, but not ideal for timber. A plantation-grown walnut grows tall and clean.
             </p>
           </div>
           <div className="flex flex-col gap-5" ref={treesCounter.ref}>
             <div className="text-center p-6 bg-white rounded-xl shadow-sm">
               <span className="block font-display text-[clamp(2rem,1.8rem+1vw,2.6rem)] font-bold text-forest leading-none mb-2">{treesCounter.count}</span>
-              <span className="font-ui text-[0.7rem] text-ink-muted uppercase tracking-[0.06em] font-semibold">trees planted per acre</span>
+              <span className="kicker-label !text-[0.7rem] text-ink-muted">trees planted per acre</span>
             </div>
             <div className="text-center p-6 bg-white rounded-xl shadow-sm" ref={costCounter.ref}>
               <span className="block font-display text-[clamp(2rem,1.8rem+1vw,2.6rem)] font-bold text-forest leading-none mb-2">${costCounter.count.toLocaleString()}</span>
-              <span className="font-ui text-[0.7rem] text-ink-muted uppercase tracking-[0.06em] font-semibold">total seedling cost per acre</span>
+              <span className="kicker-label !text-[0.7rem] text-ink-muted">total seedling cost per acre</span>
             </div>
           </div>
         </div>

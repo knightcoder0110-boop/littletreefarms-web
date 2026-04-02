@@ -45,14 +45,14 @@ export function Outcomes() {
           ref={ref}
           className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <span className="inline-block font-ui text-[0.72rem] font-bold tracking-[0.2em] uppercase text-gold-dark mb-5">
+          <span className="kicker-label text-gold-dark mb-5 inline-block">
             Potential Outcomes
           </span>
-          <h2 className="font-display text-[clamp(2.2rem,1.8rem+2vw,3.4rem)] font-bold text-ink mb-6">
+          <h2 className="text-ink mb-6">
             What Might 25 Trees Per Acre{" "}
             <em className="text-gold-dark italic">Be Worth?</em>
           </h2>
-          <p className="font-display mx-auto text-[clamp(1.1rem,0.95rem+0.5vw,1.25rem)] max-w-[55ch] text-ink-light font-medium">
+          <p className="text-intro max-w-[55ch] mx-auto text-ink-light font-medium">
             These are honest scenarios based on real market data. Outcomes depend
             on log quality, site conditions, and market timing.
           </p>
@@ -70,13 +70,13 @@ export function Outcomes() {
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               {tier.highlight && (
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-forest-dark font-ui text-[0.7rem] font-bold uppercase tracking-[0.15em] px-6 py-2 rounded-full whitespace-nowrap shadow-md">
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-forest-dark kicker-label !text-[0.7rem] px-6 py-2 rounded-full whitespace-nowrap shadow-md">
                   Most Likely
                 </span>
               )}
 
               <span
-                className={`block font-ui text-[0.75rem] font-bold uppercase tracking-[0.14em] mb-6 ${
+                className={`kicker-label !text-[0.75rem] mb-6 block ${
                   tier.highlight ? "text-gold-light" : "text-ink-muted"
                 }`}
               >
@@ -85,7 +85,7 @@ export function Outcomes() {
 
               <div className="mb-6">
                 <div className="flex flex-col items-center gap-1 py-3">
-                  <span className={`font-ui text-[0.65rem] uppercase tracking-[0.08em] font-semibold ${tier.highlight ? "text-white/50" : "text-ink-muted"}`}>
+                  <span className={`kicker-label !text-[0.65rem] ${tier.highlight ? "text-white/50" : "text-ink-muted"}`}>
                     Per Tree
                   </span>
                   <span className={`font-display text-[clamp(1.5rem,1.3rem+0.6vw,1.85rem)] font-bold leading-none ${tier.highlight ? "text-cream" : "text-ink"}`}>
@@ -94,7 +94,7 @@ export function Outcomes() {
                 </div>
                 <div className={`w-12 h-px mx-auto opacity-40 ${tier.highlight ? "bg-gold" : "bg-gold"}`} />
                 <div className="flex flex-col items-center gap-1 py-3">
-                  <span className={`font-ui text-[0.65rem] uppercase tracking-[0.08em] font-semibold ${tier.highlight ? "text-white/50" : "text-ink-muted"}`}>
+                  <span className={`kicker-label !text-[0.65rem] ${tier.highlight ? "text-white/50" : "text-ink-muted"}`}>
                     Per Acre (25 trees)
                   </span>
                   <span className={`font-display text-[clamp(2rem,1.7rem+1vw,2.6rem)] font-bold leading-none ${tier.highlight ? "text-gold" : "text-forest"}`}>
@@ -103,7 +103,7 @@ export function Outcomes() {
                 </div>
               </div>
 
-              <p className={`font-display text-[1rem] italic ${tier.highlight ? "text-white/70" : "text-ink-muted"}`}>
+              <p className={`italic text-small ${tier.highlight ? "text-white/70" : "text-ink-muted"}`}>
                 {tier.description}
               </p>
             </div>
@@ -111,7 +111,7 @@ export function Outcomes() {
         </div>
 
         <div className="max-w-[700px] mx-auto mb-12 text-center">
-          <p className="font-display text-[clamp(1rem,0.9rem+0.3vw,1.1rem)] text-ink-muted leading-relaxed italic">
+          <p className="text-ink-muted italic">
             We want to be clear: these outcomes are not guaranteed. Timber
             markets fluctuate. Site quality matters. Management matters. But the
             underlying economics of black walnut timber have been consistent for

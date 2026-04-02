@@ -29,11 +29,11 @@ export function WhyThisTree() {
             ref={ref}
             className={`flex flex-col justify-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <span className="inline-block font-ui text-[0.75rem] font-bold tracking-[0.2em] uppercase text-gold mb-6">Why This Tree</span>
-            <h2 className="font-display text-[clamp(2.4rem,2rem+2vw,3.8rem)] font-bold text-cream leading-[1.05] mb-8">
+            <span className="kicker-label text-gold mb-6 inline-block">Why This Tree</span>
+            <h2 className="text-cream mb-8">
               Black Walnut Is in a Category of Its Own Among North American Hardwoods
             </h2>
-            <p className="font-display text-[clamp(1.2rem,1.1rem+0.5vw,1.45rem)] text-white/90 leading-[1.8] font-semibold mb-12">
+            <p className="text-intro text-white/90 font-semibold mb-12">
               Black walnut (<em>Juglans nigra</em>) has been prized for centuries — by furniture makers, cabinetmakers, gunsmiths, and now by luxury interior designers and instrument builders around the world.
             </p>
 
@@ -42,8 +42,8 @@ export function WhyThisTree() {
                 <div key={i} className="flex items-start gap-5">
                   <span className="shrink-0 text-gold text-2xl pt-1 leading-none">{f.icon}</span>
                   <div>
-                    <h3 className="font-display text-[1.4rem] font-bold text-cream mb-2">{f.title}</h3>
-                    <p className="font-display text-[clamp(1.1rem,1rem+0.4vw,1.3rem)] text-white/80 leading-[1.8] font-medium">{f.description}</p>
+                    <h3 className="text-cream mb-2">{f.title}</h3>
+                    <p className="text-white/80 font-medium">{f.description}</p>
                   </div>
                 </div>
               ))}
@@ -69,12 +69,12 @@ export function WhyThisTree() {
 
         {/* ── Counter ── */}
         <div className="text-center py-12 px-10 bg-white/[0.05] rounded-2xl" ref={counter.ref}>
-          <p className="font-display text-[clamp(1.15rem,1rem+0.5vw,1.3rem)] text-white/90 max-w-[55ch] mx-auto mb-8 leading-[1.8] font-medium">
+          <p className="text-intro text-white/90 mx-auto max-w-[55ch] mb-8 font-medium">
             When a high-quality black walnut log reaches the veneer market, a single tree can be worth thousands of dollars.{" "}
             <strong className="text-cream">Not the whole acre. A single tree.</strong>
           </p>
           <span className="font-display text-[clamp(4rem,3rem+3vw,6.5rem)] font-bold text-gold leading-none block">{counter.count}+</span>
-          <span className="font-ui text-sm text-white/60 uppercase tracking-[0.1em] font-semibold mt-3 block">
+          <span className="kicker-label !text-sm text-white/60 mt-3 block">
             Years a black walnut tree can live — a true generational asset
           </span>
         </div>

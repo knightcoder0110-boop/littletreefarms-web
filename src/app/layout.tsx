@@ -1,31 +1,24 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import { Cormorant_Garamond, Lora } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import "./globals.css";
 
-const cormorantDisplay = Cormorant_Garamond({
+const cormorantHeading = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-heading",
   display: "swap",
   weight: ["300", "400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
 
-const cormorantBody = Cormorant_Garamond({
+const loraBody = Lora({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-ui",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -74,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorantDisplay.variable} ${cormorantBody.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${cormorantHeading.variable} ${loraBody.variable}`}>
       <body>
         <ScrollProgress />
         <Navbar />

@@ -57,7 +57,7 @@ export function Navbar() {
             </svg>
             <div className="flex flex-col leading-tight">
               <span className="font-display text-[1.2rem] font-bold tracking-[-0.01em]">Little Tree Farm</span>
-              <span className={`font-ui text-[0.62rem] font-semibold uppercase tracking-[0.14em] ${isScrolled ? "text-gold-dark" : "text-gold"}`}>Timber Investment</span>
+              <span className={`kicker-label !text-[0.62rem] ${isScrolled ? "text-gold-dark" : "text-gold"}`}>Timber Investment</span>
             </div>
           </Link>
 
@@ -136,7 +136,7 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   onClick={() => setIsMobileOpen(false)}
-                  className="font-display text-[1.5rem] text-ink font-semibold transition-colors hover:text-forest block w-full"
+                  className="font-display text-2xl text-ink font-semibold transition-colors hover:text-forest block w-full"
                 >
                   {link.label}
                 </Link>

@@ -32,8 +32,10 @@
   --color-ink-muted:    #151515;
 
   /* ── Typography ──────────────────────────── */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-ui:      'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-heading: var(--font-heading, "Cormorant Garamond", serif);
+  --font-display: var(--font-heading, "Cormorant Garamond", serif);
+  --font-body: var(--font-body, "Lora", serif);
+  --font-ui: ui-sans-serif, system-ui, sans-serif;
 
   /* ── Shadows (override Tailwind defaults) ── */
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
@@ -69,32 +71,39 @@
   }
 
   body {
-    font-family: var(--font-display);
+    font-family: var(--font-body);
     color: var(--color-ink);
     background-color: var(--color-cream);
-    line-height: 1.7;
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    font-weight: 700;
-    line-height: 1.12;
+    font-family: var(--font-heading);
     color: var(--color-ink);
-    letter-spacing: -0.015em;
   }
 
-  h1 { font-size: clamp(3rem, 2.5rem + 3vw, 5.2rem); }
-  h2 { font-size: clamp(2.5rem, 2rem + 2.5vw, 4.2rem); }
-  h3 { font-size: clamp(1.6rem, 1.4rem + 1vw, 2.2rem); font-weight: 700; }
+  h1 {
+    font-weight: 700;
+    line-height: 1.05;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+  }
+
+  h2 {
+    font-weight: 700;
+    line-height: 1.15;
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  h3 {
+    font-weight: 700;
+    line-height: 1.4;
+    font-size: 1.4rem;
+  }
 
   p {
-    font-family: var(--font-display);
-    color: var(--color-ink-light);
-    line-height: 1.8;
-    font-weight: 600;
-    font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
-    letter-spacing: 0.01em;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.85;
   }
 
   a { color: inherit; text-decoration: none; }
@@ -102,6 +111,31 @@
   ::selection {
     background-color: var(--color-gold);
     color: var(--color-forest-dark);
+  }
+}
+
+@layer components {
+  .text-intro {
+    font-size: 1.2rem;
+    line-height: 1.7;
+  }
+
+  .text-small {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .text-tiny {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .kicker-label {
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    font-weight: 600;
   }
 }
 

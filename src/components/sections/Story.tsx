@@ -21,10 +21,10 @@ export function Story() {
         >
           {/* ─── Centered header ─── */}
           <div className="text-center mb-12">
-            <span className="inline-block font-ui text-[0.72rem] font-bold tracking-[0.2em] uppercase text-gold-dark mb-5">
+            <span className="kicker-label text-gold-dark mb-5 inline-block">
               The Story That Started It All
             </span>
-            <h2 className="font-display text-[clamp(2.2rem,1.8rem+2vw,3.4rem)] font-bold text-ink leading-[1.1] mb-4">
+            <h2 className="text-ink mb-4">
               A Grandfather&apos;s Fence Line.{" "}
               <em className="text-walnut italic">A Family&apos;s Fortune.</em>
             </h2>
@@ -33,18 +33,18 @@ export function Story() {
 
           {/* ─── Left-aligned prose ─── */}
           <div className="mt-10">
-            <p className="font-display text-[clamp(1.15rem,1rem+0.5vw,1.3rem)] leading-[1.95] text-ink-light font-medium mb-8 w-full">
+            <p className="text-intro text-ink-light font-medium mb-8 w-full">
               There&apos;s a story that gets told in certain farming families — passed down quietly, like the land itself. A grandfather planted a row of black walnut trees along the edge of his property back in the 1960s. He didn&apos;t think much of it. He just liked the idea of doing something useful with that strip of ground that was too rocky to plow and too shaded to graze.
             </p>
-            <p className="font-display text-[clamp(1.15rem,1rem+0.5vw,1.3rem)] leading-[1.95] text-ink-light font-medium mb-8 w-full">
+            <p className="text-intro text-ink-light font-medium mb-8 w-full">
               Decades later, his grandchildren had those trees appraised. The timber cruiser walked the row, measured the trunks, checked the grain. Then he handed over a number that made the family go quiet.
             </p>
 
-            <blockquote className="font-display text-[clamp(1.35rem,1.15rem+0.8vw,1.7rem)] italic text-walnut leading-[1.6] py-8 px-10 border-l-4 border-gold my-10 w-full bg-gold/[0.06] rounded-r-xl shadow-sm max-md:px-5">
+            <blockquote className="text-2xl italic text-walnut py-8 px-10 border-l-4 border-gold my-10 w-full bg-gold/[0.06] rounded-r-xl shadow-sm max-md:px-5">
               &ldquo;Those trees — planted with a shovel and a little patience — were worth more per acre than most of the farmland in the county.&rdquo;
             </blockquote>
 
-            <p className="font-display text-[clamp(1.15rem,1rem+0.5vw,1.3rem)] leading-[1.95] text-ink-light font-medium w-full">
+            <p className="text-intro text-ink-light font-medium w-full">
               That story isn&apos;t rare. It&apos;s just not told loudly enough. And if you own land — even a few acres of unused field, old pasture, or scrubby ground you haven&apos;t known what to do with — this page was written for you.
             </p>
           </div>
