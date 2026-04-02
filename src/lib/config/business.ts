@@ -190,7 +190,7 @@ export const formatAddress = (format: "full" | "schema" | "oneline" = "full") =>
         addressLocality: city,
         addressRegion: state,
         postalCode: postalCode,
-        addressCountry: countryCode,
+        addressCountry: country,
       };
     case "oneline":
       return `${street}, ${city}, ${state} ${postalCode}`;
