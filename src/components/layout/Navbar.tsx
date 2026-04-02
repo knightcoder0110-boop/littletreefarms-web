@@ -58,6 +58,7 @@ export function Navbar() {
                 fill
                 className="object-contain"
                 priority
+                sizes="(max-width: 768px) 144px, 144px"
               />
             </div>
           </Link>

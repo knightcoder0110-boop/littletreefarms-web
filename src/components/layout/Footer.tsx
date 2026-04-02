@@ -50,6 +50,7 @@ export function Footer() {
                   alt="Little Tree Farm Logo"
                   fill
                   className="object-contain"
+                  sizes="(max-width: 768px) 128px, 128px"
                 />
               </div>
               <span className="font-display text-2xl font-bold">{businessInfo.name}</span>

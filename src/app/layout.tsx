@@ -224,6 +224,7 @@ export default function RootLayout({
       lang="en-CA" 
       className={`${cormorantHeading.variable} ${loraBody.variable}`}
       dir="ltr"
+      data-scroll-behavior="smooth"
     >
       <head>
         {/* Hreflang tags for international SEO */}
