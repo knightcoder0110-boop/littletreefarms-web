@@ -1,0 +1,161 @@
+.timeline {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Diagonal lines pattern */
+.timeline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 14px,
+    rgba(200, 169, 110, 0.025) 14px,
+    rgba(200, 169, 110, 0.025) 15px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.timeline > * {
+  position: relative;
+  z-index: 1;
+}
+
+.stages {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.line {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-gold),
+    var(--color-forest),
+    var(--color-gold)
+  );
+  opacity: 0.3;
+}
+
+.stage {
+  position: relative;
+  padding-left: 60px;
+  padding-bottom: var(--space-10);
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.7s var(--ease-out);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.stage:last-child {
+  padding-bottom: 0;
+}
+
+.dot {
+  position: absolute;
+  left: 10px;
+  top: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-bg-alt);
+  border: 2px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(200, 169, 110, 0.2);
+}
+
+.dotInner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-gold);
+}
+
+.stageCard {
+  background: var(--color-white);
+  border: none;
+  border-left: 3px solid var(--color-gold);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-8);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.stageCard:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateX(4px);
+}
+
+.years {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-gold-dark);
+  margin-bottom: var(--space-2);
+}
+
+.stageTitle {
+  font-size: var(--text-xl);
+  color: var(--color-forest);
+  margin-bottom: var(--space-3);
+}
+
+.stageText {
+  font-size: var(--text-lg);
+  color: var(--color-text-light);
+  line-height: 1.8;
+  max-width: none;
+  margin-bottom: var(--space-4);
+  font-weight: 500;
+}
+
+.treeCount {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-full);
+}
+
+.treeNumber {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--color-forest);
+  line-height: 1;
+}
+
+.treeLabel {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 600px) {
+  .stages {
+    max-width: 100%;
+  }
+
+  .stageCard {
+    padding: var(--space-5) var(--space-6);
+  }
+}

@@ -1,0 +1,125 @@
+.land {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Cross-hatch pattern */
+.land::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(
+      45deg,
+      rgba(26, 58, 42, 0.015) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(26, 58, 42, 0.015) 75%
+    ),
+    linear-gradient(
+      -45deg,
+      rgba(26, 58, 42, 0.015) 25%,
+      transparent 25%,
+      transparent 75%,
+      rgba(26, 58, 42, 0.015) 75%
+    );
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.land > * {
+  position: relative;
+  z-index: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.content h2 {
+  margin-bottom: var(--space-8);
+}
+
+.list {
+  margin-bottom: var(--space-8);
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.listItem:last-child {
+  border-bottom: none;
+}
+
+.check {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--color-forest);
+}
+
+.note {
+  font-size: var(--text-base);
+  color: var(--color-text-light);
+  font-style: italic;
+  margin-bottom: var(--space-8);
+  line-height: 1.7;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-5);
+}
+
+.statCard {
+  text-align: center;
+  padding: var(--space-8) var(--space-5);
+  background: var(--color-white);
+  border: none;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.statCard:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.statNumber {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--color-forest);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.statLabel {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+}

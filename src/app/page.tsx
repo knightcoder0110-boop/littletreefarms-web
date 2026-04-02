@@ -1,66 +1,58 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { Hero } from "@/components/sections/Hero";
+import { Story } from "@/components/sections/Story";
+import { Investment } from "@/components/sections/Investment";
+import { WhyThisTree } from "@/components/sections/WhyThisTree";
+import { SystemOverview } from "@/components/sections/SystemOverview";
+import { Timeline } from "@/components/sections/Timeline";
+import { Outcomes } from "@/components/sections/Outcomes";
+import { WhyLandowners } from "@/components/sections/WhyLandowners";
+import { LandQualifies } from "@/components/sections/LandQualifies";
+import { HonestTruth } from "@/components/sections/HonestTruth";
+import { TripleCTA } from "@/components/sections/TripleCTA";
+import { ImageBanner } from "@/components/sections/ImageBanner";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <Hero />
+      <Story />
+      <Investment />
+
+      {/* Cinematic banner — forest atmosphere, after investment pitch */}
+      <ImageBanner
+        src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=80&auto=format&fit=crop"
+        alt="Tall trees in a sunlit forest representing long-term timber investment potential"
+        quote="The trees you plant today are the wealth your grandchildren will inherit."
+        attribution="A truth told by every timber farmer"
+        id="forest-banner"
+      />
+
+      <WhyThisTree />
+      <SystemOverview />
+
+      {/* Plantation rows banner — sets visual context for the system */}
+      <ImageBanner
+        src="https://images.unsplash.com/photo-1509587584298-0f3b3a3a1797?w=1920&q=80&auto=format&fit=crop"
+        alt="Rolling farmland and open fields ideal for black walnut timber planting"
+        quote="That field edge. That strip along the fence line. That back corner that floods a little in spring — it has more potential than you know."
+        id="farmland-banner"
+      />
+
+      <Timeline />
+      <Outcomes />
+      <WhyLandowners />
+      <LandQualifies />
+      <HonestTruth />
+
+      {/* Final emotional banner before CTA */}
+      <ImageBanner
+        src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1920&q=80&auto=format&fit=crop"
+        alt="Peaceful rural landscape with golden light over open land ready for timber planting"
+        quote="Black walnut timber doesn't promise overnight riches. It promises something better: a slow, steady, compounding of value that mirrors the best things in life."
+        id="closing-banner"
+      />
+
+      <TripleCTA />
+    </>
   );
 }
