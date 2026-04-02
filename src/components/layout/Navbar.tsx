@@ -28,78 +28,132 @@ export function Navbar() {
   }, [isMobileOpen]);
 
   return (
-    <header
-      id="site-header"
-      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 rounded-b-3xl ${
-        isScrolled
-          ? "py-3 bg-cream/98 backdrop-blur-xl shadow-md text-forest"
-          : "py-5 bg-transparent text-cream"
-      }`}
-    >
-      <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
+    <>
+      <header
+        id="site-header"
+        className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 rounded-b-3xl ${
+          isScrolled ? "py-3 shadow-md" : "py-5"
+        }`}
+      >
+        {/* Placed behind the header content so backdrop filter doesn't break fixed children scope for mobile nav (though we separated it now, still good practice) */}
+        <div 
+          className={`absolute inset-0 z-[-1] rounded-b-3xl transition-all duration-300 ${
+            isScrolled ? "bg-cream/98 backdrop-blur-xl" : "bg-transparent"
+          }`} 
+        />
 
-        {/* Logo */}
-        <Link
-          href="/"
-          className={`flex items-center gap-3 z-[1001] transition-opacity hover:opacity-80 ${isScrolled ? "text-forest" : "text-cream"}`}
-          aria-label="Home"
-        >
-          <svg className="w-9 h-9 shrink-0" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <path d="M16 2C16 2 6 10 6 18C6 23.5 10.5 28 16 28C21.5 28 26 23.5 26 18C26 10 16 2 16 2Z" fill="currentColor" opacity="0.2"/>
-            <path d="M16 6C16 6 10 12 10 17C10 20.3 12.7 23 16 23C19.3 23 22 20.3 22 17C22 12 16 6 16 6Z" fill="currentColor" opacity="0.4"/>
-            <path d="M16 28V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-            <path d="M13 18L16 14L19 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          <div className="flex flex-col leading-tight">
-            <span className="font-display text-[1.2rem] font-bold tracking-[-0.01em]">Little Tree Farm</span>
-            <span className={`font-ui text-[0.62rem] font-semibold uppercase tracking-[0.14em] ${isScrolled ? "text-gold-dark" : "text-gold"}`}>Timber Investment</span>
-          </div>
-        </Link>
+        <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
+          {/* Logo */}
+          <Link
+            href="/"
+            className={`flex items-center gap-3 z-[1001] transition-opacity hover:opacity-80 ${isScrolled ? "text-forest" : "text-cream"}`}
+            aria-label="Home"
+          >
+            <svg className="w-9 h-9 shrink-0" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path d="M16 2C16 2 6 10 6 18C6 23.5 10.5 28 16 28C21.5 28 26 23.5 26 18C26 10 16 2 16 2Z" fill="currentColor" opacity="0.2"/>
+              <path d="M16 6C16 6 10 12 10 17C10 20.3 12.7 23 16 23C19.3 23 22 20.3 22 17C22 12 16 6 16 6Z" fill="currentColor" opacity="0.4"/>
+              <path d="M16 28V12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M13 18L16 14L19 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <div className="flex flex-col leading-tight">
+              <span className="font-display text-[1.2rem] font-bold tracking-[-0.01em]">Little Tree Farm</span>
+              <span className={`font-ui text-[0.62rem] font-semibold uppercase tracking-[0.14em] ${isScrolled ? "text-gold-dark" : "text-gold"}`}>Timber Investment</span>
+            </div>
+          </Link>
 
-        {/* Desktop nav */}
+          {/* Desktop nav (Hidden on mobile) */}
+          <nav className="flex items-center gap-8 max-[900px]:hidden">
+            <ul className="flex items-center gap-1">
+              {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={`font-ui text-[0.9rem] font-bold px-3 py-2 rounded-md transition-colors duration-150 tracking-[0.02em] ${
+                      isScrolled ? "text-ink hover:text-forest" : "text-white/95 hover:text-gold"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/guide"
+              className="font-ui text-xs font-bold tracking-[0.08em] uppercase px-6 py-3.5 rounded-xl bg-gold text-forest-dark border-2 border-gold transition-all duration-300 hover:bg-gold-dark hover:border-gold-dark hover:-translate-y-0.5 whitespace-nowrap shadow-sm"
+            >
+              Free Guide
+            </Link>
+          </nav>
+
+          {/* Hamburger (Mobile) */}
+          <button
+            className="hidden max-[900px]:flex flex-col justify-center gap-[6px] w-10 h-10 z-[1001] p-1"
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={isMobileOpen}
+          >
+            <span className={`block w-full h-[2px] rounded-full transition-all duration-300 origin-center ${isScrolled ? "bg-forest" : "bg-cream"} ${isMobileOpen ? "translate-y-[8px] rotate-45 !bg-cream" : ""}`} />
+            <span className={`block w-full h-[2px] rounded-full transition-all duration-300 ${isScrolled ? "bg-forest" : "bg-cream"} ${isMobileOpen ? "opacity-0 scale-x-0" : ""}`} />
+            <span className={`block w-full h-[2px] rounded-full transition-all duration-300 origin-center ${isScrolled ? "bg-forest" : "bg-cream"} ${isMobileOpen ? "-translate-y-[8px] -rotate-45 !bg-cream" : ""}`} />
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Nav Drawer & Backdrop */}
+      <div className="hidden max-[900px]:block">
+        {/* Backdrop */}
+        <div
+          className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-[1002] transition-opacity duration-500 ${
+            isMobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
+          onClick={() => setIsMobileOpen(false)}
+          aria-hidden="true"
+        />
+
+        {/* Side Sheet */}
         <nav
-          id="main-nav"
-          className={`flex items-center gap-8
-            max-[900px]:fixed max-[900px]:inset-0 max-[900px]:flex-col max-[900px]:justify-center max-[900px]:gap-10
-            max-[900px]:bg-cream/98 max-[900px]:backdrop-blur-xl max-[900px]:transition-transform max-[900px]:duration-500
-            ${isMobileOpen ? "max-[900px]:translate-x-0" : "max-[900px]:translate-x-full"}`}
+          className={`fixed inset-y-0 right-0 w-[85vw] max-w-[420px] bg-cream z-[1003] shadow-2xl rounded-l-3xl p-8 flex flex-col justify-start pt-6 transition-transform duration-500 cubic-bezier(0.16,1,0.3,1) ${
+            isMobileOpen ? "translate-x-0" : "translate-x-full"
+          }`}
         >
-          <ul className="flex items-center gap-1 max-[900px]:flex-col max-[900px]:gap-4">
+          {/* Close button */}
+          <div className="flex justify-end mb-8">
+            <button
+              onClick={() => setIsMobileOpen(false)}
+              className="p-2 text-ink hover:text-forest transition-colors rounded-full hover:bg-black/5"
+              aria-label="Close menu"
+            >
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <ul className="flex flex-col gap-4 w-full">
             {navLinks.map((link) => (
-              <li key={link.href}>
+              <li key={link.href} className="border-b border-black/5 pb-3">
                 <Link
                   href={link.href}
                   onClick={() => setIsMobileOpen(false)}
-                  className={`font-ui text-[0.9rem] font-bold px-3 py-2 rounded-md transition-colors duration-150 tracking-[0.02em] max-[900px]:font-display max-[900px]:text-2xl max-[900px]:text-ink ${isScrolled ? "text-ink hover:text-forest" : "text-white/95 hover:text-gold"}`}
+                  className="font-display text-[1.5rem] text-ink font-semibold transition-colors hover:text-forest block w-full"
                 >
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
-          <Link
-            href="/guide"
-            onClick={() => setIsMobileOpen(false)}
-            className="font-ui text-xs font-bold tracking-[0.08em] uppercase px-5 py-2.5 rounded-xl bg-gold text-forest-dark border-2 border-gold transition-all duration-300 hover:bg-gold-dark hover:border-gold-dark hover:-translate-y-0.5 whitespace-nowrap shadow-sm"
-          >
-            Free Guide
-          </Link>
+          <div className="mt-8">
+            <Link
+              href="/guide"
+              onClick={() => setIsMobileOpen(false)}
+              className="inline-flex items-center justify-center w-full font-ui text-[0.85rem] font-bold tracking-[0.1em] uppercase px-6 py-4 rounded-xl bg-forest text-cream border-2 border-forest transition-all duration-300 hover:bg-forest-light hover:border-forest-light"
+            >
+              Download Free Guide
+            </Link>
+          </div>
         </nav>
-
-        {/* Hamburger */}
-        <button
-          className="hidden max-[900px]:flex flex-col justify-center gap-[5px] w-8 h-8 z-[1001]"
-          onClick={() => setIsMobileOpen(!isMobileOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={isMobileOpen}
-          aria-controls="main-nav"
-          id="nav-toggle"
-        >
-          <span className={`block w-full h-0.5 bg-forest rounded-full transition-transform duration-300 origin-center ${isMobileOpen ? "translate-y-[7px] rotate-45" : ""}`} />
-          <span className={`block w-full h-0.5 bg-forest rounded-full transition-all duration-300 ${isMobileOpen ? "opacity-0 scale-x-0" : ""}`} />
-          <span className={`block w-full h-0.5 bg-forest rounded-full transition-transform duration-300 origin-center ${isMobileOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
-        </button>
       </div>
-    </header>
+    </>
   );
 }
