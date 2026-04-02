@@ -27,9 +27,9 @@
   --color-charcoal:     #2c2c2c;
 
   /* ── Semantic Text Colors ────────────────── */
-  --color-ink:          #111111;
-  --color-ink-light:    #222222;
-  --color-ink-muted:    #444444;
+  --color-ink:          #000000;
+  --color-ink-light:    #0a0a0a;
+  --color-ink-muted:    #151515;
 
   /* ── Typography ──────────────────────────── */
   --font-display: 'Cormorant Garamond', Georgia, serif;
@@ -84,16 +84,16 @@
     letter-spacing: -0.015em;
   }
 
-  h1 { font-size: clamp(2.8rem, 2.2rem + 2.8vw, 4.5rem); }
-  h2 { font-size: clamp(2.2rem, 1.8rem + 2vw,   3.5rem); }
-  h3 { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem); font-weight: 600; }
+  h1 { font-size: clamp(3rem, 2.5rem + 3vw, 5.2rem); }
+  h2 { font-size: clamp(2.5rem, 2rem + 2.5vw, 4.2rem); }
+  h3 { font-size: clamp(1.6rem, 1.4rem + 1vw, 2.2rem); font-weight: 700; }
 
   p {
     font-family: var(--font-display);
     color: var(--color-ink-light);
-    line-height: 1.9;
-    font-weight: 500;
-    font-size: clamp(1.1rem, 1rem + 0.35vw, 1.25rem);
+    line-height: 1.8;
+    font-weight: 600;
+    font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.45rem);
     letter-spacing: 0.01em;
   }
 

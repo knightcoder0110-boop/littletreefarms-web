@@ -23,55 +23,48 @@ export function WhyThisTree() {
       />
 
       <div className="relative z-[1] max-w-[1200px] mx-auto px-6">
-
-        {/* ── Top: header + image ── */}
-        <div className="grid grid-cols-[1.3fr_1fr] gap-14 items-start mb-16 max-md:grid-cols-1 max-md:gap-10">
+        <div className="grid grid-cols-[1.1fr_1fr] gap-16 items-stretch mb-16 max-md:grid-cols-1 max-md:gap-10">
 
           <div
             ref={ref}
-            className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+            className={`flex flex-col justify-center transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
-            <span className="inline-block font-ui text-[0.72rem] font-bold tracking-[0.2em] uppercase text-gold mb-5">Why This Tree</span>
-            <h2 className="font-display text-[clamp(2.2rem,1.8rem+2vw,3.4rem)] font-bold text-cream leading-[1.1] mb-6">
+            <span className="inline-block font-ui text-[0.75rem] font-bold tracking-[0.2em] uppercase text-gold mb-6">Why This Tree</span>
+            <h2 className="font-display text-[clamp(2.4rem,2rem+2vw,3.8rem)] font-bold text-cream leading-[1.05] mb-8">
               Black Walnut Is in a Category of Its Own Among North American Hardwoods
             </h2>
-            <p className="font-display text-[clamp(1.15rem,1rem+0.5vw,1.3rem)] text-white/90 leading-[1.9] font-medium">
+            <p className="font-display text-[clamp(1.2rem,1.1rem+0.5vw,1.45rem)] text-white/90 leading-[1.8] font-semibold mb-12">
               Black walnut (<em>Juglans nigra</em>) has been prized for centuries — by furniture makers, cabinetmakers, gunsmiths, and now by luxury interior designers and instrument builders around the world.
             </p>
+
+            <div className="flex flex-col gap-8">
+              {features.map((f, i) => (
+                <div key={i} className="flex items-start gap-5">
+                  <span className="shrink-0 text-gold text-2xl pt-1 leading-none">{f.icon}</span>
+                  <div>
+                    <h3 className="font-display text-[1.4rem] font-bold text-cream mb-2">{f.title}</h3>
+                    <p className="font-display text-[clamp(1.1rem,1rem+0.4vw,1.3rem)] text-white/80 leading-[1.8] font-medium">{f.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Image — full bleed within its grid cell */}
           <div
-            className={`relative w-full overflow-hidden rounded-2xl shadow-xl transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-            style={{ aspectRatio: "4/3" }}
+            className={`relative w-full h-full min-h-[600px] max-md:min-h-[400px] overflow-hidden rounded-3xl shadow-2xl transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             <Image
-              src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=85&auto=format&fit=crop"
-              alt="Premium dark walnut wood grain with rich chocolate-brown tones"
+              src="https://images.unsplash.com/photo-1546484396-fb3fc6f95f98?w=1000&q=85&auto=format&fit=crop"
+              alt="Raw dimensional walnut timber lumber cuts stacked, displaying true rich wood grain"
               fill
-              sizes="(max-width: 768px) 100vw, 480px"
+              sizes="(max-width: 768px) 100vw, 50vw"
               style={{ objectFit: "cover" }}
             />
             <div
-              className="absolute inset-0 rounded-2xl"
-              style={{ background: "linear-gradient(to top, rgba(15,36,25,0.25) 0%, transparent 50%)" }}
+              className="absolute inset-0 rounded-3xl pointer-events-none"
+              style={{ background: "linear-gradient(135deg, rgba(15,36,25,0.2) 0%, transparent 100%)" }}
             />
           </div>
-        </div>
-
-        {/* ── Feature grid ── */}
-        <div className="grid grid-cols-2 gap-6 mb-16 max-md:grid-cols-1">
-          {features.map((f, i) => (
-            <div
-              key={i}
-              className={`bg-white/[0.06] border-l-4 border-transparent rounded-xl p-8 transition-all duration-300 hover:bg-white/[0.09] hover:border-gold ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{ transitionDelay: `${i * 80}ms` }}
-            >
-              <span className="block font-display text-[1.8rem] text-gold mb-4 leading-none">{f.icon}</span>
-              <h3 className="font-display text-[1.3rem] font-bold text-cream mb-3">{f.title}</h3>
-              <p className="font-display text-[clamp(1.05rem,0.95rem+0.3vw,1.15rem)] text-white/85 leading-[1.85] font-medium">{f.description}</p>
-            </div>
-          ))}
         </div>
 
         {/* ── Counter ── */}

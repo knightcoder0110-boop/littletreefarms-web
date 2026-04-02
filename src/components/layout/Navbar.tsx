@@ -30,10 +30,10 @@ export function Navbar() {
   return (
     <header
       id="site-header"
-      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 rounded-bl-3xl rounded-br-3xl ${
+      className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 rounded-b-3xl ${
         isScrolled
-          ? "py-3 mx-4 bg-cream/95 backdrop-blur-xl shadow-md"
-          : "py-5 mx-0 bg-transparent"
+          ? "py-3 bg-cream/98 backdrop-blur-xl shadow-md text-forest"
+          : "py-5 bg-transparent text-cream"
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
@@ -41,7 +41,7 @@ export function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-3 text-forest z-[1001] transition-opacity hover:opacity-80"
+          className={`flex items-center gap-3 z-[1001] transition-opacity hover:opacity-80 ${isScrolled ? "text-forest" : "text-cream"}`}
           aria-label="Home"
         >
           <svg className="w-9 h-9 shrink-0" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -51,8 +51,8 @@ export function Navbar() {
             <path d="M13 18L16 14L19 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
           <div className="flex flex-col leading-tight">
-            <span className="font-display text-[1.15rem] font-bold tracking-[-0.01em] text-forest">Little Tree Farm</span>
-            <span className="font-ui text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-gold-dark">Timber Investment</span>
+            <span className="font-display text-[1.2rem] font-bold tracking-[-0.01em]">Little Tree Farm</span>
+            <span className={`font-ui text-[0.62rem] font-semibold uppercase tracking-[0.14em] ${isScrolled ? "text-gold-dark" : "text-gold"}`}>Timber Investment</span>
           </div>
         </Link>
 
@@ -70,7 +70,7 @@ export function Navbar() {
                 <Link
                   href={link.href}
                   onClick={() => setIsMobileOpen(false)}
-                  className="font-ui text-[0.85rem] font-semibold text-ink px-3 py-2 rounded-md transition-colors duration-150 hover:text-forest tracking-[0.02em] max-[900px]:font-display max-[900px]:text-2xl max-[900px]:font-bold"
+                  className={`font-ui text-[0.9rem] font-bold px-3 py-2 rounded-md transition-colors duration-150 tracking-[0.02em] max-[900px]:font-display max-[900px]:text-2xl max-[900px]:text-ink ${isScrolled ? "text-ink hover:text-forest" : "text-white/95 hover:text-gold"}`}
                 >
                   {link.label}
                 </Link>

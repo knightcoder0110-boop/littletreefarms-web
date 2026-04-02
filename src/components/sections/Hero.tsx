@@ -37,7 +37,7 @@ export function Hero() {
             Black Walnut Timber Investment
           </span>
           <h1
-            className="font-display text-[clamp(2.6rem,2rem+2.5vw,4.2rem)] font-bold text-cream leading-[1.08] tracking-[-0.02em] mb-7"
+            className="font-display text-[clamp(3.5rem,3rem+3vw,5.8rem)] font-bold text-cream leading-[1.05] tracking-[-0.02em] mb-8"
           >
             What If the Best Investment You Ever Made Was Already{" "}
             <em className="text-gold not-italic">Growing in Your Backyard?</em>

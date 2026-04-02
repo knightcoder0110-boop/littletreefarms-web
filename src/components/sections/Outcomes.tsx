@@ -62,15 +62,15 @@ export function Outcomes() {
           {tiers.map((tier, i) => (
             <div
               key={i}
-              className={`relative rounded-2xl p-8 text-center transition-all duration-300 hover:-translate-y-2 ${
+              className={`relative rounded-3xl p-10 text-center transition-all duration-300 hover:-translate-y-2 flex flex-col justify-between h-full ${
                 tier.highlight
-                  ? "bg-forest text-cream shadow-2xl scale-[1.03]"
-                  : "bg-white text-ink shadow-md hover:shadow-xl"
+                  ? "bg-[#0a0a0a] text-cream shadow-2xl scale-[1.05] border border-gold/30 z-10"
+                  : "bg-white text-ink shadow-lg hover:shadow-xl mt-4 mb-4"
               } ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               {tier.highlight && (
-                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gold text-forest-dark font-ui text-[0.62rem] font-bold uppercase tracking-[0.12em] px-5 py-1.5 rounded-full whitespace-nowrap shadow-md">
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gold text-forest-dark font-ui text-[0.7rem] font-bold uppercase tracking-[0.15em] px-6 py-2 rounded-full whitespace-nowrap shadow-md">
                   Most Likely
                 </span>
               )}
