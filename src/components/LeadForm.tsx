@@ -55,7 +55,7 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[1002] flex items-start sm:items-center justify-center p-4 pt-20 sm:pt-4">
       {/* Backdrop */}
       <div 
         className="absolute inset-0 bg-forest-dark/90 backdrop-blur-sm"
@@ -63,11 +63,11 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
       />
       
       {/* Modal */}
-      <div className="relative w-full max-w-[480px] bg-cream rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-        {/* Close button */}
+      <div className="relative w-full max-w-[480px] max-h-[85vh] sm:max-h-[90vh] bg-cream rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 flex flex-col">
+        {/* Close button - positioned to avoid hamburger overlap on mobile */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-white/50 text-ink hover:bg-white hover:text-forest transition-colors z-10"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 text-ink hover:bg-white hover:text-forest transition-colors z-20 shadow-sm"
           aria-label="Close"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -75,33 +75,34 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
           </svg>
         </button>
 
-        {isSuccess ? (
+        <div className="overflow-y-auto flex-1">
+          {isSuccess ? (
           /* Success State */
-          <div className="p-10 text-center">
-            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-forest flex items-center justify-center">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="text-gold">
+          <div className="p-6 sm:p-10 text-center">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 rounded-full bg-forest flex items-center justify-center">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="text-gold">
                 <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
-            <span className="kicker-label text-gold-dark mb-3 inline-block">Success!</span>
-            <h3 className="text-forest mb-4">Check Your Inbox</h3>
-            <p className="text-ink-light mb-8">
+            <span className="kicker-label text-gold-dark mb-2 sm:mb-3 inline-block text-xs sm:text-sm">Success!</span>
+            <h3 className="text-forest mb-3 sm:mb-4 text-xl sm:text-2xl">Check Your Inbox</h3>
+            <p className="text-ink-light mb-6 sm:mb-8 text-sm sm:text-base">
               We&apos;ve sent the Free Planting Guide to <strong className="text-forest">{formData.email}</strong>. 
               Please check your email (and spam folder, just in case).
             </p>
             <button
               onClick={handleClose}
-              className="inline-flex items-center gap-2 px-8 py-4 font-ui text-sm font-bold tracking-[0.08em] uppercase rounded-xl bg-gold text-forest-dark border-2 border-gold transition-all duration-300 hover:bg-gold-dark hover:border-gold-dark"
+              className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 font-ui text-xs sm:text-sm font-bold tracking-[0.08em] uppercase rounded-xl bg-gold text-forest-dark border-2 border-gold transition-all duration-300 hover:bg-gold-dark hover:border-gold-dark"
             >
               Got it, thanks!
             </button>
           </div>
         ) : (
           /* Form State */
-          <div className="p-10">
-            <span className="kicker-label text-gold-dark mb-3 inline-block">Get Started</span>
-            <h3 className="text-forest mb-3">Download the Free Planting Guide</h3>
-            <p className="text-ink-light text-sm mb-8">
+          <div className="p-6 sm:p-10">
+            <span className="kicker-label text-gold-dark mb-2 sm:mb-3 inline-block text-xs sm:text-sm">Get Started</span>
+            <h3 className="text-forest mb-2 sm:mb-3 text-xl sm:text-2xl">Download the Free Planting Guide</h3>
+            <p className="text-ink-light text-xs sm:text-sm mb-6 sm:mb-8">
               Learn everything you need to plant your first acre of black walnut timber trees.
             </p>
 
@@ -185,7 +186,7 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
             </form>
 
             {/* Footer */}
-            <p className="mt-6 text-center text-xs text-ink-muted">
+            <p className="mt-4 sm:mt-6 text-center text-xs text-ink-muted">
               No spam. No pressure.{" "}
               <Link href="/privacy" className="underline hover:text-forest transition-colors">
                 Unsubscribe anytime.
@@ -193,6 +194,7 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
             </p>
           </div>
         )}
+        </div>
       </div>
     </div>
   );
