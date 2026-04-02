@@ -2,74 +2,56 @@
 
 import Image from "next/image";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import styles from "./HonestTruth.module.css";
 
 export function HonestTruth() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className={`section ${styles.truth}`} id="honest-truth">
-      {/* Background image - atmospheric farmland */}
-      <div className={styles.bgImage}>
+    <section className="relative min-h-[600px] py-24 overflow-hidden flex items-center max-md:min-h-0" id="honest-truth">
+      {/* Background */}
+      <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=75&auto=format&fit=crop"
-          alt="Golden sunrise over rural farmland — land with investment potential"
+          src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=80&auto=format&fit=crop"
+          alt="Wide open farmland under an atmospheric sky"
           fill
           sizes="100vw"
           style={{ objectFit: "cover" }}
         />
       </div>
-      <div className={styles.bgOverlay} />
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{ background: "linear-gradient(180deg, rgba(10,20,12,0.58) 0%, rgba(10,20,12,0.52) 40%, rgba(10,20,12,0.65) 100%)" }}
+      />
 
-      <div className="container container--narrow">
+      <div className="relative z-[2] max-w-[800px] mx-auto px-6 w-full">
         <div
           ref={ref}
-          className={`${styles.content} ${isVisible ? styles.visible : ""}`}
+          className={`text-center transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
         >
-          <span className={styles.symbol}>✦</span>
-          <span className={styles.label}>An Honest Truth</span>
-          <h2 className={styles.heading}>
-            What If Your Land Was Growing Something That Got More Valuable{" "}
-            <span className={styles.accent}>Every Single Year?</span>
+          <span className="font-display text-[2rem] text-gold block mb-3">✦</span>
+          <span className="inline-block font-ui text-[0.7rem] font-bold tracking-[0.15em] uppercase text-gold mb-4">The Honest Truth</span>
+          <h2 className="text-[clamp(2rem,1.6rem+1.8vw,3rem)] text-white mb-4">
+            This Is a <em className="text-gold italic not-italic">Patient Investment</em>
           </h2>
-          <hr className="divider divider--center" />
+          <div className="w-14 h-[3px] bg-gold mx-auto my-8" />
 
-          <div className={styles.prose}>
-            <p>
-              The land you own right now — that field, that pasture, that back
-              forty — it&apos;s already doing something. It&apos;s growing
-              grass. It&apos;s growing weeds. It&apos;s sitting there, year
-              after year, not reaching its potential.
-            </p>
-            <p>
-              What if, in 30 years, your children walked that land and saw
-              not just trees — but security? Legacy? Something you built for
-              them, quietly, one seedling at a time?
-            </p>
-          </div>
+          <p className="text-[clamp(1.05rem,0.9rem+0.5vw,1.2rem)] text-white/88 leading-[1.9] mx-auto mb-8 max-w-[55ch] font-medium" style={{ textShadow: "0 1px 12px rgba(0,0,0,0.35)" }}>
+            We won&apos;t pretend that black walnut timber is a quick return. It&apos;s not. If you&apos;re looking for something that pays off in 5 years, this isn&apos;t it. But if you&apos;re a landowner who thinks in decades — who wants to do something meaningful with your land — this is one of the most elegant systems available.
+          </p>
 
-          <blockquote className={styles.quote}>
-            &ldquo;Black walnut timber doesn&apos;t promise overnight riches. It
-            promises something better: a slow, steady, compounding of value
-            that mirrors the best things in life.&rdquo;
+          <blockquote
+            className="font-display text-[clamp(1.3rem,1.1rem+0.7vw,1.65rem)] italic text-cream leading-relaxed py-10 px-12 mx-auto my-10 max-w-[55ch] rounded-2xl border-l-4 border-gold shadow-xl max-md:px-6"
+            style={{ background: "rgba(10,30,15,0.58)", backdropFilter: "blur(12px)" }}
+          >
+            <span className="text-gold text-[1.8rem] leading-none block mb-2 opacity-50 font-display">&ldquo;</span>
+            You plant a tree. You walk away. And every single year, without exception, that tree does what no stock, no bond, and no savings account can do — it grows.
           </blockquote>
 
-          <p className={styles.closing}>
-            The grandfather who planted those trees along the fence line
-            didn&apos;t know exactly what they&apos;d be worth. He just knew
-            that planting something good was better than planting nothing at
-            all. You have that same opportunity right now.
+          <p className="text-[clamp(1.05rem,0.9rem+0.5vw,1.2rem)] text-white/82 leading-[1.8] max-w-[52ch] mx-auto mt-8 font-medium" style={{ textShadow: "0 1px 12px rgba(0,0,0,0.35)" }}>
+            That&apos;s the honest pitch. No hype. No pressure. Just trees, time, and the most valuable hardwood on the continent.
           </p>
         </div>
       </div>
-
-      {/* Photo credit */}
-      <span className={styles.credit}>
-        Photo:{" "}
-        <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">
-          Unsplash
-        </a>
-      </span>
     </section>
   );
 }

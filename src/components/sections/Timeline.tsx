@@ -1,72 +1,56 @@
 "use client";
 
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import styles from "./Timeline.module.css";
 
 const stages = [
-  {
-    years: "Year 0",
-    title: "Planting",
-    trees: 218,
-    description:
-      "Plant 218 trees per acre at 10×20 ft spacing. The seedlings go in the ground. The clock starts.",
-  },
-  {
-    years: "Years 10–15",
-    title: "First Thinning",
-    trees: 100,
-    description:
-      "Thin to approximately 100 trees per acre. Your best trees are now getting the space they need.",
-  },
-  {
-    years: "Years 20–25",
-    title: "Second Thinning",
-    trees: 50,
-    description:
-      "Thin again to approximately 50 trees per acre. The remaining trees are developing real timber value.",
-  },
-  {
-    years: "Years 35–50",
-    title: "Final Harvest Stand",
-    trees: 25,
-    description:
-      "25 trees per acre remain, spaced 35–40 feet apart. These are your timber trees — decades of clean, straight growth.",
-  },
+  { years: "Year 0",     title: "Planting",             trees: 218, description: "Plant 218 trees per acre at 10×20 ft spacing. The seedlings go in the ground. The clock starts." },
+  { years: "Years 10–15", title: "First Thinning",     trees: 100, description: "Thin to approximately 100 trees per acre. Your best trees are now getting the space they need." },
+  { years: "Years 20–25", title: "Second Thinning",    trees: 50,  description: "Thin again to approximately 50 trees per acre. The remaining trees are developing real timber value." },
+  { years: "Years 35–50", title: "Final Harvest Stand", trees: 25, description: "25 trees per acre remain, spaced 35–40 feet apart. These are your timber trees — decades of clean, straight growth." },
 ];
 
 export function Timeline() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className={`section section--alt ${styles.timeline}`} id="timeline">
-      <div className="container">
+    <section className="relative overflow-hidden py-24 bg-parchment" id="timeline">
+      <div className="absolute inset-0 pattern-lines pointer-events-none z-0" />
+
+      <div className="relative z-[1] max-w-[1200px] mx-auto px-6">
         <div
           ref={ref}
-          className={`section-header ${isVisible ? "animate-on-scroll is-visible" : "animate-on-scroll"}`}
+          className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <span className="section-label">The Timeline</span>
-          <h2>Patience Is the Price of Admission</h2>
-          <p>Here&apos;s what the journey looks like.</p>
+          <span className="inline-block font-ui text-[0.7rem] font-bold tracking-[0.15em] uppercase text-gold-dark mb-4">The Timeline</span>
+          <h2 className="text-[clamp(2rem,1.6rem+1.8vw,3rem)] text-ink mb-6">Patience Is the Price of Admission</h2>
+          <p className="mx-auto text-[clamp(1.05rem,0.9rem+0.5vw,1.2rem)] max-w-[45ch] text-ink-light">Here&apos;s what the journey looks like.</p>
         </div>
 
-        <div className={styles.stages}>
-          <div className={styles.line} />
+        <div className="relative max-w-[680px] mx-auto max-[600px]:max-w-full">
+          {/* Vertical line */}
+          <div
+            className="absolute left-5 top-0 bottom-0 w-0.5 opacity-30"
+            style={{ background: "linear-gradient(to bottom, #c8a96e, #1a3a2a, #c8a96e)" }}
+          />
+
           {stages.map((stage, i) => (
             <div
               key={i}
-              className={`${styles.stage} ${isVisible ? styles.visible : ""}`}
+              className={`relative pl-[60px] pb-10 last:pb-0 transition-all duration-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-5"}`}
               style={{ transitionDelay: `${i * 200}ms` }}
             >
-              <div className={styles.dot}>
-                <span className={styles.dotInner} />
+              {/* Dot */}
+              <div className="absolute left-[10px] top-2 w-[22px] h-[22px] rounded-full bg-parchment border-2 border-gold flex items-center justify-center shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-gold block" />
               </div>
-              <div className={styles.stageCard}>
-                <span className={styles.years}>{stage.years}</span>
-                <h3 className={styles.stageTitle}>{stage.title}</h3>
-                <p className={styles.stageText}>{stage.description}</p>
-                <div className={styles.treeCount}>
-                  <span className={styles.treeNumber}>{stage.trees}</span>
-                  <span className={styles.treeLabel}>trees/acre</span>
+
+              <div className="bg-white border-l-4 border-gold rounded-xl px-8 py-6 shadow-sm transition-all duration-300 hover:shadow-md hover:translate-x-1 max-[600px]:px-5">
+                <span className="inline-block font-ui text-[0.65rem] font-bold uppercase tracking-[0.12em] text-gold-dark mb-2">{stage.years}</span>
+                <h3 className="text-xl text-forest mb-3 font-display font-semibold">{stage.title}</h3>
+                <p className="text-[clamp(1rem,0.9rem+0.3vw,1.1rem)] text-ink-light leading-[1.8] !max-w-none mb-4">{stage.description}</p>
+                <div className="inline-flex items-baseline gap-2 px-4 py-2 bg-parchment rounded-full">
+                  <span className="font-display text-[clamp(1.3rem,1.1rem+0.5vw,1.6rem)] font-bold text-forest leading-none">{stage.trees}</span>
+                  <span className="font-ui text-[0.65rem] text-ink-muted font-semibold uppercase tracking-[0.06em]">trees/acre</span>
                 </div>
               </div>
             </div>

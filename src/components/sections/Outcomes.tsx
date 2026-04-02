@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import styles from "./Outcomes.module.css";
 
 const tiers = [
   {
@@ -32,53 +31,87 @@ export function Outcomes() {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className={`section ${styles.outcomes}`} id="outcomes">
-      <div className="container">
+    <section className="relative overflow-hidden py-28 bg-cream" id="outcomes">
+      <div
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse at 15% 50%, rgba(200,169,110,0.04) 0%, transparent 50%), radial-gradient(ellipse at 85% 30%, rgba(26,58,42,0.03) 0%, transparent 40%)",
+        }}
+      />
+
+      <div className="relative z-[1] max-w-[1200px] mx-auto px-6">
         <div
           ref={ref}
-          className={`section-header ${isVisible ? "animate-on-scroll is-visible" : "animate-on-scroll"}`}
+          className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <span className="section-label">Potential Outcomes</span>
-          <h2>
+          <span className="inline-block font-ui text-[0.72rem] font-bold tracking-[0.2em] uppercase text-gold-dark mb-5">
+            Potential Outcomes
+          </span>
+          <h2 className="font-display text-[clamp(2.2rem,1.8rem+2vw,3.4rem)] font-bold text-ink mb-6">
             What Might 25 Trees Per Acre{" "}
-            <span className={styles.accent}>Be Worth?</span>
+            <em className="text-gold-dark italic">Be Worth?</em>
           </h2>
-          <p>
+          <p className="font-display mx-auto text-[clamp(1.1rem,0.95rem+0.5vw,1.25rem)] max-w-[55ch] text-ink-light font-medium">
             These are honest scenarios based on real market data. Outcomes depend
             on log quality, site conditions, and market timing.
           </p>
         </div>
 
-        <div className={`grid grid--3 stagger-children ${styles.cards}`}>
+        <div className="grid grid-cols-3 gap-8 mb-12 max-md:grid-cols-1">
           {tiers.map((tier, i) => (
             <div
               key={i}
-              className={`${styles.card} ${tier.highlight ? styles.cardHighlight : ""} ${isVisible ? "animate-on-scroll is-visible" : "animate-on-scroll"}`}
+              className={`relative rounded-2xl p-8 text-center transition-all duration-300 hover:-translate-y-2 ${
+                tier.highlight
+                  ? "bg-forest text-cream shadow-2xl scale-[1.03]"
+                  : "bg-white text-ink shadow-md hover:shadow-xl"
+              } ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              style={{ transitionDelay: `${i * 100}ms` }}
             >
               {tier.highlight && (
-                <span className={styles.badge}>Most Likely</span>
+                <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gold text-forest-dark font-ui text-[0.62rem] font-bold uppercase tracking-[0.12em] px-5 py-1.5 rounded-full whitespace-nowrap shadow-md">
+                  Most Likely
+                </span>
               )}
-              <span className={styles.tierName}>{tier.tier}</span>
-              <div className={styles.pricing}>
-                <div className={styles.priceRow}>
-                  <span className={styles.priceLabel}>Per Tree</span>
-                  <span className={styles.priceValue}>{tier.perTree}</span>
+
+              <span
+                className={`block font-ui text-[0.75rem] font-bold uppercase tracking-[0.14em] mb-6 ${
+                  tier.highlight ? "text-gold-light" : "text-ink-muted"
+                }`}
+              >
+                {tier.tier}
+              </span>
+
+              <div className="mb-6">
+                <div className="flex flex-col items-center gap-1 py-3">
+                  <span className={`font-ui text-[0.65rem] uppercase tracking-[0.08em] font-semibold ${tier.highlight ? "text-white/50" : "text-ink-muted"}`}>
+                    Per Tree
+                  </span>
+                  <span className={`font-display text-[clamp(1.5rem,1.3rem+0.6vw,1.85rem)] font-bold leading-none ${tier.highlight ? "text-cream" : "text-ink"}`}>
+                    {tier.perTree}
+                  </span>
                 </div>
-                <div className={styles.divider} />
-                <div className={styles.priceRow}>
-                  <span className={styles.priceLabel}>Per Acre (25 trees)</span>
-                  <span className={`${styles.priceValue} ${styles.priceMain}`}>
+                <div className={`w-12 h-px mx-auto opacity-40 ${tier.highlight ? "bg-gold" : "bg-gold"}`} />
+                <div className="flex flex-col items-center gap-1 py-3">
+                  <span className={`font-ui text-[0.65rem] uppercase tracking-[0.08em] font-semibold ${tier.highlight ? "text-white/50" : "text-ink-muted"}`}>
+                    Per Acre (25 trees)
+                  </span>
+                  <span className={`font-display text-[clamp(2rem,1.7rem+1vw,2.6rem)] font-bold leading-none ${tier.highlight ? "text-gold" : "text-forest"}`}>
                     {tier.perAcre}
                   </span>
                 </div>
               </div>
-              <p className={styles.tierDesc}>{tier.description}</p>
+
+              <p className={`font-display text-[1rem] italic ${tier.highlight ? "text-white/70" : "text-ink-muted"}`}>
+                {tier.description}
+              </p>
             </div>
           ))}
         </div>
 
-        <div className={styles.disclaimer}>
-          <p>
+        <div className="max-w-[700px] mx-auto mb-12 text-center">
+          <p className="font-display text-[clamp(1rem,0.9rem+0.3vw,1.1rem)] text-ink-muted leading-relaxed italic">
             We want to be clear: these outcomes are not guaranteed. Timber
             markets fluctuate. Site quality matters. Management matters. But the
             underlying economics of black walnut timber have been consistent for
@@ -86,8 +119,11 @@ export function Outcomes() {
           </p>
         </div>
 
-        <div className={styles.cta}>
-          <Link href="/returns-calculator" className="btn btn--primary btn--lg">
+        <div className="text-center">
+          <Link
+            href="/returns-calculator"
+            className="inline-flex items-center gap-2 px-10 py-5 font-ui text-sm font-bold tracking-[0.08em] uppercase rounded-xl bg-forest text-cream border-2 border-forest transition-all duration-300 hover:bg-forest-light hover:border-forest-light hover:-translate-y-0.5 hover:shadow-xl"
+          >
             Calculate Your Potential Returns →
           </Link>
         </div>

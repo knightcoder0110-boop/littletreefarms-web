@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import styles from "./ImageBanner.module.css";
 
 interface ImageBannerProps {
   src: string;
@@ -13,26 +12,27 @@ interface ImageBannerProps {
 
 export function ImageBanner({ src, alt, quote, attribution, id }: ImageBannerProps) {
   return (
-    <div className={styles.banner} id={id}>
-      <div className={styles.imageWrap}>
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes="100vw"
-          style={{ objectFit: "cover" }}
-          quality={85}
-        />
+    <div className="relative w-full h-[480px] max-md:h-[360px] overflow-hidden flex items-center justify-center" id={id}>
+      <div className="absolute inset-0">
+        <Image src={src} alt={alt} fill sizes="100vw" style={{ objectFit: "cover" }} quality={85} />
       </div>
-      <div className={styles.overlay} />
-      <div className={styles.content}>
-        <blockquote className={styles.quote}>
-          <span className={styles.quoteMark}>&ldquo;</span>
+      <div
+        className="absolute inset-0"
+        style={{ background: "linear-gradient(to bottom, rgba(10,20,12,0.48) 0%, rgba(10,20,12,0.65) 50%, rgba(10,20,12,0.52) 100%)" }}
+      />
+      <div className="relative z-10 text-center px-6 max-w-[900px]">
+        <blockquote
+          className="font-display text-[clamp(1.6rem,1.2rem+1.8vw,2.6rem)] italic font-normal text-cream leading-[1.4]"
+          style={{ textShadow: "0 2px 24px rgba(0,0,0,0.4)" }}
+        >
+          <span className="text-gold text-[1.1em] inline-block">&ldquo;</span>
           {quote}
-          <span className={styles.quoteMark}>&rdquo;</span>
+          <span className="text-gold text-[1.1em] inline-block">&rdquo;</span>
         </blockquote>
         {attribution && (
-          <p className={styles.attribution}>— {attribution}</p>
+          <p className="!font-ui !text-sm font-medium text-white/65 tracking-[0.1em] uppercase mt-6">
+            — {attribution}
+          </p>
         )}
       </div>
     </div>
