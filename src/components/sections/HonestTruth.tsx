@@ -11,8 +11,8 @@ export function HonestTruth() {
       {/* Background */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=80&auto=format&fit=crop"
-          alt="Wide open farmland under an atmospheric sky"
+          src="/main-landing-page/trees-from-groundview.jpg"
+          alt="Trees viewed from ground level looking up at the canopy"
           fill
           sizes="100vw"
           style={{ objectFit: "cover" }}

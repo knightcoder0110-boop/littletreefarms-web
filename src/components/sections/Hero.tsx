@@ -9,8 +9,8 @@ export function Hero() {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=85&auto=format&fit=crop"
-          alt="Tall ancient forest with dramatic light shafts — representing the long-term power of timber investment"
+          src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1920&q=85&auto=format&fit=crop"
+          alt="Mature black walnut tree with spreading branches in golden afternoon light"
           fill
           priority
           sizes="100vw"
