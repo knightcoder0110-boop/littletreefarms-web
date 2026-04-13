@@ -17,8 +17,8 @@ export const post: BlogPost = {
   category: "medium",
   wordCount: 1550,
   readTime: "7 min",
-  publishDate: "2025-01-28",
-  modifiedDate: "2025-01-28",
+  publishDate: "2026-03-27",
+  modifiedDate: "2026-03-27",
   excerpt:
     "Rural land shouldn't be a money pit. Here are five realistic ways to turn your property from a cost into a source of income — without becoming a full-time farmer.",
   heroImage: {

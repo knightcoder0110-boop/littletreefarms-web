@@ -17,8 +17,8 @@ export const post: BlogPost = {
   category: "long",
   wordCount: 2200,
   readTime: "10 min",
-  publishDate: "2025-05-03",
-  modifiedDate: "2025-05-03",
+  publishDate: "2026-04-11",
+  modifiedDate: "2026-04-11",
   excerpt:
     "Got old farmland that's been sitting idle? Here are the most practical, realistic ways to put retired agricultural land back to productive use in Canada.",
   heroImage: {

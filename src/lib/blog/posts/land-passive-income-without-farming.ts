@@ -17,8 +17,8 @@ export const post: BlogPost = {
   category: "medium",
   wordCount: 1550,
   readTime: "7 min",
-  publishDate: "2025-05-17",
-  modifiedDate: "2025-05-17",
+  publishDate: "2026-04-13",
+  modifiedDate: "2026-04-13",
   excerpt:
     "Passive income from land doesn't require tractors, livestock, or early mornings. Here are real, tested strategies for generating income from your property with minimal ongoing effort.",
   heroImage: {

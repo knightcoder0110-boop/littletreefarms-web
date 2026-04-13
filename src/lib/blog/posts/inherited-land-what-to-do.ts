@@ -17,8 +17,8 @@ export const post: BlogPost = {
   category: "medium",
   wordCount: 1500,
   readTime: "7 min",
-  publishDate: "2025-03-08",
-  modifiedDate: "2025-03-08",
+  publishDate: "2026-04-02",
+  modifiedDate: "2026-04-02",
   excerpt:
     "Inheriting land comes with questions most people aren't prepared for. Here's a practical, no-pressure guide to figuring out what to do with property you didn't plan on owning.",
   heroImage: {

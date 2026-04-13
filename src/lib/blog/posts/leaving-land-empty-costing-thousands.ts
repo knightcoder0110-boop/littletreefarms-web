@@ -17,8 +17,8 @@ export const post: BlogPost = {
   category: "short",
   wordCount: 1050,
   readTime: "5 min",
-  publishDate: "2025-04-19",
-  modifiedDate: "2025-04-19",
+  publishDate: "2026-04-09",
+  modifiedDate: "2026-04-09",
   excerpt:
     "You think your empty land is just sitting there? It's not. It's actively costing you money — every single year. Here's the math most landowners don't want to see.",
   heroImage: {

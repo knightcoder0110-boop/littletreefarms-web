@@ -17,8 +17,8 @@ export const post: BlogPost = {
   category: "long",
   wordCount: 2250,
   readTime: "10 min",
-  publishDate: "2025-01-15",
-  modifiedDate: "2025-01-15",
+  publishDate: "2026-03-25",
+  modifiedDate: "2026-03-25",
   excerpt:
     "Thousands of Canadian landowners sit on acres that aren't doing anything. Here are 10 practical ways to put that land to work — and why timber might be the smartest long play.",
   heroImage: {

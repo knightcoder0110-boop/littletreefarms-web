@@ -17,8 +17,8 @@ export const post: BlogPost = {
   category: "short",
   wordCount: 1050,
   readTime: "5 min",
-  publishDate: "2025-02-10",
-  modifiedDate: "2025-02-10",
+  publishDate: "2026-03-29",
+  modifiedDate: "2026-03-29",
   excerpt:
     "The single most expensive thing you can do with idle property is nothing at all. Here's why inaction costs more than most landowners realize.",
   heroImage: {

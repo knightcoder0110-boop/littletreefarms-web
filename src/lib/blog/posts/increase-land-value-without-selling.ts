@@ -17,8 +17,8 @@ export const post: BlogPost = {
   category: "medium",
   wordCount: 1500,
   readTime: "7 min",
-  publishDate: "2025-04-05",
-  modifiedDate: "2025-04-05",
+  publishDate: "2026-04-07",
+  modifiedDate: "2026-04-07",
   excerpt:
     "You don't have to sell your land to unlock its value. Here are practical ways to increase what your property is worth — including one that grows your investment literally.",
   heroImage: {

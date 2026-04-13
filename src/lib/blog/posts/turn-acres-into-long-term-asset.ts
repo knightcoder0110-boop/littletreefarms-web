@@ -17,8 +17,8 @@ export const post: BlogPost = {
   category: "medium",
   wordCount: 1600,
   readTime: "7 min",
-  publishDate: "2025-02-24",
-  modifiedDate: "2025-02-24",
+  publishDate: "2026-03-31",
+  modifiedDate: "2026-03-31",
   excerpt:
     "You don't need a massive property to build real wealth. Here's how 5 to 10 acres — planted with the right trees — can quietly become one of the best investments you've ever made.",
   heroImage: {

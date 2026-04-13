@@ -17,8 +17,8 @@ export const post: BlogPost = {
   category: "long",
   wordCount: 2100,
   readTime: "9 min",
-  publishDate: "2025-03-22",
-  modifiedDate: "2025-03-22",
+  publishDate: "2026-04-04",
+  modifiedDate: "2026-04-04",
   excerpt:
     "You've got the land. You've got the time. What you don't want is the daily grind of conventional farming. Here are seven low-maintenance ideas that actually work for landowners over 50.",
   heroImage: {
