@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { businessInfo } from "@/lib/config/business";
+import { submitLead } from "@/lib/leads/client";
 
 /**
  * Contact Page - Local SEO & NAP Consistency
@@ -18,11 +19,49 @@ export default function ContactPageClient() {
     message: "",
     newsletter: false,
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submittedEmail, setSubmittedEmail] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Brevo integration point
-    console.log("Form submitted:", formState);
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      const email = formState.email;
+
+      await submitLead({
+        source: "contact-form",
+        fullName: formState.name,
+        email,
+        phone: formState.phone,
+        subject: formState.subject,
+        message: formState.message,
+        requestedAsset: "contact-response",
+        newsletterConsent: formState.newsletter,
+      });
+
+      setSubmittedEmail(email);
+      setIsSubmitted(true);
+      setFormState({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+        newsletter: false,
+      });
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "We could not process your request right now.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -213,112 +252,133 @@ export default function ContactPageClient() {
                 Get in <em className="text-gold-dark italic">Touch</em>
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid md:grid-cols-2 gap-5">
+              {isSubmitted ? (
+                <div className="rounded-2xl border border-green-200 bg-green-50 p-8 text-center">
+                  <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-700">
+                    <svg className="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl text-forest mb-2">Message Received</h3>
+                  <p className="text-ink-light">
+                    Thanks. We have your message and will follow up at {submittedEmail || businessInfo.contact.email}.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div className="grid md:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-forest mb-2">
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        value={formState.name}
+                        onChange={(e) => setFormState({...formState, name: e.target.value})}
+                        className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
+                        placeholder="Your name"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-forest mb-2">
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        value={formState.email}
+                        onChange={(e) => setFormState({...formState, email: e.target.value})}
+                        className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
+                        placeholder="you@example.com"
+                        required
+                      />
+                    </div>
+                  </div>
+
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-forest mb-2">
-                      Full Name
+                    <label htmlFor="phone" className="block text-sm font-medium text-forest mb-2">
+                      Phone Number <span className="text-ink-muted">(Optional)</span>
                     </label>
                     <input
-                      type="text"
-                      id="name"
-                      value={formState.name}
-                      onChange={(e) => setFormState({...formState, name: e.target.value})}
+                      type="tel"
+                      id="phone"
+                      value={formState.phone}
+                      onChange={(e) => setFormState({...formState, phone: e.target.value})}
                       className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
-                      placeholder="Your name"
+                      placeholder="(902) 555-1234"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium text-forest mb-2">
+                      Subject
+                    </label>
+                    <select
+                      id="subject"
+                      value={formState.subject}
+                      onChange={(e) => setFormState({...formState, subject: e.target.value})}
+                      className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
+                      required
+                    >
+                      <option value="">Select a topic...</option>
+                      <option value="seedlings">Seedling Inquiry</option>
+                      <option value="investment">Investment Questions</option>
+                      <option value="site-selection">Site Selection Help</option>
+                      <option value="shipping">Shipping Information</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-forest mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      rows={5}
+                      value={formState.message}
+                      onChange={(e) => setFormState({...formState, message: e.target.value})}
+                      className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold transition-colors resize-none"
+                      placeholder="Tell us about your land, your goals, or any questions you have..."
                       required
                     />
                   </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-forest mb-2">
-                      Email Address
-                    </label>
+
+                  <div className="flex items-start gap-3">
                     <input
-                      type="email"
-                      id="email"
-                      value={formState.email}
-                      onChange={(e) => setFormState({...formState, email: e.target.value})}
-                      className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
-                      placeholder="you@example.com"
-                      required
+                      type="checkbox"
+                      id="newsletter"
+                      checked={formState.newsletter}
+                      onChange={(e) => setFormState({...formState, newsletter: e.target.checked})}
+                      className="mt-1 w-4 h-4 rounded border-parchment text-gold focus:ring-gold"
                     />
+                    <label htmlFor="newsletter" className="text-sm text-ink-light">
+                      Subscribe to our newsletter for seasonal tips, market updates, and planting reminders.
+                    </label>
                   </div>
-                </div>
 
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-forest mb-2">
-                    Phone Number <span className="text-ink-muted">(Optional)</span>
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    value={formState.phone}
-                    onChange={(e) => setFormState({...formState, phone: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
-                    placeholder="(902) 555-1234"
-                  />
-                </div>
+                  {submitError ? (
+                    <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                      {submitError}
+                    </p>
+                  ) : null}
 
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-forest mb-2">
-                    Subject
-                  </label>
-                  <select
-                    id="subject"
-                    value={formState.subject}
-                    onChange={(e) => setFormState({...formState, subject: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
-                    required
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 font-ui text-sm font-bold tracking-[0.08em] uppercase rounded-xl bg-gold text-forest-dark border-2 border-gold transition-all duration-300 hover:bg-gold-dark hover:border-gold-dark disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    <option value="">Select a topic...</option>
-                    <option value="seedlings">Seedling Inquiry</option>
-                    <option value="investment">Investment Questions</option>
-                    <option value="site-selection">Site Selection Help</option>
-                    <option value="shipping">Shipping Information</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </button>
 
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-forest mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    value={formState.message}
-                    onChange={(e) => setFormState({...formState, message: e.target.value})}
-                    className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold transition-colors resize-none"
-                    placeholder="Tell us about your land, your goals, or any questions you have..."
-                    required
-                  />
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <input
-                    type="checkbox"
-                    id="newsletter"
-                    checked={formState.newsletter}
-                    onChange={(e) => setFormState({...formState, newsletter: e.target.checked})}
-                    className="mt-1 w-4 h-4 rounded border-parchment text-gold focus:ring-gold"
-                  />
-                  <label htmlFor="newsletter" className="text-sm text-ink-light">
-                    Subscribe to our newsletter for seasonal tips, market updates, and planting reminders.
-                  </label>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 font-ui text-sm font-bold tracking-[0.08em] uppercase rounded-xl bg-gold text-forest-dark border-2 border-gold transition-all duration-300 hover:bg-gold-dark hover:border-gold-dark"
-                >
-                  Send Message
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                </button>
-
-                <p className="text-center text-xs text-ink-muted">
-                  This form is ready for Brevo integration. Connect your Brevo API to capture leads.
-                </p>
-              </form>
+                  <p className="text-center text-xs text-ink-muted">
+                    Your message goes straight into our lead pipeline and we&apos;ll follow up by email.
+                  </p>
+                </form>
+              )}
             </div>
           </div>
         </div>

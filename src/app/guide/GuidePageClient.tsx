@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { businessInfo } from "@/lib/config/business";
+import { submitLead } from "@/lib/leads/client";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -69,17 +70,33 @@ export default function GuidePageClient() {
   const [firstName, setFirstName] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [deliveryEmailSent, setDeliveryEmailSent] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // TODO: Integrate with Brevo
-    // For now, simulate submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    setSubmitError("");
+
+    try {
+      const result = await submitLead({
+        source: "guide-page",
+        firstName,
+        email,
+        requestedAsset: "planting-guide",
+      });
+
+      setDeliveryEmailSent(Boolean(result.deliveryEmailSent));
+      setIsSubmitted(true);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "We could not process your request right now.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -207,6 +224,12 @@ export default function GuidePageClient() {
                         </>
                       )}
                     </button>
+
+                    {submitError ? (
+                      <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                        {submitError}
+                      </p>
+                    ) : null}
                   </form>
 
                   <p className="text-xs text-ink-muted mt-4 text-center">
@@ -222,7 +245,9 @@ export default function GuidePageClient() {
                   </div>
                   <h3 className="text-forest mb-2">Guide Sent!</h3>
                   <p className="text-ink-light mb-4">
-                    Check your inbox at {email} for the download link.
+                    {deliveryEmailSent
+                      ? `Check your inbox at ${email} for the download link.`
+                      : `Your request has been saved for ${email}. If the guide email does not arrive soon, contact us directly.`}
                   </p>
                   <p className="text-sm text-ink-muted">
                     Did not receive it? Check your spam folder or{" "}
@@ -241,7 +266,7 @@ export default function GuidePageClient() {
       <section className="py-20" ref={ref}>
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="kicker-label text-gold-dark mb-4 inline-block">What's Inside</span>
+            <span className="kicker-label text-gold-dark mb-4 inline-block">What&apos;s Inside</span>
             <h2 className="text-ink mb-4">
               Your Complete <em className="text-forest italic">Planting Roadmap</em>
             </h2>

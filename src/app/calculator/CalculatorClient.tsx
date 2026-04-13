@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { businessInfo } from "@/lib/config/business";
+import { submitLead } from "@/lib/leads/client";
 
 /**
  * ROI Calculator - Interactive Lead Generation Tool
@@ -27,10 +28,13 @@ export default function CalculatorClient() {
   const [pricePerTree, setPricePerTree] = useState<number>(businessInfo.keyFacts.seedlingPrice);
   const [email, setEmail] = useState<string>("");
   const [showResults, setShowResults] = useState<boolean>(false);
+  const [isSendingReport, setIsSendingReport] = useState<boolean>(false);
+  const [isReportSent, setIsReportSent] = useState<boolean>(false);
+  const [deliveryEmailSent, setDeliveryEmailSent] = useState<boolean>(false);
+  const [reportError, setReportError] = useState<string>("");
 
   const calculateReturns = (): CalculationResults => {
     const seedlingsPerAcre = businessInfo.keyFacts.treesPerAcre;
-    const finalTreesPerAcre = businessInfo.keyFacts.finalTreesPerAcre;
     const totalSeedlings = acres * seedlingsPerAcre;
     const initialInvestment = totalSeedlings * pricePerTree;
 
@@ -59,6 +63,42 @@ export default function CalculatorClient() {
   const handleCalculate = (e: React.FormEvent) => {
     e.preventDefault();
     setShowResults(true);
+    setIsReportSent(false);
+    setDeliveryEmailSent(false);
+    setReportError("");
+  };
+
+  const handleReportRequest = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSendingReport(true);
+    setReportError("");
+
+    try {
+      const result = await submitLead({
+        source: "calculator-report",
+        email,
+        requestedAsset: "calculator-report",
+        calculator: {
+          acres,
+          pricePerTree,
+          initialInvestment: Math.round(results.initialInvestment),
+          conservativeReturn: Math.round(results.conservativeReturn),
+          midRangeReturn: Math.round(results.midRangeReturn),
+          premiumReturn: Math.round(results.premiumReturn),
+        },
+      });
+
+      setDeliveryEmailSent(Boolean(result.deliveryEmailSent));
+      setIsReportSent(true);
+    } catch (error) {
+      setReportError(
+        error instanceof Error
+          ? error.message
+          : "We could not process your request right now.",
+      );
+    } finally {
+      setIsSendingReport(false);
+    }
   };
 
   const results = calculateReturns();
@@ -209,25 +249,35 @@ export default function CalculatorClient() {
                   <p className="text-sm text-ink-light mb-4">
                     Enter your email to receive a detailed PDF report with your calculations, plus our free planting guide.
                   </p>
-                  <div className="space-y-3">
+                  <form onSubmit={handleReportRequest} className="space-y-3">
                     <input
                       type="email"
                       placeholder="your@email.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full px-4 py-3 rounded-lg border border-gold/30 bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold outline-none"
+                      required
                     />
                     <button
-                      type="button"
-                      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 font-ui text-sm font-bold tracking-[0.08em] uppercase rounded-xl bg-forest text-cream border-2 border-forest transition-all duration-300 hover:bg-forest-light"
-                      onClick={() => {
-                        console.log("Email captured:", email);
-                        alert("Thank you! Your report will be emailed to you. (Connect Brevo API for production)");
-                      }}
+                      type="submit"
+                      disabled={isSendingReport}
+                      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 font-ui text-sm font-bold tracking-[0.08em] uppercase rounded-xl bg-forest text-cream border-2 border-forest transition-all duration-300 hover:bg-forest-light disabled:cursor-not-allowed disabled:opacity-60"
                     >
-                      Send Me the Report
+                      {isSendingReport ? "Sending..." : "Send Me the Report"}
                     </button>
-                  </div>
+                  </form>
+                  {isReportSent ? (
+                    <p className="mt-3 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">
+                      {deliveryEmailSent
+                        ? `Your report request was sent successfully to ${email}.`
+                        : `Your report request has been saved for ${email}. If the email does not arrive shortly, contact us directly.`}
+                    </p>
+                  ) : null}
+                  {reportError ? (
+                    <p className="mt-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                      {reportError}
+                    </p>
+                  ) : null}
                   <p className="mt-2 text-xs text-ink-muted">
                     We respect your privacy. Unsubscribe anytime.
                   </p>
@@ -349,7 +399,7 @@ export default function CalculatorClient() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>
                   <p className="text-ink-light">
-                    Enter your details and click &quot;Calculate Returns" to see your potential timber investment outcomes.
+                    Enter your details and click &quot;Calculate Returns&quot; to see your potential timber investment outcomes.
                   </p>
                 </div>
               )}

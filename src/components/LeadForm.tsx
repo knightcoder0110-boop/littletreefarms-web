@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { submitLead } from "@/lib/leads/client";
 
 interface LeadFormProps {
   isOpen: boolean;
@@ -16,7 +17,9 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [deliveryEmailSent, setDeliveryEmailSent] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitError, setSubmitError] = useState("");
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -37,18 +40,36 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSuccess(true);
+    setSubmitError("");
+
+    try {
+      const result = await submitLead({
+        source: "homepage-guide-modal",
+        fullName: formData.name,
+        email: formData.email,
+        stateOrProvince: formData.state,
+        requestedAsset: "planting-guide",
+      });
+
+      setDeliveryEmailSent(Boolean(result.deliveryEmailSent));
+      setIsSuccess(true);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "We could not process your request right now.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleClose = () => {
     setFormData({ name: "", email: "", state: "" });
     setErrors({});
     setIsSuccess(false);
+    setDeliveryEmailSent(false);
+    setSubmitError("");
     onClose();
   };
 
@@ -87,8 +108,17 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
             <span className="kicker-label text-gold-dark mb-2 sm:mb-3 inline-block text-xs sm:text-sm">Success!</span>
             <h3 className="text-forest mb-3 sm:mb-4 text-xl sm:text-2xl">Check Your Inbox</h3>
             <p className="text-ink-light mb-6 sm:mb-8 text-sm sm:text-base">
-              We&apos;ve sent the Free Planting Guide to <strong className="text-forest">{formData.email}</strong>. 
-              Please check your email (and spam folder, just in case).
+              {deliveryEmailSent ? (
+                <>
+                  We&apos;ve sent the Free Planting Guide to <strong className="text-forest">{formData.email}</strong>.
+                  Please check your email and spam folder.
+                </>
+              ) : (
+                <>
+                  We&apos;ve saved your request for <strong className="text-forest">{formData.email}</strong>.
+                  If the guide email does not arrive shortly, contact us and we&apos;ll help directly.
+                </>
+              )}
             </p>
             <button
               onClick={handleClose}
@@ -161,6 +191,12 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
                   placeholder="Nova Scotia"
                 />
               </div>
+
+              {submitError ? (
+                <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                  {submitError}
+                </p>
+              ) : null}
 
               {/* Submit Button */}
               <button
