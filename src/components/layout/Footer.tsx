@@ -4,6 +4,7 @@ import { businessInfo } from "@/lib/config/business";
 
 const learnLinks = [
   { href: "/about", label: "About Us" },
+  { href: "/blog", label: "Blog" },
   { href: "/faq", label: "FAQ" },
   { href: "/guide", label: "Planting Guide" },
   { href: "/calculator", label: "Returns Calculator" },

@@ -137,6 +137,73 @@
     font-size: 0.85rem;
     font-weight: 600;
   }
+
+  /* ── Blog Prose ────────────────────────────── */
+  .prose-blog p {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+    color: var(--color-ink-muted);
+  }
+
+  .prose-blog p:last-child {
+    margin-bottom: 0;
+  }
+
+  .prose-blog a {
+    color: var(--color-walnut);
+    text-decoration: underline;
+    text-decoration-color: var(--color-gold);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+    transition: color 0.2s, text-decoration-color 0.2s;
+  }
+
+  .prose-blog a:hover {
+    color: var(--color-forest-dark);
+    text-decoration-color: var(--color-walnut);
+  }
+
+  .prose-blog strong {
+    color: var(--color-ink);
+    font-weight: 700;
+  }
+
+  .prose-blog em {
+    font-style: italic;
+  }
+
+  .prose-blog ul, .prose-blog ol {
+    margin: 1.25rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .prose-blog ul {
+    list-style-type: disc;
+  }
+
+  .prose-blog ol {
+    list-style-type: decimal;
+  }
+
+  .prose-blog li {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+    color: var(--color-ink-muted);
+  }
+
+  .prose-blog li::marker {
+    color: var(--color-gold-dark);
+  }
+
+  .prose-blog blockquote {
+    border-left: 3px solid var(--color-gold);
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--color-walnut);
+  }
 }
 
 /* ── Background Pattern Utilities ──────────── */

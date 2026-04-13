@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { businessInfo } from "@/lib/config/business";
+import { getAllPosts } from "@/lib/blog";
 
 /**
  * Next.js App Router Sitemap
@@ -89,5 +90,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+
+    // Blog posts
+    ...getAllPosts().map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: post.modifiedDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
   ];
 }

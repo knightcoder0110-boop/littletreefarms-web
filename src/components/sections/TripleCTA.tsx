@@ -61,9 +61,15 @@ export function TripleCTA({ onOpenLeadForm }: TripleCTAProps) {
               <div className="w-16 h-16 text-forest mb-6">{cta.icon}</div>
               <h3 className="text-forest mb-4">{cta.title}</h3>
               <p className="text-small text-ink-light mb-8 flex-1">{cta.description}</p>
-              <button onClick={onOpenLeadForm} className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-ui text-xs font-bold tracking-[0.08em] uppercase rounded-lg border-2 transition-all duration-300 hover:-translate-y-0.5 ${cta.btnCls}`}>
-                {cta.btnText}
-              </button>
+              {i === 2 ? (
+                <Link href="/guide" className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-ui text-xs font-bold tracking-[0.08em] uppercase rounded-lg border-2 transition-all duration-300 hover:-translate-y-0.5 ${cta.btnCls}`}>
+                  {cta.btnText}
+                </Link>
+              ) : (
+                <button onClick={onOpenLeadForm} className={`inline-flex items-center justify-center gap-2 px-6 py-3 font-ui text-xs font-bold tracking-[0.08em] uppercase rounded-lg border-2 transition-all duration-300 hover:-translate-y-0.5 ${cta.btnCls}`}>
+                  {cta.btnText}
+                </button>
+              )}
             </div>
           ))}
         </div>

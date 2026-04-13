@@ -121,7 +121,7 @@ export function Outcomes() {
 
         <div className="text-center">
           <Link
-            href="/returns-calculator"
+            href="/calculator"
             className="inline-flex items-center gap-2 px-10 py-5 font-ui text-sm font-bold tracking-[0.08em] uppercase rounded-xl bg-forest text-cream border-2 border-forest transition-all duration-300 hover:bg-forest-light hover:border-forest-light hover:-translate-y-0.5 hover:shadow-xl"
           >
             Calculate Your Potential Returns →
