@@ -21,10 +21,10 @@ export interface CalculatorLeadSnapshot {
 export interface LeadSubmissionRequest {
   source: LeadSource;
   email: string;
+  phone: string;
   fullName?: string;
   firstName?: string;
   stateOrProvince?: string;
-  phone?: string;
   subject?: string;
   message?: string;
   requestedAsset?: RequestedAsset;

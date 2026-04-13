@@ -3,6 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { submitLead } from "@/lib/leads/client";
+import {
+  isValidLeadPhoneInput,
+  leadPhoneNote,
+  leadPhonePlaceholder,
+} from "@/lib/leads/phone";
 import { useToast } from "@/components/ui/ToastProvider";
 
 interface LeadFormProps {
@@ -15,6 +20,7 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     state: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,6 +39,11 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Please enter a valid email address";
     }
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Please enter your phone number";
+    } else if (!isValidLeadPhoneInput(formData.phone)) {
+      newErrors.phone = "Enter a valid 10-digit phone number";
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -43,7 +54,7 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
       toast({
         variant: "error",
         title: "Check the highlighted fields",
-        description: "Please add your name and a valid email before requesting the guide.",
+        description: "Please add your name, email, and a valid phone number before requesting the guide.",
       });
       return;
     }
@@ -56,6 +67,7 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
         source: "homepage-guide-modal",
         fullName: formData.name,
         email: formData.email,
+        phone: formData.phone,
         stateOrProvince: formData.state,
         requestedAsset: "planting-guide",
       });
@@ -86,7 +98,7 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
   };
 
   const handleClose = () => {
-    setFormData({ name: "", email: "", state: "" });
+    setFormData({ name: "", email: "", phone: "", state: "" });
     setErrors({});
     setIsSuccess(false);
     setDeliveryEmailSent(false);
@@ -195,6 +207,29 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
                 />
                 {errors.email && (
                   <p className="mt-1 text-xs text-red-500">{errors.email}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="phone" className="block font-ui text-xs font-bold tracking-[0.08em] uppercase text-ink-muted mb-2">
+                  Phone Number *
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  value={formData.phone}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  className={`w-full px-4 py-3 rounded-xl bg-white border-2 font-body text-ink placeholder:text-ink-muted/50 focus:outline-none focus:ring-0 transition-colors ${
+                    errors.phone ? "border-red-400 focus:border-red-400" : "border-parchment focus:border-gold"
+                  }`}
+                  placeholder={leadPhonePlaceholder}
+                  autoComplete="tel"
+                  required
+                />
+                {errors.phone ? (
+                  <p className="mt-1 text-xs text-red-500">{errors.phone}</p>
+                ) : (
+                  <p className="mt-1 text-xs text-ink-muted">{leadPhoneNote}</p>
                 )}
               </div>
 

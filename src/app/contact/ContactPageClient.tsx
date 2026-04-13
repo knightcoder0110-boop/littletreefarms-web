@@ -4,6 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { businessInfo } from "@/lib/config/business";
 import { submitLead } from "@/lib/leads/client";
+import {
+  isValidLeadPhoneInput,
+  leadPhoneNote,
+  leadPhonePlaceholder,
+} from "@/lib/leads/phone";
 import { useToast } from "@/components/ui/ToastProvider";
 
 /**
@@ -25,11 +30,25 @@ export default function ContactPageClient() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [submittedEmail, setSubmittedEmail] = useState("");
+  const [phoneError, setPhoneError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isValidLeadPhoneInput(formState.phone)) {
+      const message = "Enter a valid 10-digit phone number so we can respond properly.";
+      setPhoneError(message);
+      setSubmitError(message);
+      toast({
+        variant: "error",
+        title: "Phone number required",
+        description: message,
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError("");
+    setPhoneError("");
 
     try {
       const email = formState.email;
@@ -174,91 +193,8 @@ export default function ContactPageClient() {
       {/* Hours & Form Section */}
       <section className="py-20 bg-white">
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Hours & Info */}
-            <div>
-              <span className="kicker-label text-gold-dark mb-4 inline-block">Information</span>
-              <h2 className="text-forest mb-8">
-                Hours & <em className="text-gold-dark italic">Location</em>
-              </h2>
-
-              <div className="space-y-6 mb-8">
-                <div className="flex justify-between items-center py-4 border-b border-parchment">
-                  <span className="text-forest font-medium">Monday - Friday</span>
-                  <span className="text-ink-light">9:00 AM - 5:00 PM</span>
-                </div>
-                <div className="flex justify-between items-center py-4 border-b border-parchment">
-                  <span className="text-forest font-medium">Saturday</span>
-                  <span className="text-ink-light">10:00 AM - 4:00 PM</span>
-                </div>
-                <div className="flex justify-between items-center py-4 border-b border-parchment">
-                  <span className="text-forest font-medium">Sunday</span>
-                  <span className="text-ink-light">Closed</span>
-                </div>
-              </div>
-
-              <div className="bg-parchment rounded-xl p-6 mb-8">
-                <p className="text-forest">
-                  <span className="font-medium">Note:</span>{" "}
-                  <span className="text-ink-light">{businessInfo.hours.seasonalNote}</span>
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-forest font-medium">Quick Facts</h3>
-                <ul className="space-y-3">
-                  {[
-                    `Founded in ${businessInfo.business.founded}`,
-                    `Hardiness Zone ${businessInfo.location.hardinessZone}`,
-                    `${businessInfo.keyFacts.shipping} shipping`,
-                    businessInfo.keyFacts.guarantee,
-                  ].map((fact, i) => (
-                    <li key={i} className="flex items-center gap-3 text-ink-light">
-                      <svg className="w-5 h-5 text-gold-dark shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {fact}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Social Links */}
-              <div className="mt-8 pt-8 border-t border-parchment">
-                <h3 className="text-forest font-medium mb-4">Follow Us</h3>
-                <div className="flex gap-3">
-                  {businessInfo.social.facebook && (
-                    <a
-                      href={businessInfo.social.facebook}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-parchment flex items-center justify-center text-forest hover:bg-gold hover:text-forest-dark transition-colors"
-                      aria-label="Facebook"
-                    >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                      </svg>
-                    </a>
-                  )}
-                  {businessInfo.social.instagram && (
-                    <a
-                      href={businessInfo.social.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 rounded-full bg-parchment flex items-center justify-center text-forest hover:bg-gold hover:text-forest-dark transition-colors"
-                      aria-label="Instagram"
-                    >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                      </svg>
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* Contact Form */}
-            <div>
+          <div className="mx-auto max-w-[720px]">
+            <div className="rounded-[32px] border border-parchment bg-cream p-8 shadow-[0_20px_60px_rgba(33,50,32,0.08)] sm:p-10">
               <span className="kicker-label text-gold-dark mb-4 inline-block">Send a Message</span>
               <h2 className="text-forest mb-6">
                 Get in <em className="text-gold-dark italic">Touch</em>
@@ -281,28 +217,28 @@ export default function ContactPageClient() {
                   <div className="grid md:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-forest mb-2">
-                        Full Name
+                        Full Name *
                       </label>
                       <input
                         type="text"
                         id="name"
                         value={formState.name}
                         onChange={(e) => setFormState({...formState, name: e.target.value})}
-                        className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
+                        className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder:text-ink-muted/45 focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
                         placeholder="Your name"
                         required
                       />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-forest mb-2">
-                        Email Address
+                        Email Address *
                       </label>
                       <input
                         type="email"
                         id="email"
                         value={formState.email}
                         onChange={(e) => setFormState({...formState, email: e.target.value})}
-                        className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
+                        className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder:text-ink-muted/45 focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
                         placeholder="you@example.com"
                         required
                       />
@@ -311,21 +247,34 @@ export default function ContactPageClient() {
 
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-forest mb-2">
-                      Phone Number <span className="text-ink-muted">(Optional)</span>
+                      Phone Number *
                     </label>
                     <input
                       type="tel"
                       id="phone"
                       value={formState.phone}
-                      onChange={(e) => setFormState({...formState, phone: e.target.value})}
-                      className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold transition-colors"
-                      placeholder="(902) 555-1234"
+                      onChange={(e) => {
+                        setFormState({...formState, phone: e.target.value});
+                        if (phoneError) {
+                          setPhoneError("");
+                          setSubmitError("");
+                        }
+                      }}
+                      className={`w-full px-4 py-3 rounded-lg border bg-white text-forest placeholder:text-ink-muted/45 focus:border-gold focus:ring-1 focus:ring-gold transition-colors ${
+                        phoneError ? "border-red-300" : "border-parchment"
+                      }`}
+                      placeholder={leadPhonePlaceholder}
+                      autoComplete="tel"
+                      required
                     />
+                    <p className={`mt-2 text-xs ${phoneError ? "text-red-700" : "text-ink-muted"}`}>
+                      {phoneError || leadPhoneNote}
+                    </p>
                   </div>
 
                   <div>
                     <label htmlFor="subject" className="block text-sm font-medium text-forest mb-2">
-                      Subject
+                      Subject *
                     </label>
                     <select
                       id="subject"
@@ -345,14 +294,14 @@ export default function ContactPageClient() {
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-forest mb-2">
-                      Message
+                      Message *
                     </label>
                     <textarea
                       id="message"
                       rows={5}
                       value={formState.message}
                       onChange={(e) => setFormState({...formState, message: e.target.value})}
-                      className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold transition-colors resize-none"
+                      className="w-full px-4 py-3 rounded-lg border border-parchment bg-white text-forest placeholder:text-ink-muted/45 focus:border-gold focus:ring-1 focus:ring-gold transition-colors resize-none"
                       placeholder="Tell us about your land, your goals, or any questions you have..."
                       required
                     />
@@ -387,7 +336,7 @@ export default function ContactPageClient() {
                   </button>
 
                   <p className="text-center text-xs text-ink-muted">
-                    Your message goes straight into our lead pipeline and we&apos;ll follow up by email.
+                    Your message goes straight into our lead pipeline and we&apos;ll follow up by email or phone.
                   </p>
                 </form>
               )}

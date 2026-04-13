@@ -4,6 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { businessInfo } from "@/lib/config/business";
 import { submitLead } from "@/lib/leads/client";
+import {
+  isValidLeadPhoneInput,
+  leadPhoneNote,
+  leadPhonePlaceholder,
+} from "@/lib/leads/phone";
 import { useToast } from "@/components/ui/ToastProvider";
 
 /**
@@ -29,11 +34,13 @@ export default function CalculatorClient() {
   const [acres, setAcres] = useState<number>(1);
   const [pricePerTree, setPricePerTree] = useState<number>(businessInfo.keyFacts.seedlingPrice);
   const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
   const [showResults, setShowResults] = useState<boolean>(false);
   const [isSendingReport, setIsSendingReport] = useState<boolean>(false);
   const [isReportSent, setIsReportSent] = useState<boolean>(false);
   const [deliveryEmailSent, setDeliveryEmailSent] = useState<boolean>(false);
   const [reportError, setReportError] = useState<string>("");
+  const [phoneError, setPhoneError] = useState<string>("");
 
   const calculateReturns = (): CalculationResults => {
     const seedlingsPerAcre = businessInfo.keyFacts.treesPerAcre;
@@ -78,13 +85,27 @@ export default function CalculatorClient() {
 
   const handleReportRequest = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isValidLeadPhoneInput(phone)) {
+      const message = "Enter a valid 10-digit phone number so we can send your calculator follow-up.";
+      setPhoneError(message);
+      setReportError(message);
+      toast({
+        variant: "error",
+        title: "Phone number required",
+        description: message,
+      });
+      return;
+    }
+
     setIsSendingReport(true);
     setReportError("");
+    setPhoneError("");
 
     try {
       const result = await submitLead({
         source: "calculator-report",
         email,
+        phone,
         requestedAsset: "calculator-report",
         calculator: {
           acres,
@@ -270,14 +291,46 @@ export default function CalculatorClient() {
                     Enter your email to receive a detailed PDF report with your calculations, plus our free planting guide.
                   </p>
                   <form onSubmit={handleReportRequest} className="space-y-3">
-                    <input
-                      type="email"
-                      placeholder="your@email.com"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-3 rounded-lg border border-gold/30 bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold outline-none"
-                      required
-                    />
+                    <div>
+                      <label htmlFor="calculator-report-email" className="mb-2 block text-sm font-medium text-forest">
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        id="calculator-report-email"
+                        placeholder="your@email.com"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full px-4 py-3 rounded-lg border border-gold/30 bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold outline-none"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="calculator-report-phone" className="mb-2 block text-sm font-medium text-forest">
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        id="calculator-report-phone"
+                        placeholder={leadPhonePlaceholder}
+                        value={phone}
+                        onChange={(e) => {
+                          setPhone(e.target.value);
+                          if (phoneError) {
+                            setPhoneError("");
+                            setReportError("");
+                          }
+                        }}
+                        autoComplete="tel"
+                        className={`w-full px-4 py-3 rounded-lg border bg-white text-forest placeholder-ink-muted focus:border-gold focus:ring-1 focus:ring-gold outline-none ${
+                          phoneError ? "border-red-300" : "border-gold/30"
+                        }`}
+                        required
+                      />
+                      <p className={`mt-2 text-xs ${phoneError ? "text-red-700" : "text-ink-muted"}`}>
+                        {phoneError || leadPhoneNote}
+                      </p>
+                    </div>
                     <button
                       type="submit"
                       disabled={isSendingReport}

@@ -1,4 +1,5 @@
 import { businessInfo } from "@/lib/config/business";
+import { normalizeLeadPhone } from "@/lib/leads/phone";
 import type {
   LeadSource,
   LeadSubmissionRequest,
@@ -129,36 +130,14 @@ function splitName(payload: LeadSubmissionRequest) {
   };
 }
 
-function normalizePhone(value: string | undefined): string {
-  const cleaned = cleanText(value, 40);
-  if (!cleaned) {
-    return "";
-  }
-
-  const digitsOnly = cleaned.replace(/\D/g, "");
-  if (!digitsOnly) {
-    return "";
-  }
-
-  if (digitsOnly.length === 10) {
-    return `+1${digitsOnly}`;
-  }
-
-  if (digitsOnly.length === 11 && digitsOnly.startsWith("1")) {
-    return `+${digitsOnly}`;
-  }
-
-  if (cleaned.startsWith("+") && /^[1-9]\d{7,14}$/.test(digitsOnly)) {
-    return `+${digitsOnly}`;
-  }
-
-  return "";
-}
-
 function validateLeadSubmission(payload: LeadSubmissionRequest): string | null {
   const email = cleanText(payload.email, 320).toLowerCase();
   if (!email || !isValidEmail(email)) {
     return "Please provide a valid email address.";
+  }
+
+  if (!cleanText(payload.phone, 40) || !normalizeLeadPhone(payload.phone)) {
+    return "Please provide a valid phone number.";
   }
 
   if (
@@ -211,7 +190,7 @@ function getContactAttributes(
   options?: { includeSms?: boolean },
 ) {
   const { firstName, lastName } = splitName(payload);
-  const sms = normalizePhone(payload.phone);
+  const sms = normalizeLeadPhone(payload.phone);
   const attributes: Record<string, string> = {};
 
   if (firstName) {
@@ -253,6 +232,16 @@ function isBrevoInvalidPhoneError(errorText: string): boolean {
   );
 }
 
+function isBrevoDuplicateSmsError(errorText: string): boolean {
+  const normalized = errorText.toLowerCase();
+
+  return (
+    normalized.includes('"code":"duplicate_parameter"') &&
+    normalized.includes("duplicate_identifiers") &&
+    normalized.includes("sms")
+  );
+}
+
 async function brevoFetch(path: string, init: RequestInit): Promise<Response> {
   const apiKey = process.env.BREVO_API_KEY?.trim();
   if (!apiKey) {
@@ -283,23 +272,6 @@ async function upsertBrevoContact(payload: LeadSubmissionRequest) {
 
   const errorText = await response.text();
 
-  if (normalizePhone(payload.phone) && isBrevoInvalidPhoneError(errorText)) {
-    const retryResponse = await brevoFetch("/contacts", {
-      method: "POST",
-      body: JSON.stringify(buildBrevoContactPayload(payload, { includeSms: false })),
-    });
-
-    if (retryResponse.ok) {
-      return;
-    }
-
-    const retryErrorText = await retryResponse.text();
-    throw new LeadSubmissionError(
-      retryErrorText || "Brevo rejected the phone number provided.",
-      retryResponse.status,
-    );
-  }
-
   if (
     response.status === 401 &&
     errorText.includes("unrecognised IP address")
@@ -312,8 +284,15 @@ async function upsertBrevoContact(payload: LeadSubmissionRequest) {
 
   if (isBrevoInvalidPhoneError(errorText)) {
     throw new LeadSubmissionError(
-      "The phone number format is invalid. Use a full 10-digit North American number or leave the phone field blank.",
+      "The phone number format is invalid. Use a full 10-digit North American number.",
       400,
+    );
+  }
+
+  if (isBrevoDuplicateSmsError(errorText)) {
+    throw new LeadSubmissionError(
+      "That phone number is already associated with another contact in our system. Please use a different number or contact us directly and we can help update your details.",
+      409,
     );
   }
 

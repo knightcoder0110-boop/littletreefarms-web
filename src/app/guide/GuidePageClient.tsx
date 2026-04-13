@@ -4,6 +4,11 @@ import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { businessInfo } from "@/lib/config/business";
 import { submitLead } from "@/lib/leads/client";
+import {
+  isValidLeadPhoneInput,
+  leadPhoneNote,
+  leadPhonePlaceholder,
+} from "@/lib/leads/phone";
 import { useToast } from "@/components/ui/ToastProvider";
 import Link from "next/link";
 import Image from "next/image";
@@ -70,21 +75,37 @@ export default function GuidePageClient() {
   const { ref, isVisible } = useScrollAnimation();
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
+  const [phone, setPhone] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [deliveryEmailSent, setDeliveryEmailSent] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isValidLeadPhoneInput(phone)) {
+      const message = "Enter a valid 10-digit phone number so we can follow up on your guide request.";
+      setPhoneError(message);
+      setSubmitError(message);
+      toast({
+        variant: "error",
+        title: "Phone number required",
+        description: message,
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitError("");
+    setPhoneError("");
 
     try {
       const result = await submitLead({
         source: "guide-page",
         firstName,
         email,
+        phone,
         requestedAsset: "planting-guide",
       });
 
@@ -188,7 +209,7 @@ export default function GuidePageClient() {
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium text-ink mb-2">
-                        First Name
+                        First Name *
                       </label>
                       <input
                         type="text"
@@ -203,7 +224,7 @@ export default function GuidePageClient() {
                     
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-ink mb-2">
-                        Email Address
+                        Email Address *
                       </label>
                       <input
                         type="email"
@@ -214,6 +235,33 @@ export default function GuidePageClient() {
                         className="w-full px-4 py-3 rounded-xl border border-black/10 bg-white text-ink focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all"
                         placeholder="john@example.com"
                       />
+                    </div>
+
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-ink mb-2">
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        value={phone}
+                        onChange={(e) => {
+                          setPhone(e.target.value);
+                          if (phoneError) {
+                            setPhoneError("");
+                            setSubmitError("");
+                          }
+                        }}
+                        required
+                        autoComplete="tel"
+                        className={`w-full px-4 py-3 rounded-xl border bg-white text-ink focus:outline-none focus:ring-2 focus:ring-gold focus:border-transparent transition-all ${
+                          phoneError ? "border-red-300" : "border-black/10"
+                        }`}
+                        placeholder={leadPhonePlaceholder}
+                      />
+                      <p className={`mt-2 text-xs ${phoneError ? "text-red-700" : "text-ink-muted"}`}>
+                        {phoneError || leadPhoneNote}
+                      </p>
                     </div>
 
                     <button
