@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { submitLead } from "@/lib/leads/client";
+import { useToast } from "@/components/ui/ToastProvider";
 
 interface LeadFormProps {
   isOpen: boolean;
@@ -10,6 +11,7 @@ interface LeadFormProps {
 }
 
 export function LeadForm({ isOpen, onClose }: LeadFormProps) {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -37,7 +39,14 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      toast({
+        variant: "error",
+        title: "Check the highlighted fields",
+        description: "Please add your name and a valid email before requesting the guide.",
+      });
+      return;
+    }
 
     setIsSubmitting(true);
     setSubmitError("");
@@ -53,12 +62,24 @@ export function LeadForm({ isOpen, onClose }: LeadFormProps) {
 
       setDeliveryEmailSent(Boolean(result.deliveryEmailSent));
       setIsSuccess(true);
+      toast({
+        variant: "success",
+        title: "Guide request received",
+        description: result.deliveryEmailSent
+          ? `We sent the planting guide to ${formData.email}.`
+          : `We saved your request for ${formData.email}.`,
+      });
     } catch (error) {
-      setSubmitError(
+      const message =
         error instanceof Error
           ? error.message
-          : "We could not process your request right now.",
-      );
+          : "We could not process your request right now.";
+      setSubmitError(message);
+      toast({
+        variant: "error",
+        title: "Guide request failed",
+        description: message,
+      });
     } finally {
       setIsSubmitting(false);
     }

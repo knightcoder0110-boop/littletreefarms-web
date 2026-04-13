@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { businessInfo } from "@/lib/config/business";
 import { submitLead } from "@/lib/leads/client";
+import { useToast } from "@/components/ui/ToastProvider";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -65,6 +66,7 @@ const testimonials = [
 ];
 
 export default function GuidePageClient() {
+  const { toast } = useToast();
   const { ref, isVisible } = useScrollAnimation();
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -88,12 +90,24 @@ export default function GuidePageClient() {
 
       setDeliveryEmailSent(Boolean(result.deliveryEmailSent));
       setIsSubmitted(true);
+      toast({
+        variant: "success",
+        title: "Guide request received",
+        description: result.deliveryEmailSent
+          ? `Check ${email} for your guide.`
+          : `We saved your request for ${email}.`,
+      });
     } catch (error) {
-      setSubmitError(
+      const message =
         error instanceof Error
           ? error.message
-          : "We could not process your request right now.",
-      );
+          : "We could not process your request right now.";
+      setSubmitError(message);
+      toast({
+        variant: "error",
+        title: "Guide request failed",
+        description: message,
+      });
     } finally {
       setIsSubmitting(false);
     }

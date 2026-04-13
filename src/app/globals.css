@@ -49,6 +49,8 @@
   /* ── Animations ──────────────────────────── */
   --animate-fade-up: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) both;
   --animate-float:   float 3.5s ease-in-out infinite;
+  --animate-toast-in: toastIn 0.42s cubic-bezier(0.16,1,0.3,1) both;
+  --animate-toast-progress: toastProgress linear forwards;
 }
 
 /* ── Keyframes ──────────────────────────────── */
@@ -60,6 +62,22 @@
 @keyframes float {
   0%, 100% { transform: translateY(0);     }
   50%       { transform: translateY(-10px); }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -18px, 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes toastProgress {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
 }
 
 /* ── Base Layer ─────────────────────────────── */

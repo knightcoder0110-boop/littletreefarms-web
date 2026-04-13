@@ -135,10 +135,6 @@ function normalizePhone(value: string | undefined): string {
     return "";
   }
 
-  if (cleaned.startsWith("+")) {
-    return cleaned;
-  }
-
   const digitsOnly = cleaned.replace(/\D/g, "");
   if (!digitsOnly) {
     return "";
@@ -148,7 +144,15 @@ function normalizePhone(value: string | undefined): string {
     return `+1${digitsOnly}`;
   }
 
-  return `+${digitsOnly}`;
+  if (digitsOnly.length === 11 && digitsOnly.startsWith("1")) {
+    return `+${digitsOnly}`;
+  }
+
+  if (cleaned.startsWith("+") && /^[1-9]\d{7,14}$/.test(digitsOnly)) {
+    return `+${digitsOnly}`;
+  }
+
+  return "";
 }
 
 function validateLeadSubmission(payload: LeadSubmissionRequest): string | null {
@@ -202,7 +206,10 @@ function getListIds(payload: LeadSubmissionRequest): number[] {
   );
 }
 
-function getContactAttributes(payload: LeadSubmissionRequest) {
+function getContactAttributes(
+  payload: LeadSubmissionRequest,
+  options?: { includeSms?: boolean },
+) {
   const { firstName, lastName } = splitName(payload);
   const sms = normalizePhone(payload.phone);
   const attributes: Record<string, string> = {};
@@ -215,11 +222,35 @@ function getContactAttributes(payload: LeadSubmissionRequest) {
     attributes.LASTNAME = lastName;
   }
 
-  if (sms) {
+  if (options?.includeSms !== false && sms) {
     attributes.SMS = sms;
   }
 
   return attributes;
+}
+
+function buildBrevoContactPayload(
+  payload: LeadSubmissionRequest,
+  options?: { includeSms?: boolean },
+) {
+  const email = cleanText(payload.email, 320).toLowerCase();
+  const attributes = getContactAttributes(payload, options);
+  const listIds = getListIds(payload);
+
+  return {
+    email,
+    updateEnabled: true,
+    listIds: listIds.length > 0 ? listIds : undefined,
+    attributes: Object.keys(attributes).length > 0 ? attributes : undefined,
+    emailBlacklisted: false,
+  };
+}
+
+function isBrevoInvalidPhoneError(errorText: string): boolean {
+  return (
+    errorText.includes('"code":"invalid_parameter"') &&
+    errorText.toLowerCase().includes("invalid phone number")
+  );
 }
 
 async function brevoFetch(path: string, init: RequestInit): Promise<Response> {
@@ -241,19 +272,9 @@ async function brevoFetch(path: string, init: RequestInit): Promise<Response> {
 }
 
 async function upsertBrevoContact(payload: LeadSubmissionRequest) {
-  const email = cleanText(payload.email, 320).toLowerCase();
-  const attributes = getContactAttributes(payload);
-  const listIds = getListIds(payload);
-
   const response = await brevoFetch("/contacts", {
     method: "POST",
-    body: JSON.stringify({
-      email,
-      updateEnabled: true,
-      listIds: listIds.length > 0 ? listIds : undefined,
-      attributes: Object.keys(attributes).length > 0 ? attributes : undefined,
-      emailBlacklisted: false,
-    }),
+    body: JSON.stringify(buildBrevoContactPayload(payload)),
   });
 
   if (response.ok) {
@@ -261,6 +282,24 @@ async function upsertBrevoContact(payload: LeadSubmissionRequest) {
   }
 
   const errorText = await response.text();
+
+  if (normalizePhone(payload.phone) && isBrevoInvalidPhoneError(errorText)) {
+    const retryResponse = await brevoFetch("/contacts", {
+      method: "POST",
+      body: JSON.stringify(buildBrevoContactPayload(payload, { includeSms: false })),
+    });
+
+    if (retryResponse.ok) {
+      return;
+    }
+
+    const retryErrorText = await retryResponse.text();
+    throw new LeadSubmissionError(
+      retryErrorText || "Brevo rejected the phone number provided.",
+      retryResponse.status,
+    );
+  }
+
   if (
     response.status === 401 &&
     errorText.includes("unrecognised IP address")
@@ -268,6 +307,13 @@ async function upsertBrevoContact(payload: LeadSubmissionRequest) {
     throw new LeadSubmissionError(
       "Brevo is blocking this server IP. Add the current server IP to Brevo Authorized IPs before testing again.",
       503,
+    );
+  }
+
+  if (isBrevoInvalidPhoneError(errorText)) {
+    throw new LeadSubmissionError(
+      "The phone number format is invalid. Use a full 10-digit North American number or leave the phone field blank.",
+      400,
     );
   }
 

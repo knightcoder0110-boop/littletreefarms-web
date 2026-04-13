@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Lora } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
+import { ToastProvider } from "@/components/ui/ToastProvider";
 import { businessInfo, getSameAsLinks } from "@/lib/config/business";
 import "./globals.css";
 
@@ -252,10 +253,12 @@ export default function RootLayout({
         <meta name="ICBM" content={`${businessInfo.location.latitude}, ${businessInfo.location.longitude}`} />
       </head>
       <body>
-        <ScrollProgress />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <ToastProvider>
+          <ScrollProgress />
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </ToastProvider>
       </body>
     </html>
   );

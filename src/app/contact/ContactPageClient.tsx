@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { businessInfo } from "@/lib/config/business";
 import { submitLead } from "@/lib/leads/client";
+import { useToast } from "@/components/ui/ToastProvider";
 
 /**
  * Contact Page - Local SEO & NAP Consistency
@@ -11,6 +12,7 @@ import { submitLead } from "@/lib/leads/client";
  */
 
 export default function ContactPageClient() {
+  const { toast } = useToast();
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -45,6 +47,11 @@ export default function ContactPageClient() {
 
       setSubmittedEmail(email);
       setIsSubmitted(true);
+      toast({
+        variant: "success",
+        title: "Message received",
+        description: `We recorded your inquiry and will follow up at ${email}.`,
+      });
       setFormState({
         name: "",
         email: "",
@@ -54,11 +61,16 @@ export default function ContactPageClient() {
         newsletter: false,
       });
     } catch (error) {
-      setSubmitError(
+      const message =
         error instanceof Error
           ? error.message
-          : "We could not process your request right now.",
-      );
+          : "We could not process your request right now.";
+      setSubmitError(message);
+      toast({
+        variant: "error",
+        title: "Message could not be sent",
+        description: message,
+      });
     } finally {
       setIsSubmitting(false);
     }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { businessInfo } from "@/lib/config/business";
 import { submitLead } from "@/lib/leads/client";
+import { useToast } from "@/components/ui/ToastProvider";
 
 /**
  * ROI Calculator - Interactive Lead Generation Tool
@@ -24,6 +25,7 @@ interface CalculationResults {
 }
 
 export default function CalculatorClient() {
+  const { toast } = useToast();
   const [acres, setAcres] = useState<number>(1);
   const [pricePerTree, setPricePerTree] = useState<number>(businessInfo.keyFacts.seedlingPrice);
   const [email, setEmail] = useState<string>("");
@@ -66,6 +68,12 @@ export default function CalculatorClient() {
     setIsReportSent(false);
     setDeliveryEmailSent(false);
     setReportError("");
+    toast({
+      variant: "success",
+      title: "Returns calculated",
+      description: "Your investment scenarios are ready below.",
+      durationMs: 3200,
+    });
   };
 
   const handleReportRequest = async (e: React.FormEvent) => {
@@ -90,12 +98,24 @@ export default function CalculatorClient() {
 
       setDeliveryEmailSent(Boolean(result.deliveryEmailSent));
       setIsReportSent(true);
+      toast({
+        variant: "success",
+        title: "Report request received",
+        description: result.deliveryEmailSent
+          ? `We sent your report to ${email}.`
+          : `We saved your report request for ${email}.`,
+      });
     } catch (error) {
-      setReportError(
+      const message =
         error instanceof Error
           ? error.message
-          : "We could not process your request right now.",
-      );
+          : "We could not process your request right now.";
+      setReportError(message);
+      toast({
+        variant: "error",
+        title: "Report request failed",
+        description: message,
+      });
     } finally {
       setIsSendingReport(false);
     }
