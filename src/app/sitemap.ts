@@ -23,51 +23,51 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     
-    // Core landing pages
+    // Core pages
     {
-      url: `${baseUrl}/the-investment`,
+      url: `${baseUrl}/about`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.9,
+      priority: 0.8,
     },
-    {
-      url: `${baseUrl}/planting-system`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/returns-calculator`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    
-    // Conversion pages
     {
       url: `${baseUrl}/guide`,
       lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.8,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/calculator`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/seedlings`,
       lastModified: now,
-      changeFrequency: "weekly", // Update frequently for inventory
+      changeFrequency: "weekly",
       priority: 0.8,
     },
+
+    // Regional pages
     {
-      url: `${baseUrl}/growers`,
+      url: `${baseUrl}/nova-scotia`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
     },
-    
+    {
+      url: `${baseUrl}/ontario`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+
     // Content pages
     {
       url: `${baseUrl}/faq`,
       lastModified: now,
-      changeFrequency: "weekly", // Update as questions are added
+      changeFrequency: "weekly",
       priority: 0.8,
     },
     {
@@ -76,19 +76,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.7,
     },
-    
+
     // Utility pages
     {
       url: `${baseUrl}/contact`,
       lastModified: now,
       changeFrequency: "yearly",
       priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/your-land`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
     },
 
     // Blog posts

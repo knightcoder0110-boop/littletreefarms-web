@@ -28,11 +28,11 @@ export function Hero({ onOpenLeadForm }: HeroProps) {
         style={{ background: "linear-gradient(180deg, rgba(15,36,25,0.85) 0%, rgba(26,58,42,0.75) 40%, rgba(15,36,25,0.88) 100%)" }}
       />
 
+      {/* Headline — vertically centered in the hero */}
       <div
-        className="relative z-[2] max-w-[1200px] mx-auto px-6 w-full flex flex-col items-center justify-center min-h-dvh gap-14"
-        style={{ paddingTop: "calc(80px + 4rem)", paddingBottom: "3rem" }}
+        className="relative z-[2] max-w-[1200px] mx-auto px-6 w-full flex flex-col items-center"
+        style={{ paddingTop: "calc(80px + 4rem)", paddingBottom: "7rem" }}
       >
-        {/* Headline block */}
         <div
           className="text-center max-w-[860px]"
           style={{ animation: "fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) both" }}
@@ -63,23 +63,6 @@ export function Hero({ onOpenLeadForm }: HeroProps) {
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3V13M8 13L4 9M8 13L12 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </a>
           </div>
-        </div>
-
-        {/* Stats strip */}
-        <div
-          className="flex flex-wrap items-center justify-center gap-8 md:gap-12 px-10 py-7 bg-white/[0.07] rounded-2xl backdrop-blur-lg"
-          style={{ animation: "fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) 0.3s both" }}
-        >
-          {[
-            { value: "$8", label: "Per Seedling" },
-            { value: "218", label: "Trees Per Acre" },
-            { value: "$125K+", label: "Potential Per Acre" },
-          ].map((stat, i) => (
-            <div key={i} className="flex flex-col items-center gap-1 text-center">
-              <span className="font-display text-[clamp(1.8rem,1.5rem+1.2vw,2.4rem)] font-bold text-cream leading-none">{stat.value}</span>
-              <span className="font-ui text-[11px] font-semibold uppercase tracking-[0.12em] text-white/55">{stat.label}</span>
-            </div>
-          ))}
         </div>
       </div>
 

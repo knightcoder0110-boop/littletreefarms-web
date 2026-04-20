@@ -31,8 +31,12 @@ interface CalculationResults {
 
 export default function CalculatorClient() {
   const { toast } = useToast();
-  const [acres, setAcres] = useState<number>(1);
-  const [pricePerTree, setPricePerTree] = useState<number>(businessInfo.keyFacts.seedlingPrice);
+  // String state allows user to delete/retype without being trapped at 0
+  const [acresInput, setAcresInput] = useState<string>("1");
+  const [priceInput, setPriceInput] = useState<string>(String(businessInfo.keyFacts.seedlingPrice));
+  // Derived numeric values — always valid for calculations
+  const acres = Math.max(0.5, parseFloat(acresInput) || 0.5);
+  const pricePerTree = Math.max(1, parseFloat(priceInput) || businessInfo.keyFacts.seedlingPrice);
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [showResults, setShowResults] = useState<boolean>(false);
@@ -213,7 +217,7 @@ export default function CalculatorClient() {
                       max="100"
                       step="0.5"
                       value={acres}
-                      onChange={(e) => setAcres(parseFloat(e.target.value))}
+                      onChange={(e) => setAcresInput(e.target.value)}
                       className="flex-1 h-2 bg-parchment rounded-lg appearance-none cursor-pointer accent-gold"
                     />
                     <input
@@ -222,8 +226,12 @@ export default function CalculatorClient() {
                       min="0.5"
                       max="1000"
                       step="0.5"
-                      value={acres}
-                      onChange={(e) => setAcres(parseFloat(e.target.value) || 0)}
+                      value={acresInput}
+                      onChange={(e) => setAcresInput(e.target.value)}
+                      onBlur={() => {
+                        const v = parseFloat(acresInput);
+                        setAcresInput(String(isNaN(v) || v < 0.5 ? 0.5 : v));
+                      }}
                       className="w-24 px-3 py-2 rounded-lg border border-parchment bg-white text-forest text-center focus:border-gold focus:ring-1 focus:ring-gold outline-none"
                     />
                   </div>
@@ -244,8 +252,12 @@ export default function CalculatorClient() {
                       min="1"
                       max="50"
                       step="0.5"
-                      value={pricePerTree}
-                      onChange={(e) => setPricePerTree(parseFloat(e.target.value) || 0)}
+                      value={priceInput}
+                      onChange={(e) => setPriceInput(e.target.value)}
+                      onBlur={() => {
+                        const v = parseFloat(priceInput);
+                        setPriceInput(String(isNaN(v) || v < 1 ? businessInfo.keyFacts.seedlingPrice : v));
+                      }}
                       className="w-full pl-8 pr-4 py-3 rounded-lg border border-parchment bg-white text-forest focus:border-gold focus:ring-1 focus:ring-gold outline-none"
                     />
                   </div>

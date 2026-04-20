@@ -55,7 +55,7 @@ export const metadata: Metadata = {
       "Turn unused land into generational wealth with black walnut timber. $1,744 per acre could become $25,000–$125,000+. Premium seedlings from Nova Scotia.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/main-landing-page/big-farmland.jpg",
         width: 1200,
         height: 630,
         alt: "Black walnut timber investment - Premium seedlings from Nova Scotia",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     title: "Black Walnut Timber Investment | Little Tree Farm",
     description:
       "Turn unused land into generational wealth with black walnut timber. $1,744 per acre investment.",
-    images: ["/og-image.jpg"],
+    images: ["/main-landing-page/big-farmland.jpg"],
   },
   robots: {
     index: true,
@@ -252,7 +252,7 @@ export default function RootLayout({
         <meta name="geo.position" content={`${businessInfo.location.latitude};${businessInfo.location.longitude}`} />
         <meta name="ICBM" content={`${businessInfo.location.latitude}, ${businessInfo.location.longitude}`} />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <ToastProvider>
           <ScrollProgress />
           <Navbar />

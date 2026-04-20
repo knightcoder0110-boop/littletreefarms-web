@@ -25,11 +25,6 @@ const generateSoftwareSchema = () => ({
     price: "0",
     priceCurrency: "CAD",
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "156",
-  },
 });
 
 // Generate FAQ schema for calculator page

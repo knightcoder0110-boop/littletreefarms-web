@@ -79,7 +79,7 @@ export default async function BlogPostPage({
       url: businessInfo.url,
       logo: {
         "@type": "ImageObject",
-        url: `${businessInfo.url}/main-landing-page/logo.png`,
+        url: `${businessInfo.url}/little-tree-farms-logo.png`,
       },
     },
     mainEntityOfPage: {

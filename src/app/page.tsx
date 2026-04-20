@@ -15,6 +15,7 @@ import { TripleCTA } from "@/components/sections/TripleCTA";
 import { ImageBanner } from "@/components/sections/ImageBanner";
 import { QuickFacts } from "@/components/sections/QuickFacts";
 import { FAQ } from "@/components/sections/FAQ";
+import { StatsBar } from "@/components/sections/StatsBar";
 import { LeadForm } from "@/components/LeadForm";
 
 export default function Home() {
@@ -23,9 +24,10 @@ export default function Home() {
   return (
     <>
       <Hero onOpenLeadForm={() => setIsLeadFormOpen(true)} />
-      
+
       <Story />
       <Investment onOpenLeadForm={() => setIsLeadFormOpen(true)} />
+      <StatsBar />
 
       {/* Cinematic banner — mature timber atmosphere */}
       <ImageBanner
