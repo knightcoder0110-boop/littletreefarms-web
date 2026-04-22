@@ -13,12 +13,12 @@ export function Hero({ onOpenLeadForm }: HeroProps) {
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1920&q=85&auto=format&fit=crop"
-          alt="Mature black walnut tree with spreading branches in golden afternoon light"
+          src="/main-landing-page/black-walnut-tree.jpg"
+          alt="Tall mature black walnut trees reaching into a clear blue sky at Little Tree Farm"
           fill
           priority
           sizes="100vw"
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", objectPosition: "center top" }}
         />
       </div>
 
@@ -66,9 +66,7 @@ export function Hero({ onOpenLeadForm }: HeroProps) {
         </div>
       </div>
 
-      <span className="absolute bottom-3 right-4 z-10 text-[10px] text-white/25">
-        Photo by <a href="https://unsplash.com/@kazuend" target="_blank" rel="noopener noreferrer" className="underline text-white/35">kazuend</a> on Unsplash
-      </span>
+
     </section>
   );
 }

@@ -22,8 +22,8 @@ export const post: BlogPost = {
   excerpt:
     "Passive income from land doesn't require tractors, livestock, or early mornings. Here are real, tested strategies for generating income from your property with minimal ongoing effort.",
   heroImage: {
-    src: "https://images.unsplash.com/photo-1508326297-5503-4e9a-8602-457977e5db4f?w=1200&q=80&auto=format&fit=crop",
-    alt: "Sunlit green landscape with scattered trees — peaceful, productive land",
+    src: "/main-landing-page/black-walnut-tree.jpg",
+    alt: "Black walnut trees growing on open land prepared for long-term passive income",
   },
   tags: ["passive income", "land use", "investment", "low effort"],
   content: [

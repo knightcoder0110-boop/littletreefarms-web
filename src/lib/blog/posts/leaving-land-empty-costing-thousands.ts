@@ -22,8 +22,8 @@ export const post: BlogPost = {
   excerpt:
     "You think your empty land is just sitting there? It's not. It's actively costing you money — every single year. Here's the math most landowners don't want to see.",
   heroImage: {
-    src: "https://images.unsplash.com/photo-1507041957456-9c397ce39c7f?w=1200&q=80&auto=format&fit=crop",
-    alt: "Empty grassy field stretching to the horizon — idle land with hidden costs",
+    src: "/main-landing-page/big-farmland.jpg",
+    alt: "Open farmland showing the kind of idle land that can lose value when left unused",
   },
   tags: ["opportunity cost", "land use", "wake-up call"],
   content: [

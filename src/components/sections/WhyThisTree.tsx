@@ -54,11 +54,11 @@ export function WhyThisTree() {
             className={`relative w-full h-full min-h-[600px] max-md:min-h-[400px] overflow-hidden rounded-3xl shadow-2xl transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           >
             <Image
-              src="/main-landing-page/tall-image.jpg"
-              alt="Mature black walnut tree with spreading branches and full canopy"
+              src="/main-landing-page/mature-black-walnut-nova-scotia.jpg"
+              alt="Mature black walnut tree growing at Little Tree Farm in Nova Scotia"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", objectPosition: "center top" }}
             />
             <div
               className="absolute inset-0 rounded-3xl pointer-events-none"

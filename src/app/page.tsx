@@ -29,10 +29,10 @@ export default function Home() {
       <Investment onOpenLeadForm={() => setIsLeadFormOpen(true)} />
       <StatsBar />
 
-      {/* Cinematic banner — mature timber atmosphere */}
+      {/* Cinematic banner — harvest abundance */}
       <ImageBanner
-        src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=80&auto=format&fit=crop"
-        alt="Towering hardwood forest canopy with dramatic sunlight filtering through leaves"
+        src="/main-landing-page/collecting-black-walnut-ltf.jpg"
+        alt="Buckets of harvested black walnuts collected at Little Tree Farm"
         quote="The trees you plant today are the wealth your grandchildren will inherit."
         attribution="A truth told by every timber farmer"
         id="forest-banner"
@@ -43,8 +43,8 @@ export default function Home() {
 
       {/* Plantation rows banner — tree farm context */}
       <ImageBanner
-        src="/main-landing-page/big-farmland.jpg"
-        alt="Expansive farmland with open fields ready for tree planting"
+        src="/main-landing-page/black-walnut-close.jpg"
+        alt="Black walnut fruits growing on branch at Little Tree Farm"
         quote="That field edge. That strip along the fence line. That back corner that floods a little in spring — it has more potential than you know."
         id="farmland-banner"
       />
@@ -64,8 +64,8 @@ export default function Home() {
 
       {/* Final emotional banner — timber harvest vision */}
       <ImageBanner
-        src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=1920&q=80&auto=format&fit=crop"
-        alt="Stately mature tree with golden leaves in peaceful natural setting"
+        src="/main-landing-page/black-walnuts-closeup-ltf.jpg"
+        alt="Black walnuts held in hand — the tangible reward of patient timber investment at Little Tree Farm"
         quote="Black walnut timber doesn't promise overnight riches. It promises something better: a slow, steady, compounding of value that mirrors the best things in life."
         id="closing-banner"
       />

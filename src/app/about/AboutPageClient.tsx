@@ -93,8 +93,8 @@ export default function AboutPageClient() {
             <div className={`relative transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1508326297-5503-4e9a-8602-457977e5db4f?w=800&q=80&auto=format&fit=crop"
-                  alt={`${businessInfo.name} nursery in ${businessInfo.address.city}, Nova Scotia`}
+                  src="/main-landing-page/mature-black-walnut-nova-scotia.jpg"
+                  alt={`Mature black walnut tree grown in ${businessInfo.address.city}, ${businessInfo.address.state}`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover"
