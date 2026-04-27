@@ -168,17 +168,36 @@ function generateSchemaMarkup() {
       name: "Black Walnut Seedlings",
       itemListElement: businessInfo.products.map((product) => ({
         "@type": "Offer",
+        url: `${businessInfo.url}/seedlings`,
+        price: String(product.price),
+        priceCurrency: product.priceCurrency,
+        priceValidUntil: "2026-12-31",
+        availability: "https://schema.org/InStock",
+        seller: {
+          "@type": "Organization",
+          name: businessInfo.name,
+        },
         itemOffered: {
           "@type": "Product",
           name: product.name,
           description: product.description,
           sku: product.sku,
-          price: product.price,
-          priceCurrency: product.priceCurrency,
-          availability: "https://schema.org/InStock",
-          seller: {
-            "@type": "Organization",
+          image: `${businessInfo.url}/little-tree-farms-logo.png`,
+          brand: {
+            "@type": "Brand",
             name: businessInfo.name,
+          },
+          offers: {
+            "@type": "Offer",
+            url: `${businessInfo.url}/seedlings`,
+            price: String(product.price),
+            priceCurrency: product.priceCurrency,
+            priceValidUntil: "2026-12-31",
+            availability: "https://schema.org/InStock",
+            seller: {
+              "@type": "Organization",
+              name: businessInfo.name,
+            },
           },
         },
       })),
