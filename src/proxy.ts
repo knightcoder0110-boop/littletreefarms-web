@@ -1,13 +1,23 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+// The one canonical investment host. Alias hosts permanently redirect here.
+const CANONICAL_HOST = "timber-investment.littletreefarmns.com";
+
+// Legacy / alias investment hosts that should 308-redirect to the canonical host
+// so old links and bookmarks consolidate onto a single domain (good for SEO).
+const redirectHosts = new Set([
+  "invest.littletreefarmns.com",
+  "investment.littletreefarmns.com",
+]);
+
+// Hosts allowed to serve the site directly (no redirect).
 const allowedHosts = new Set([
   "localhost",
   "127.0.0.1",
   "littletreefarmns.com",
   "www.littletreefarmns.com",
-  "investment.littletreefarmns.com",
-  "timber-investment.littletreefarmns.com",
+  CANONICAL_HOST,
 ]);
 
 function normalizeHost(hostHeader: string | null): string {
@@ -33,6 +43,16 @@ function isAllowedHost(host: string): boolean {
 export function proxy(request: NextRequest) {
   const host = normalizeHost(request.headers.get("host"));
   const { pathname } = request.nextUrl;
+
+  // Permanently redirect known alias hosts to the canonical host, preserving the
+  // path and query string so deep links keep working.
+  if (redirectHosts.has(host)) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.protocol = "https:";
+    redirectUrl.hostname = CANONICAL_HOST;
+    redirectUrl.port = "";
+    return NextResponse.redirect(redirectUrl, 308);
+  }
 
   if (pathname === "/not-allowed" || isAllowedHost(host)) {
     return NextResponse.next();

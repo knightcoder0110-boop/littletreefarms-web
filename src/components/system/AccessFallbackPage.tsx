@@ -39,10 +39,9 @@ const quickLinks = [
   },
 ];
 
-// Mirrors the host allow-list in src/proxy.ts (public domains only).
+// Public hosts that serve or resolve to the canonical investment site.
 const approvedDomains = [
   CANONICAL_DOMAIN,
-  "investment.littletreefarmns.com",
   businessInfo.mainDomain,
   `www.${businessInfo.mainDomain}`,
 ];
