@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useScrollAnimation, useAnimatedCounter } from "@/hooks/useScrollAnimation";
+import { PlantingGrid } from "@/components/sections/PlantingGrid";
 
 const steps = [
   { icon: "⊞", title: "14 × 14 ft Spacing", description: "Trees are planted on a uniform 14 × 14 ft square grid — 14 feet apart in every direction. Neighbouring trees still draw each other upward for tall, straight trunks, while the even square layout leaves room to move equipment through from any side." },
@@ -45,6 +46,13 @@ export function SystemOverview() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Planting layout diagram */}
+        <div
+          className={`max-w-[460px] mx-auto mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+        >
+          <PlantingGrid />
         </div>
 
         {/* Explanation */}

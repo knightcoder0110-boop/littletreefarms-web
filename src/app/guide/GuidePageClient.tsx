@@ -10,6 +10,7 @@ import {
   leadPhonePlaceholder,
 } from "@/lib/leads/phone";
 import { useToast } from "@/components/ui/ToastProvider";
+import { PlantingGrid } from "@/components/sections/PlantingGrid";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -437,6 +438,11 @@ export default function GuidePageClient() {
               {/* Background decoration */}
               <div className="absolute -z-10 inset-0 bg-forest/5 rounded-3xl transform -rotate-3" />
             </div>
+          </div>
+
+          {/* Planting layout diagram */}
+          <div className="mt-16 max-w-[460px] mx-auto">
+            <PlantingGrid />
           </div>
         </div>
       </section>
