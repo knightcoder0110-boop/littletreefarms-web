@@ -27,11 +27,11 @@ const generateFAQSchema = () => {
     },
     {
       question: "What is the best spacing for black walnut timber plantation?",
-      answer: "The optimal spacing for black walnut timber production is 10 feet between trees within rows and 20 feet between rows (10×20 ft). This tight spacing forces trees to compete for sunlight, driving upward growth and producing tall, straight trunks with minimal lower branching—exactly what veneer buyers want. This spacing yields approximately 218 trees per acre initially.",
+      answer: "The optimal spacing for black walnut timber production is a uniform 14 × 14 ft square grid—14 feet between trees in every direction. This even, close spacing encourages trees to grow straight upward, producing tall, clean trunks with minimal lower branching—exactly what veneer buyers want—while the square layout keeps every tree easy to reach for maintenance. This spacing yields approximately 222 trees per acre initially.",
     },
     {
       question: "How long until black walnut trees are ready to harvest?",
-      answer: `Black walnut trees reach timber harvest size in ${businessInfo.keyFacts.harvestTimeline}. The timeline includes: Year 0 - Planting 218 trees per acre; Years 10-15 - First thinning to ~100 trees/acre; Years 20-25 - Second thinning to ~50 trees/acre; Years 35-50 - Final harvest of approximately ${businessInfo.keyFacts.finalTreesPerAcre} premium trees per acre. This long timeline is why timber is considered a generational investment.`,
+      answer: `Black walnut trees reach timber harvest size in ${businessInfo.keyFacts.harvestTimeline}. The timeline includes: Year 0 - Planting 222 trees per acre; Years 10-15 - First thinning to ~110 trees/acre; Years 20-25 - Second thinning to ~70 trees/acre; Years 35-50 - Final harvest of approximately ${businessInfo.keyFacts.finalTreesPerAcre} premium trees per acre. This long timeline is why timber is considered a generational investment.`,
     },
     {
       question: "What are the potential returns on black walnut timber investment?",
@@ -51,7 +51,7 @@ const generateFAQSchema = () => {
     },
     {
       question: "What is strategic thinning and why is it important?",
-      answer: "Thinning is the selective removal of lower-value trees to concentrate growth into the best specimens. First thinning (years 10-15) reduces 218 trees/acre to approximately 100. Second thinning (years 20-25) reduces to approximately 50. Final harvest leaves 25 exceptional trees spaced 35-40 feet apart. This process transforms many mediocre trees into fewer high-value timber trees. The thinned trees can be sold for lumber or firewood, providing interim income.",
+      answer: "Thinning is the selective removal of lower-value trees to concentrate growth into the best specimens. First thinning (years 10-15) reduces 222 trees/acre to approximately 110. Second thinning (years 20-25) reduces to approximately 70. Final harvest leaves about 43 exceptional trees spaced roughly 32 feet apart. This process transforms many mediocre trees into fewer high-value timber trees. The thinned trees can be sold for lumber or firewood, providing interim income.",
     },
     {
       question: "Is black walnut timber a good investment compared to stocks or real estate?",
@@ -87,7 +87,7 @@ const generateFAQSchema = () => {
     },
     {
       question: "How much land do I need to start a black walnut plantation?",
-      answer: "You can start with as little as one acre, though 5-20 acres is often considered a practical minimum for meaningful timber investment. Even one acre planted thoughtfully begins a compounding process. At 218 trees per acre initially, thinning to 25 final trees, you're establishing a generational asset. Many landowners start with a few acres of their least productive land as a 'test' before expanding.",
+      answer: "You can start with as little as one acre, though 5-20 acres is often considered a practical minimum for meaningful timber investment. Even one acre planted thoughtfully begins a compounding process. At 222 trees per acre initially, thinning to about 43 final trees, you're establishing a generational asset. Many landowners start with a few acres of their least productive land as a 'test' before expanding.",
     },
     {
       question: "What happens if I don't live to see the final harvest?",
@@ -106,8 +106,8 @@ const generateFAQSchema = () => {
       answer: "Yes, black walnut grows excellently in Zone 5b, which covers much of Southern Ontario, Quebec, Nova Scotia, and New Brunswick. Zone 5b has winter lows of -26 to -23°C (-15 to -10°F), which black walnut tolerates well once established. The key is proper site selection—avoiding frost pockets and ensuring good snow cover for winter protection of young trees. Nova Scotia's climate is ideal for black walnut cultivation.",
     },
     {
-      question: "How does the 10×20 ft spacing system work?",
-      answer: "The 10×20 ft spacing system is designed specifically for timber production: trees are planted 10 feet apart within rows and 20 feet between rows. This creates 218 trees per acre initially. The tight spacing forces intense competition for light, causing trees to grow rapidly upward rather than outward. This produces tall, straight trunks with minimal lower branches—exactly what veneer buyers want. The system is proven, simple, and optimized for maximum timber value.",
+      question: "How does the 14×14 ft spacing system work?",
+      answer: "The 14×14 ft spacing system is designed specifically for timber production: trees are planted 14 feet apart in every direction on a square grid. This creates about 222 trees per acre initially. The even, close spacing encourages steady upward growth rather than wide, branchy crowns—producing tall, straight trunks with minimal lower branches, exactly what veneer buyers want—while the square layout leaves room to bring equipment in from any side. The system is proven, simple, and optimized for maximum timber value.",
     },
     {
       question: "What is the difference between black walnut seedlings and nursery stock?",

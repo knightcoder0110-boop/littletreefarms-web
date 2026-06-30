@@ -53,12 +53,12 @@ export const post: BlogPost = {
 </ul>
 <p>Now compare that to planting timber on the same property:</p>
 <ul>
-<li><strong>One-time planting cost:</strong> ~$17,440 (218 trees/acre × $8/seedling × 10 acres)</li>
+<li><strong>One-time planting cost:</strong> ~$17,760 (222 trees/acre × $8/seedling × 10 acres)</li>
 <li><strong>25-year tax cost:</strong> Still $30,000 (you pay taxes either way)</li>
-<li><strong>Total investment:</strong> ~$47,440</li>
+<li><strong>Total investment:</strong> ~$47,760</li>
 <li><strong>Conservative return at harvest (35–50 years):</strong> $250,000+</li>
 </ul>
-<p>In the "do nothing" scenario, you spend $30,000+ and have nothing to show for it. In the timber scenario, you spend roughly $47,000 and you're sitting on a quarter of a million dollars in standing timber. Same land. Same time frame. Completely different outcome.</p>
+<p>In the "do nothing" scenario, you spend $30,000+ and have nothing to show for it. In the timber scenario, you spend roughly $48,000 and you're sitting on a quarter of a million dollars in standing timber. Same land. Same time frame. Completely different outcome.</p>
 <p>Run your own numbers with our <a href="/calculator">investment calculator</a>. The difference is hard to ignore once you see it for your specific acreage.</p>`,
     },
     {

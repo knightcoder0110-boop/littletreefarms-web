@@ -32,8 +32,8 @@ const guideFeatures = [
   },
   {
     icon: "📏",
-    title: "10×20 ft Spacing",
-    description: "Complete layout guide for 218 trees per acre",
+    title: "14×14 ft Spacing",
+    description: "Complete layout guide for 222 trees per acre",
   },
   {
     icon: "🌱",
@@ -59,7 +59,7 @@ const guideFeatures = [
 
 const testimonials = [
   {
-    quote: "This guide saved me hours of research. Planted my first acre last spring using the 10×20 spacing system.",
+    quote: "This guide saved me hours of research. Planted my first acre last spring using the 14×14 spacing system.",
     author: "Robert M.",
     location: "Ontario",
   },
@@ -171,7 +171,7 @@ export default function GuidePageClient() {
               </h1>
               <p className="text-intro text-cream/80 mb-8 max-w-[50ch]">
                 Everything you need to plant your first acre of black walnut trees. 
-                Based on our proven 10×20 ft spacing system used on hundreds of Canadian farms.
+                Based on our proven 14×14 ft spacing system used on hundreds of Canadian farms.
               </p>
               
               {/* Quick Stats */}
@@ -366,29 +366,29 @@ export default function GuidePageClient() {
             <div>
               <span className="kicker-label text-gold-dark mb-4 inline-block">Sneak Peek</span>
               <h2 className="text-ink mb-6">
-                Chapter Preview: <em className="text-forest italic">The 10×20 Spacing System</em>
+                Chapter Preview: <em className="text-forest italic">The 14×14 Spacing System</em>
               </h2>
               <div className="prose prose-forest max-w-none">
                 <p className="text-ink-light mb-4">
-                  The foundation of successful black walnut timber production is proper spacing. 
-                  Our 10×20 ft system has been refined over decades of Canadian forestry experience.
+                  The foundation of successful black walnut timber production is proper spacing.
+                  Our 14×14 ft square system has been refined over decades of Canadian forestry experience.
                 </p>
                 <ul className="space-y-3 text-ink-light">
                   <li className="flex items-start gap-3">
                     <span className="text-gold mt-1">✓</span>
-                    <span><strong>218 trees per acre</strong> — optimal density for timber production</span>
+                    <span><strong>222 trees per acre</strong> — optimal density for timber production</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-gold mt-1">✓</span>
-                    <span><strong>10 ft within rows</strong> — forces upward competition for light</span>
+                    <span><strong>14 ft square spacing</strong> — close, even spacing drives straight upward growth</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-gold mt-1">✓</span>
-                    <span><strong>20 ft between rows</strong> — allows equipment access for maintenance</span>
+                    <span><strong>Uniform square grid</strong> — equipment access from any direction</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-gold mt-1">✓</span>
-                    <span><strong>Total investment: $1,744/acre</strong> — seedlings only, no hidden costs</span>
+                    <span><strong>Total investment: $1,776/acre</strong> — seedlings only, no hidden costs</span>
                   </li>
                 </ul>
               </div>

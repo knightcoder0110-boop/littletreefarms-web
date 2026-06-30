@@ -18,12 +18,12 @@ import Image from "next/image";
  * - Mobile-optimized product layout
  */
 
+// Minimum order is 100 trees. $8.00 base, with volume discounts at 500+ and 1,000+.
+const MIN_ORDER = 100;
 const pricingTiers = [
-  { min: 1, max: 49, price: businessInfo.keyFacts.seedlingPrice, label: "1-49 trees" },
-  { min: 50, max: 99, price: 7.5, label: "50-99 trees", savings: "6% off" },
-  { min: 100, max: 499, price: 7, label: "100-499 trees", savings: "12% off" },
-  { min: 500, max: 999, price: 6.5, label: "500-999 trees", savings: "19% off" },
-  { min: 1000, max: Infinity, price: 6, label: "1000+ trees", savings: "25% off" },
+  { min: 100, max: 499, price: businessInfo.keyFacts.seedlingPrice, label: "100-499 trees" },
+  { min: 500, max: 999, price: 7.5, label: "500-999 trees", savings: "Save $0.50/tree" },
+  { min: 1000, max: Infinity, price: 7, label: "1000+ trees", savings: "Save $1.00/tree" },
 ];
 
 const features = [
@@ -43,7 +43,7 @@ const reviews = [
 
 export default function SeedlingsPageClient() {
   const { ref, isVisible } = useScrollAnimation();
-  const [quantity, setQuantity] = useState(218);
+  const [quantity, setQuantity] = useState(222);
   const [activeTab, setActiveTab] = useState<"calculator" | "acre">("calculator");
   const [acres, setAcres] = useState(1);
 
@@ -176,24 +176,26 @@ export default function SeedlingsPageClient() {
                     </label>
                     <input
                       type="number"
-                      min="1"
+                      min={MIN_ORDER}
+                      step="1"
                       value={quantity}
-                      onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value) || 0))}
+                      onChange={(e) => setQuantity(Math.max(MIN_ORDER, parseInt(e.target.value) || 0))}
                       className="w-full px-4 py-3 rounded-xl border border-black/10 bg-white text-ink focus:outline-none focus:ring-2 focus:ring-gold"
                     />
                     <input
                       type="range"
-                      min="1"
+                      min={MIN_ORDER}
                       max="1000"
                       value={quantity}
                       onChange={(e) => setQuantity(parseInt(e.target.value))}
                       className="w-full mt-3 accent-forest"
                     />
                     <div className="flex justify-between text-xs text-ink-muted mt-1">
-                      <span>1</span>
+                      <span>{MIN_ORDER}</span>
                       <span>500</span>
                       <span>1000</span>
                     </div>
+                    <p className="text-xs text-ink-muted mt-2">Minimum order: {MIN_ORDER} trees</p>
                   </div>
 
                   <div className="bg-parchment rounded-xl p-4 mb-6">
@@ -269,7 +271,7 @@ export default function SeedlingsPageClient() {
             <p className="text-ink-light">Save more when you plant more acres</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {pricingTiers.map((tier, i) => (
               <div
                 key={i}

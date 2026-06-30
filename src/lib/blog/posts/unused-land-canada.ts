@@ -108,7 +108,7 @@ export const post: BlogPost = {
       headingLevel: 3,
       headingId: "timber-investment",
       body: `<p>Here's where things get interesting — especially if you're thinking in decades rather than seasons. Planting high-value hardwood trees (like black walnut) is a long-term investment that requires very little ongoing effort once the trees are in the ground.</p>
-<p>The math is straightforward: at <a href="https://littletreefarmns.com">Little Tree Farm</a>, we sell premium black walnut seedlings at $8 each. Plant 218 trees per acre in a proper spacing grid and your upfront cost is about $1,744 per acre. Over 35–50 years, those trees can produce timber worth anywhere from $25,000 to over $100,000 per acre, depending on wood quality.</p>
+<p>The math is straightforward: at <a href="https://littletreefarmns.com">Little Tree Farm</a>, we sell premium black walnut seedlings at $8 each. Plant 222 trees per acre in a proper spacing grid and your upfront cost is about $1,776 per acre. Over 35–50 years, those trees can produce timber worth anywhere from $25,000 to over $100,000 per acre, depending on wood quality.</p>
 <p>There's no daily watering, no harvesting seasons to manage, no employees to pay. Once planted, the trees mostly take care of themselves. You're basically using time and biology to do the heavy lifting. That's a rare combination — low effort, low cost, potentially very high long-term returns.</p>
 <p>Want to see what the numbers look like for your specific acreage? <a href="/calculator">Try our return calculator</a>.</p>`,
     },

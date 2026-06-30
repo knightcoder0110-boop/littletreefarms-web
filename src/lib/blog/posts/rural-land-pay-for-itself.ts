@@ -70,7 +70,7 @@ export const post: BlogPost = {
       headingId: "plant-timber",
       body: `<p>If you've read this far and thought "these all sound like more work than I want," this one's for you.</p>
 <p>Planting high-value hardwood timber — specifically <a href="/seedlings">black walnut</a> — is about as close to "set it and forget it" as land use gets. You plant once, and the trees grow for decades. No irrigation, no daily management, no staff. After the first couple of years, your annual time commitment is essentially "go look at your trees and feel good about your decision."</p>
-<p>Here's the basic math: at $8 per seedling and 218 trees per acre, you're looking at about $1,744 per acre in upfront cost. Over 35 to 50 years, timber-quality black walnut can return anywhere from $25,000 to $125,000 per acre — and those are conservative-to-optimistic estimates based on current lumber markets.</p>
+<p>Here's the basic math: at $8 per seedling and 222 trees per acre, you're looking at about $1,776 per acre in upfront cost. Over 35 to 50 years, timber-quality black walnut can return anywhere from $25,000 to $125,000 per acre — and those are conservative-to-optimistic estimates based on current lumber markets.</p>
 <p>Yes, the timeline is long. But compare that to paying property taxes on idle land for the same 35 years. In one scenario you've spent thousands and have nothing to show for it. In the other, you've spent thousands and grown an asset that your grandchildren might one day harvest.</p>
 <p>We break the numbers down in detail on our <a href="/calculator">investment calculator</a>, and our <a href="/guide">free planting guide</a> covers everything from soil requirements to spacing.</p>`,
     },

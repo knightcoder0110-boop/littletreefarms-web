@@ -102,14 +102,14 @@ export const businessInfo = {
   // Key Business Data for Content
   keyFacts: {
     seedlingPrice: 8,
-    treesPerAcre: 218,
-    costPerAcre: 1744,
-    spacing: "10 × 20 feet",
+    treesPerAcre: 222,
+    costPerAcre: 1776,
+    spacing: "14 × 14 feet",
     harvestTimeline: "35-50 years",
     conservativeReturnPerAcre: 25000,
     midRangeReturnPerAcre: 62500,
     premiumReturnPerAcre: 125000,
-    finalTreesPerAcre: 25,
+    finalTreesPerAcre: 43,
     shipping: "Canada-wide",
     guarantee: "Healthy arrival guarantee",
   },

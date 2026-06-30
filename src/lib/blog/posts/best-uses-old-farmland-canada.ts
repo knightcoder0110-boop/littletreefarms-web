@@ -119,9 +119,9 @@ export const post: BlogPost = {
       headingId: "timber-numbers",
       body: `<p>Let's look at a realistic scenario: 20 acres of retired farmland.</p>
 <ul>
-<li><strong>Planting cost:</strong> 218 trees/acre × $8/seedling × 20 acres = $34,880</li>
+<li><strong>Planting cost:</strong> 222 trees/acre × $8/seedling × 20 acres = $35,520</li>
 <li><strong>Maintenance (years 1–3):</strong> Weed control around seedlings — maybe $2,000–$4,000 total if you hire help</li>
-<li><strong>Total investment:</strong> ~$37,000 to $39,000</li>
+<li><strong>Total investment:</strong> ~$38,000 to $40,000</li>
 </ul>
 <p>Potential at harvest (35–50 years):</p>
 <ul>

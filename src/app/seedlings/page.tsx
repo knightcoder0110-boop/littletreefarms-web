@@ -19,7 +19,7 @@ const generateProductSchema = () => ({
   "@type": "Product",
   name: "Black Walnut Seedlings (Juglans nigra)",
   image: `${businessInfo.url}/little-tree-farms-logo.png`,
-  description: "Premium A-grade bare root black walnut seedlings for timber investment. Zone 4-8 hardy. 218 trees per acre at 10×20 ft spacing.",
+  description: "Premium A-grade bare root black walnut seedlings for timber investment. Zone 4-8 hardy. 222 trees per acre at 14×14 ft spacing.",
   brand: {
     "@type": "Brand",
     name: businessInfo.name,
@@ -60,7 +60,7 @@ const generateProductFAQSchema = () => ({
       name: "How much do black walnut seedlings cost?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: `Black walnut seedlings cost $${businessInfo.keyFacts.seedlingPrice} CAD each. For an acre at 10×20 ft spacing, you need ${businessInfo.keyFacts.treesPerAcre} seedlings, totaling $${businessInfo.keyFacts.costPerAcre.toLocaleString()} per acre. Discounts available for orders over 500 seedlings.`,
+        text: `Black walnut seedlings cost $${businessInfo.keyFacts.seedlingPrice} CAD each (minimum order 100 trees). For an acre at 14×14 ft spacing, you need ${businessInfo.keyFacts.treesPerAcre} seedlings, totaling $${businessInfo.keyFacts.costPerAcre.toLocaleString()} per acre. Volume discounts apply at 500+ and 1,000+ seedlings.`,
       },
     },
     {

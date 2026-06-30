@@ -4,7 +4,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const stats = [
   { value: "$8", label: "Per Seedling" },
-  { value: "218", label: "Trees Per Acre" },
+  { value: "222", label: "Trees Per Acre" },
   { value: "$125K+", label: "Potential Per Acre" },
 ];
 

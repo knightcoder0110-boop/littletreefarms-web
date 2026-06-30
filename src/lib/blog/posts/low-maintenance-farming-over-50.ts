@@ -87,11 +87,11 @@ export const post: BlogPost = {
       body: `<p>I know. You've read this far and you're probably expecting the timber pitch. Here it is — but hear it out, because this is genuinely the lowest-maintenance option on this entire list.</p>
 <p>Planting high-value hardwood trees like <a href="/seedlings">black walnut</a> is a one-time effort that produces returns decades later. The total active involvement looks like this:</p>
 <ul>
-<li><strong>Year 1:</strong> Plant seedlings in a 10 × 20 foot grid (218 per acre). One to two days of work per acre.</li>
+<li><strong>Year 1:</strong> Plant seedlings in a 14 × 14 foot grid (222 per acre). One to two days of work per acre.</li>
 <li><strong>Years 2–3:</strong> Keep grass and brush controlled around the base of each tree. A few afternoons per season.</li>
 <li><strong>Years 4–50:</strong> Basically nothing. Walk the property occasionally. Enjoy the view. Tell people you're a "timber investor."</li>
 </ul>
-<p>The financial case is straightforward: $1,744 per acre in seedling costs, with potential returns of $25,000 to $125,000 per acre at harvest. The <a href="/calculator">investment calculator</a> can show you what the numbers look like for your specific property size.</p>
+<p>The financial case is straightforward: $1,776 per acre in seedling costs, with potential returns of $25,000 to $125,000 per acre at harvest. The <a href="/calculator">investment calculator</a> can show you what the numbers look like for your specific property size.</p>
 <p>Here's why this works especially well for landowners over 50: you're at a stage of life where you understand compound growth, you're comfortable thinking in long timeframes, and you don't need immediate income from the land. You probably <em>do</em> need something productive to do with property that's otherwise just costing you tax money.</p>
 <p>Timber fills that gap without filling your calendar. It's the opposite of farming — instead of working the land daily, you let the land work for you. And unlike the berry bushes or the chicken coop, there's nothing to tend, no markets to attend, and no customers to manage.</p>`,
     },

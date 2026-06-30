@@ -71,7 +71,7 @@ export const post: BlogPost = {
 <ul>
 <li><strong>You're already thinking long-term.</strong> You inherited the land from s previous generation. Planting timber continues that generational arc — you're building something your own kids or grandkids will benefit from.</li>
 <li><strong>The effort is front-loaded.</strong> You plant once. After 2–3 years of basic maintenance, the trees are on their own. You don't need to visit regularly or manage anything actively.</li>
-<li><strong>The economics work even on small parcels.</strong> At $1,744 per acre for <a href="/seedlings">black walnut seedlings</a>, you can plant 10 acres for well under $20,000. The potential return at harvest — even conservatively — is over $250,000.</li>
+<li><strong>The economics work even on small parcels.</strong> At $1,776 per acre for <a href="/seedlings">black walnut seedlings</a>, you can plant 10 acres for well under $20,000. The potential return at harvest — even conservatively — is over $250,000.</li>
 <li><strong>It honours the land.</strong> There's something fitting about planting trees on family property. It's neither selling out nor building something temporary. It's the land itself becoming the investment.</li>
 </ul>`,
     },

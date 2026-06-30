@@ -4,15 +4,15 @@ import Link from "next/link";
 import { useScrollAnimation, useAnimatedCounter } from "@/hooks/useScrollAnimation";
 
 const steps = [
-  { icon: "⊞", title: "10 × 20 ft Spacing", description: "Trees are planted in a grid pattern — 10 feet apart within rows, 20 feet between rows. This drives upward growth, producing tall, straight trunks with minimal branching." },
-  { icon: "🌱", title: "218 Trees Per Acre", description: "At this spacing, you plant approximately 218 trees per acre. Each seedling costs $8, making your total seedling investment just $1,744 per acre." },
-  { icon: "✂", title: "Strategic Thinning", description: "Over time, you thin the plantation — removing lower-value trees and giving the best ones more room. This is how you turn 218 seedlings into 25 exceptional timber trees." },
+  { icon: "⊞", title: "14 × 14 ft Spacing", description: "Trees are planted on a uniform 14 × 14 ft square grid — 14 feet apart in every direction. Neighbouring trees still draw each other upward for tall, straight trunks, while the even square layout leaves room to move equipment through from any side." },
+  { icon: "🌱", title: "222 Trees Per Acre", description: "At this spacing, you plant approximately 222 trees per acre. Each seedling costs $8, making your total seedling investment just $1,776 per acre." },
+  { icon: "✂", title: "Strategic Thinning", description: "Over time, you thin the plantation — removing lower-value trees and giving the best ones more room. This is how you turn 222 seedlings into approximately 43 exceptional timber trees." },
 ];
 
 export function SystemOverview() {
   const { ref, isVisible } = useScrollAnimation();
-  const treesCounter = useAnimatedCounter(218, 2000);
-  const costCounter  = useAnimatedCounter(1744, 2000);
+  const treesCounter = useAnimatedCounter(222, 2000);
+  const costCounter  = useAnimatedCounter(1776, 2000);
 
   return (
     <section className="relative overflow-hidden py-24 bg-cream" id="system">
@@ -50,9 +50,9 @@ export function SystemOverview() {
         {/* Explanation */}
         <div className="grid grid-cols-[1.5fr_1fr] gap-12 items-center p-10 bg-parchment rounded-2xl mb-12 max-md:grid-cols-1 max-md:gap-8 max-md:p-6">
           <div>
-            <h3 className="text-ink mb-4">Why Tight Spacing Matters</h3>
+            <h3 className="text-ink mb-4">Why Even Spacing Matters</h3>
             <p className="text-ink-light mb-4">
-              When trees are planted close together, they compete for light. That competition drives them upward, producing tall, straight trunks with minimal branching in the lower sections. This is what creates high-value timber.
+              When trees are planted on a close, even grid, they draw each other upward as they reach for light. That gentle competition produces tall, straight trunks with minimal branching in the lower sections — exactly what creates high-value timber. The square 14 × 14 ft layout keeps every tree the same distance from its neighbours and easy to reach for maintenance.
             </p>
             <p className="text-ink-light">
               A wide-open-grown walnut tree spreads its branches low and wide — beautiful, but not ideal for timber. A plantation-grown walnut grows tall and clean.

@@ -83,7 +83,7 @@ export const post: BlogPost = {
 <li><strong>Years 4 through 50:</strong> The trees grow. You do approximately nothing. Walk the property occasionally if you want to. You don't even have to.</li>
 <li><strong>Harvest:</strong> Hire a logging crew. Sell timber. Cash the biggest cheque your land has ever produced.</li>
 </ol>
-<p>At $8 per seedling and 218 trees per acre, your upfront cost is $1,744 per acre. Conservative harvest returns start at $25,000 per acre and go up to $125,000+ for premium veneer-quality timber. That's an investment-to-return ratio you won't find in most asset classes.</p>
+<p>At $8 per seedling and 222 trees per acre, your upfront cost is $1,776 per acre. Conservative harvest returns start at $25,000 per acre and go up to $125,000+ for premium veneer-quality timber. That's an investment-to-return ratio you won't find in most asset classes.</p>
 <p>And between planting and harvest? Your annual time commitment is effectively zero. The trees don't need irrigation, fertilising, spraying, or management. They grow because that's what trees do.</p>
 <p>See what the numbers look like for your property with our <a href="/calculator">investment calculator</a>.</p>`,
     },

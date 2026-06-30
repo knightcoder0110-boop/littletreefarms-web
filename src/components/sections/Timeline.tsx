@@ -3,10 +3,10 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const stages = [
-  { years: "Year 0",     title: "Planting",             trees: 218, description: "Plant 218 trees per acre at 10×20 ft spacing. The seedlings go in the ground. The clock starts." },
-  { years: "Years 10–15", title: "First Thinning",     trees: 100, description: "Thin to approximately 100 trees per acre. Your best trees are now getting the space they need." },
-  { years: "Years 20–25", title: "Second Thinning",    trees: 50,  description: "Thin again to approximately 50 trees per acre. The remaining trees are developing real timber value." },
-  { years: "Years 35–50", title: "Final Harvest Stand", trees: 25, description: "25 trees per acre remain, spaced 35–40 feet apart. These are your timber trees — decades of clean, straight growth." },
+  { years: "Year 0",     title: "Planting",             trees: 222, description: "Plant 222 trees per acre at 14×14 ft spacing. The seedlings go in the ground. The clock starts." },
+  { years: "Years 10–15", title: "First Thinning",     trees: 110, description: "Thin to approximately 110 trees per acre. Your best trees are now getting the space they need." },
+  { years: "Years 20–25", title: "Second Thinning",    trees: 70,  description: "Thin again to approximately 70 trees per acre. The remaining trees are developing real timber value." },
+  { years: "Years 35–50", title: "Final Harvest Stand", trees: 43, description: "About 43 trees per acre remain, spaced roughly 32 feet apart. These are your timber trees — decades of clean, straight growth." },
 ];
 
 export function Timeline() {

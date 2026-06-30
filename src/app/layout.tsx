@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s | Little Tree Farm Timber Investment",
   },
   description:
-    "Turn unused land into generational wealth with black walnut timber. $1,744 per acre investment. 35-50 year timeline. Premium seedlings from Nova Scotia nursery. Canada-wide shipping.",
+    "Turn unused land into generational wealth with black walnut timber. $1,776 per acre investment. 35-50 year timeline. Premium seedlings from Nova Scotia nursery. Canada-wide shipping.",
   keywords: [
     ...businessInfo.keywords.primary,
     ...businessInfo.keywords.secondary,
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     siteName: `${businessInfo.name} — Timber Investment`,
     title: "Black Walnut Timber Investment | Little Tree Farm Nova Scotia",
     description:
-      "Turn unused land into generational wealth with black walnut timber. $1,744 per acre could become $25,000–$125,000+. Premium seedlings from Nova Scotia.",
+      "Turn unused land into generational wealth with black walnut timber. $1,776 per acre could become $25,000–$125,000+. Premium seedlings from Nova Scotia.",
     images: [
       {
         url: "/main-landing-page/big-farmland.jpg",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Black Walnut Timber Investment | Little Tree Farm",
     description:
-      "Turn unused land into generational wealth with black walnut timber. $1,744 per acre investment.",
+      "Turn unused land into generational wealth with black walnut timber. $1,776 per acre investment.",
     images: ["/main-landing-page/big-farmland.jpg"],
   },
   robots: {

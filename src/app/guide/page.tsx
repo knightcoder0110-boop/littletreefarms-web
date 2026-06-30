@@ -21,7 +21,7 @@ const generateHowToSchema = () => ({
   image: `${businessInfo.url}/little-tree-farms-logo.png`,
   totalTime: "PT2H",
   supply: [
-    { "@type": "HowToSupply", name: "Black walnut seedlings", quantity: "218 per acre" },
+    { "@type": "HowToSupply", name: "Black walnut seedlings", quantity: "222 per acre" },
     { "@type": "HowToSupply", name: "Shovel or auger" },
     { "@type": "HowToSupply", name: "Measuring tape" },
     { "@type": "HowToSupply", name: "Mulch or straw" },
@@ -42,13 +42,13 @@ const generateHowToSchema = () => ({
       "@type": "HowToStep",
       position: 2,
       name: "Soil Preparation",
-      text: "Clear the area of competing vegetation. Test soil pH (target 6.0-7.5). Add organic matter if needed. Mark rows 20 feet apart.",
+      text: "Clear the area of competing vegetation. Test soil pH (target 6.0-7.5). Add organic matter if needed. Mark out a square grid with lines 14 feet apart in both directions.",
     },
     {
       "@type": "HowToStep",
       position: 3,
       name: "Spacing Layout",
-      text: "Mark planting spots every 10 feet within rows. This creates 218 trees per acre. Use stakes or flags to mark each spot.",
+      text: "Mark a planting spot every 14 feet along each line of the grid, so every tree sits 14 feet from its neighbours in all directions. This creates about 222 trees per acre. Use stakes or flags to mark each spot.",
     },
     {
       "@type": "HowToStep",
@@ -116,12 +116,12 @@ const generateBreadcrumbSchema = () => ({
 
 export const metadata: Metadata = {
   title: "Free Black Walnut Planting Guide | Download PDF | Little Tree Farm",
-  description: "Download our comprehensive Black Walnut Planting Guide PDF. Step-by-step instructions for planting 218 trees per acre, 10×20 ft spacing system, care tips for Canadian climate.",
+  description: "Download our comprehensive Black Walnut Planting Guide PDF. Step-by-step instructions for planting 222 trees per acre, 14×14 ft spacing system, care tips for Canadian climate.",
   keywords: [
     "black walnut planting guide",
     "how to plant black walnut trees",
     "timber tree planting guide PDF",
-    "black walnut spacing 10x20",
+    "black walnut spacing 14x14",
     "Juglans nigra planting instructions",
     "Canadian timber planting guide",
     ...businessInfo.keywords.primary,

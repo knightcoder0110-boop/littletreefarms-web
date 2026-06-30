@@ -24,9 +24,9 @@ interface LandQualifiesProps {
 
 export function LandQualifies({ onOpenLeadForm }: LandQualifiesProps) {
   const { ref, isVisible } = useScrollAnimation();
-  const c1 = useAnimatedCounter(218,  2000);
-  const c2 = useAnimatedCounter(1744, 2000);
-  const c3 = useAnimatedCounter(25,   1500);
+  const c1 = useAnimatedCounter(222,  2000);
+  const c2 = useAnimatedCounter(1776, 2000);
+  const c3 = useAnimatedCounter(43,   1500);
   const c4 = useAnimatedCounter(125,  2000);
 
   const stats = [

@@ -49,7 +49,7 @@ export function Outcomes() {
             Potential Outcomes
           </span>
           <h2 className="text-ink mb-6">
-            What Might 25 Trees Per Acre{" "}
+            What Might an Acre of Walnut{" "}
             <em className="text-gold-dark italic">Be Worth?</em>
           </h2>
           <p className="text-intro max-w-[55ch] mx-auto text-ink-light font-medium">
@@ -95,7 +95,7 @@ export function Outcomes() {
                 <div className={`w-12 h-px mx-auto opacity-40 ${tier.highlight ? "bg-gold" : "bg-gold"}`} />
                 <div className="flex flex-col items-center gap-1 py-3">
                   <span className={`kicker-label !text-[0.65rem] ${tier.highlight ? "text-white/50" : "text-ink-muted"}`}>
-                    Per Acre (25 trees)
+                    Per Acre
                   </span>
                   <span className={`font-display text-[clamp(2rem,1.7rem+1vw,2.6rem)] font-bold leading-none ${tier.highlight ? "text-gold" : "text-forest"}`}>
                     {tier.perAcre}

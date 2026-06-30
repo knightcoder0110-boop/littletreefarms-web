@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     question: "What is the best spacing for black walnut plantation?",
-    answer: `The optimal spacing for black walnut timber production is 10 feet between trees within rows and 20 feet between rows (10×20 ft). This tight spacing forces trees to compete for sunlight, driving upward growth and producing tall, straight trunks with minimal lower branching—exactly what veneer buyers want.`,
+    answer: `The optimal spacing for black walnut timber production is a uniform 14 × 14 ft square grid — 14 feet between trees in every direction (about 222 trees per acre). This even, close spacing encourages trees to grow straight upward for tall, clean trunks with minimal lower branching—exactly what veneer buyers want—while the square layout keeps every tree easy to reach for maintenance.`,
     keywords: ["spacing", "plantation density", "tree spacing"],
   },
   {
@@ -58,7 +58,7 @@ const faqs = [
   },
   {
     question: "What is strategic thinning and why is it important?",
-    answer: `Thinning is removing lower-value trees to give the best specimens more room and resources. First thinning (years 10-15) reduces 218 trees/acre to ~100. Second thinning (years 20-25) reduces to ~50. Final harvest leaves ${businessInfo.keyFacts.finalTreesPerAcre} exceptional trees. This concentrates growth into fewer, higher-value trees rather than many mediocre ones.`,
+    answer: `Thinning is removing lower-value trees to give the best specimens more room and resources. First thinning (years 10-15) reduces 222 trees/acre to ~110. Second thinning (years 20-25) reduces to ~70. Final harvest leaves ${businessInfo.keyFacts.finalTreesPerAcre} exceptional trees. This concentrates growth into fewer, higher-value trees rather than many mediocre ones.`,
     keywords: ["thinning", "forest management", "timber quality"],
   },
   {

@@ -58,7 +58,7 @@ export const post: BlogPost = {
       headingId: "smart-alternative",
       body: `<p>The landowners who avoid this trap share one trait: they match the land to a plan that doesn't require them to become someone they're not.</p>
 <p>If you're not a farmer, don't try to farm. If you don't want a side business, don't start one. But <em>do something</em> that puts the land to work.</p>
-<p>For a lot of people, that's timber. And here's why it works: planting trees — specifically high-value hardwoods like <a href="/seedlings">black walnut</a> — requires almost no ongoing effort. You invest once (about $1,744 per acre at current seedling prices), plant the trees in a proper grid, and then the land starts working <em>for</em> you instead of the other way around.</p>
+<p>For a lot of people, that's timber. And here's why it works: planting trees — specifically high-value hardwoods like <a href="/seedlings">black walnut</a> — requires almost no ongoing effort. You invest once (about $1,776 per acre at current seedling prices), plant the trees in a proper grid, and then the land starts working <em>for</em> you instead of the other way around.</p>
 <p>Trees don't need daily attention. They don't need employees. They grow whether you're watching or not. And over 35 to 50 years, timber-quality black walnut can be worth $25,000 to over $100,000 per acre. That's not speculation — that's what the lumber market pays for mature, well-grown walnut.</p>
 <p>Compare that to the alternative: 35 years of property taxes on land that did nothing. You do the math.</p>`,
     },

@@ -83,7 +83,7 @@ export const post: BlogPost = {
 <p>Planting high-value hardwood timber — like <a href="/seedlings">black walnut</a> — doesn't just maintain your land's value. It actively grows the asset, year over year, in the most literal sense possible. A 10-year-old walnut plantation on a property is worth meaningfully more than the same property with nothing on it. A 25-year-old plantation is worth substantially more.</p>
 <p>Here's the math on a 10-acre parcel:</p>
 <ul>
-<li><strong>Planting cost:</strong> About $17,440 (218 trees per acre × $8 per seedling × 10 acres)</li>
+<li><strong>Planting cost:</strong> About $17,760 (222 trees per acre × $8 per seedling × 10 acres)</li>
 <li><strong>Value at year 15–20:</strong> The trees have measurable timber value, even before full maturity. The standing timber alone adds to the property's assessed worth.</li>
 <li><strong>Value at harvest (35–50 years):</strong> $250,000 to $1,250,000 depending on wood quality</li>
 </ul>

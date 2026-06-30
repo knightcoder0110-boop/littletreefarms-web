@@ -59,7 +59,7 @@ export const post: BlogPost = {
       headingLevel: 2,
       headingId: "timber-small-acreage",
       body: `<p>Let's run the numbers on a 7-acre property — a pretty common size for rural lots in Eastern Canada.</p>
-<p>At 218 <a href="/seedlings">black walnut seedlings per acre</a>, you'd plant about 1,526 trees total. At $8 per seedling, your upfront cost is roughly $12,200. Add a bit for ground prep and planting labour if you're not doing it yourself — call it $15,000 all in.</p>
+<p>At 222 <a href="/seedlings">black walnut seedlings per acre</a>, you'd plant about 1,554 trees total. At $8 per seedling, your upfront cost is roughly $12,400. Add a bit for ground prep and planting labour if you're not doing it yourself — call it $15,000 all in.</p>
 <p>That's a real number. It's not nothing. But here's what you get in return:</p>
 <ul>
 <li><strong>Conservative estimate:</strong> At $25,000 per acre at harvest, that's $175,000 from 7 acres.</li>
@@ -82,7 +82,7 @@ export const post: BlogPost = {
       headingLevel: 2,
       headingId: "five-acres-worth-it",
       body: `<p>Short answer: yes.</p>
-<p>Five acres planted with black walnut at proper spacing means about 1,090 trees. Total seedling cost: under $9,000. Even at the conservative return estimate, you're looking at $125,000 at harvest — from an investment you can leave alone for the better part of a generation.</p>
+<p>Five acres planted with black walnut at proper spacing means about 1,110 trees. Total seedling cost: under $9,000. Even at the conservative return estimate, you're looking at $125,000 at harvest — from an investment you can leave alone for the better part of a generation.</p>
 <p>Compare that to what most 5-acre lots are doing right now: absolutely nothing. Costing their owners $500 to $1,500 per year in property taxes and producing zero return. Over 35 years, that's $17,500 to $52,500 in taxes alone — paid for the privilege of watching grass grow.</p>
 <p>The math isn't complicated. The only real question is whether you have the patience to let it work.</p>`,
     },
@@ -95,7 +95,7 @@ export const post: BlogPost = {
 <ol>
 <li><strong>Check your soil and drainage.</strong> Black walnut needs well-drained, deep soil. Not every property qualifies, but many do. Our <a href="/guide">free planting guide</a> covers what to look for.</li>
 <li><strong>Order seedlings.</strong> We ship <a href="/seedlings">premium bare-root seedlings</a> across Canada. Planting happens in spring.</li>
-<li><strong>Plant in a grid pattern.</strong> The standard is 10 × 20 foot spacing — 218 trees per acre. You can plant yourself or hire locally.</li>
+<li><strong>Plant in a grid pattern.</strong> The standard is 14 × 14 foot spacing — 222 trees per acre. You can plant yourself or hire locally.</li>
 <li><strong>Maintain for the first 2–3 years.</strong> Keep grass and weeds under control around the seedlings. After that, the trees are largely self-sufficient.</li>
 <li><strong>Wait.</strong> Seriously. That's the job. The trees do the rest.</li>
 </ol>

@@ -45,7 +45,7 @@ const generateFAQSchema = () => ({
       name: "What factors affect black walnut timber returns?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Key factors include: site quality (soil depth, drainage, sun exposure), spacing and thinning management (10×20 ft system), tree genetics (timber-grade vs ornamental stock), time to harvest (35-50 years), market conditions at harvest, and veneer quality achieved (clear bole length, grain quality).", 
+        text: "Key factors include: site quality (soil depth, drainage, sun exposure), spacing and thinning management (14×14 ft system), tree genetics (timber-grade vs ornamental stock), time to harvest (35-50 years), market conditions at harvest, and veneer quality achieved (clear bole length, grain quality).",
       },
     },
     {
@@ -73,12 +73,12 @@ export const metadata: Metadata = {
     ...businessInfo.keywords.primary,
   ],
   alternates: {
-    canonical: `${businessInfo.url}/calculator/`,
+    canonical: `${businessInfo.url}/calculator`,
   },
   openGraph: {
     title: "Timber Investment Calculator | Calculate Your Returns",
     description: `Calculate black walnut timber investment ROI. $${businessInfo.keyFacts.costPerAcre.toLocaleString()}/acre input, potential $${businessInfo.keyFacts.conservativeReturnPerAcre.toLocaleString()}-$${businessInfo.keyFacts.premiumReturnPerAcre.toLocaleString()}/acre returns.`,
-    url: `${businessInfo.url}/calculator/`,
+    url: `${businessInfo.url}/calculator`,
     siteName: businessInfo.name,
     locale: "en_CA",
     type: "website",
