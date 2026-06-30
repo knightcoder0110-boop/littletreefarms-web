@@ -20,7 +20,7 @@ const generateLocalBusinessSchema = () => ({
   "@type": "Nursery",
   name: `${businessInfo.name} - Ontario`,
   description: `Black walnut timber investment nursery shipping to Ontario. Zones 4b-6a. Serving Toronto, Ottawa, Southwestern Ontario, and across the province.`,
-  url: `${businessInfo.url}/ontario/`,
+  url: `${businessInfo.url}/ontario`,
   telephone: businessInfo.contact.phone,
   email: businessInfo.contact.email,
   address: {
@@ -76,7 +76,7 @@ const generateBreadcrumbSchema = () => ({
       "@type": "ListItem",
       position: 2,
       name: "Ontario",
-      item: `${businessInfo.url}/ontario/`,
+      item: `${businessInfo.url}/ontario`,
     },
   ],
 });
@@ -96,12 +96,12 @@ export const metadata: Metadata = {
     ...businessInfo.keywords.primary,
   ],
   alternates: {
-    canonical: `${businessInfo.url}/ontario/`,
+    canonical: `${businessInfo.url}/ontario`,
   },
   openGraph: {
     title: "Black Walnut Timber Investment in Ontario | Zones 4b-6a",
     description: `Timber investment for Ontario&apos;s climate. Zones 4b-6a. $${businessInfo.keyFacts.costPerAcre.toLocaleString()}/acre. Serving Toronto, Ottawa, and all of Ontario.`,
-    url: `${businessInfo.url}/ontario/`,
+    url: `${businessInfo.url}/ontario`,
     siteName: businessInfo.name,
     locale: "en_CA",
     type: "website",

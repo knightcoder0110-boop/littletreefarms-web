@@ -19,7 +19,7 @@ const generateAboutPageSchema = () => ({
   "@type": "AboutPage",
   name: `About ${businessInfo.name}`,
   description: businessInfo.tagline,
-  url: `${businessInfo.url}/about/`,
+  url: `${businessInfo.url}/about`,
   mainEntity: {
     "@type": "Organization",
     name: businessInfo.name,
@@ -63,7 +63,7 @@ const generateBreadcrumbSchema = () => ({
       "@type": "ListItem",
       position: 2,
       name: "About",
-      item: `${businessInfo.url}/about/`,
+      item: `${businessInfo.url}/about`,
     },
   ],
 });
@@ -81,12 +81,12 @@ export const metadata: Metadata = {
     ...businessInfo.keywords.primary,
   ],
   alternates: {
-    canonical: `${businessInfo.url}/about/`,
+    canonical: `${businessInfo.url}/about`,
   },
   openGraph: {
     title: `About ${businessInfo.name} | Timber Investment Specialists`,
     description: `${businessInfo.business.founded}-present. ${businessInfo.address.city}, ${businessInfo.address.state}. Black walnut seedlings and timber investment guidance.`,
-    url: `${businessInfo.url}/about/`,
+    url: `${businessInfo.url}/about`,
     siteName: businessInfo.name,
     locale: "en_CA",
     type: "website",

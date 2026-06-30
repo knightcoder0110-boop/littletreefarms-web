@@ -1,4 +1,9 @@
+import type { Metadata } from "next";
 import { AccessFallbackPage } from "@/components/system/AccessFallbackPage";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 export default function NotFoundPage() {
   return (

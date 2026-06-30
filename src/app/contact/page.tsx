@@ -19,7 +19,7 @@ const generateContactPageSchema = () => ({
   "@type": "ContactPage",
   name: `Contact ${businessInfo.name}`,
   description: `Contact ${businessInfo.name} in ${businessInfo.address.city}, ${businessInfo.address.state}. Phone: ${businessInfo.contact.phoneDisplay}. Email: ${businessInfo.contact.email}.`,
-  url: `${businessInfo.url}/contact/`,
+  url: `${businessInfo.url}/contact`,
   mainEntity: {
     "@type": "Nursery",
     name: businessInfo.name,
@@ -127,7 +127,7 @@ const generateBreadcrumbSchema = () => ({
       "@type": "ListItem",
       position: 2,
       name: "Contact",
-      item: `${businessInfo.url}/contact/`,
+      item: `${businessInfo.url}/contact`,
     },
   ],
 });
@@ -145,12 +145,12 @@ export const metadata: Metadata = {
     ...businessInfo.keywords.primary,
   ],
   alternates: {
-    canonical: `${businessInfo.url}/contact/`,
+    canonical: `${businessInfo.url}/contact`,
   },
   openGraph: {
     title: `Contact ${businessInfo.name} | ${businessInfo.address.city}, ${businessInfo.address.state}`,
     description: `Call ${businessInfo.contact.phoneDisplay}. Email ${businessInfo.contact.email}. ${businessInfo.address.street}, ${businessInfo.address.city}, ${businessInfo.address.state}.`,
-    url: `${businessInfo.url}/contact/`,
+    url: `${businessInfo.url}/contact`,
     siteName: businessInfo.name,
     locale: "en_CA",
     type: "website",

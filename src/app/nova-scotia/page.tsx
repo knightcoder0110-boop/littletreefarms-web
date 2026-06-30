@@ -19,7 +19,7 @@ const generateLocalBusinessSchema = () => ({
   "@type": "Nursery",
   name: `${businessInfo.name} - Nova Scotia`,
   description: `Black walnut timber investment nursery serving Nova Scotia. Zone 5b/6a hardiness. Located in ${businessInfo.address.city}. Seedlings shipped across ${businessInfo.address.state}.`,
-  url: `${businessInfo.url}/nova-scotia/`,
+  url: `${businessInfo.url}/nova-scotia`,
   telephone: businessInfo.contact.phone,
   email: businessInfo.contact.email,
   address: {
@@ -75,7 +75,7 @@ const generateBreadcrumbSchema = () => ({
       "@type": "ListItem",
       position: 2,
       name: "Nova Scotia",
-      item: `${businessInfo.url}/nova-scotia/`,
+      item: `${businessInfo.url}/nova-scotia`,
     },
   ],
 });
@@ -95,12 +95,12 @@ export const metadata: Metadata = {
     ...businessInfo.keywords.primary,
   ],
   alternates: {
-    canonical: `${businessInfo.url}/nova-scotia/`,
+    canonical: `${businessInfo.url}/nova-scotia`,
   },
   openGraph: {
     title: "Black Walnut Timber Investment in Nova Scotia | Zone 5b/6a",
     description: `Timber investment perfect for Nova Scotia climate. Zone 5b/6a. $${businessInfo.keyFacts.costPerAcre.toLocaleString()}/acre. Serving all of NS from ${businessInfo.address.city}.`,
-    url: `${businessInfo.url}/nova-scotia/`,
+    url: `${businessInfo.url}/nova-scotia`,
     siteName: businessInfo.name,
     locale: "en_CA",
     type: "website",

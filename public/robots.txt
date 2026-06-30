@@ -1,12 +1,24 @@
-# robots.txt - Little Tree Farms Investment Site
-# https://investment.littletreefarmns.com
+# robots.txt - Little Tree Farm Timber Investment
+# https://timber-investment.littletreefarmns.com
+# Last updated: 2026
 
-# Allow all general crawlers
+# ============================================
+# GENERAL RULES - All Search Engines
+# ============================================
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /_next/
-Disallow: /404/
+Disallow: /not-allowed
+
+# ============================================
+# MAJOR SEARCH ENGINES
+# ============================================
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
 
 # ============================================
 # AI CRAWLERS - Allow for GEO Optimization
@@ -29,39 +41,41 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
-# Perplexity
-User-agent: PerplexityBot
-Allow: /
-
-# Google AI
+# Google AI / Gemini
 User-agent: Google-Extended
 Allow: /
 
-# Microsoft / Bing AI
-User-agent: BingBot
-Allow: /
-
-User-agent: MicrosoftPreview
-Allow: /
-
-# Other AI crawlers
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: cohere-ai
+# Perplexity
+User-agent: PerplexityBot
 Allow: /
 
 User-agent: Perplexity-User
 Allow: /
 
-# ============================================
-# Crawl Rate Limits
-# ============================================
+# Microsoft / Copilot
+User-agent: MicrosoftPreview
+Allow: /
 
-Crawl-delay: 1
+# Meta
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Common crawler
+User-agent: CCBot
+Allow: /
 
 # ============================================
-# Sitemap Location
+# SITEMAP
 # ============================================
-
-Sitemap: https://investment.littletreefarmns.com/sitemap.xml
+Sitemap: https://timber-investment.littletreefarmns.com/sitemap.xml
