@@ -388,7 +388,7 @@ export default function CalculatorClient() {
                   {/* Scenario Cards */}
                   <div className="space-y-4">
                     {/* Conservative */}
-                    <div className="bg-white rounded-xl p-6 border-l-4 border-walnut shadow-sm">
+                    <div className="bg-white rounded-xl p-6 shadow-md ring-1 ring-black/[0.04]">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="font-medium text-forest">Conservative Scenario</h3>
                         <span className="px-3 py-1 rounded-full bg-walnut/10 text-walnut text-xs font-medium">
@@ -418,7 +418,7 @@ export default function CalculatorClient() {
                     </div>
 
                     {/* Mid-Range */}
-                    <div className="bg-white rounded-xl p-6 border-l-4 border-gold shadow-sm">
+                    <div className="bg-white rounded-xl p-6 shadow-md ring-1 ring-gold/30">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="font-medium text-forest">Mid-Range Scenario</h3>
                         <span className="px-3 py-1 rounded-full bg-gold/20 text-gold-dark text-xs font-medium">
@@ -448,7 +448,7 @@ export default function CalculatorClient() {
                     </div>
 
                     {/* Premium */}
-                    <div className="bg-white rounded-xl p-6 border-l-4 border-forest shadow-sm">
+                    <div className="bg-white rounded-xl p-6 shadow-md ring-1 ring-black/[0.04]">
                       <div className="flex items-center justify-between mb-2">
                         <h3 className="font-medium text-forest">Premium Scenario</h3>
                         <span className="px-3 py-1 rounded-full bg-forest/10 text-forest text-xs font-medium">

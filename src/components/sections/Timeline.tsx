@@ -44,7 +44,7 @@ export function Timeline() {
                 <span className="w-2 h-2 rounded-full bg-gold block" />
               </div>
 
-              <div className="bg-white border-l-4 border-gold rounded-xl px-8 py-6 shadow-sm transition-all duration-300 hover:shadow-md hover:translate-x-1 max-[600px]:px-5">
+              <div className="bg-white rounded-xl px-8 py-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 max-[600px]:px-5">
                 <span className="kicker-label !text-[0.65rem] text-gold-dark mb-2 block">{stage.years}</span>
                 <h3 className="text-forest mb-3">{stage.title}</h3>
                 <p className="text-ink-light mb-4">{stage.description}</p>

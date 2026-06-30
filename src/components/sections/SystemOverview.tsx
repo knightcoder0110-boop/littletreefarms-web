@@ -36,7 +36,7 @@ export function SystemOverview() {
           {steps.map((step, i) => (
             <div
               key={i}
-              className={`flex items-start gap-6 p-8 bg-white rounded-xl border-l-4 border-transparent shadow-sm transition-all duration-300 hover:border-gold hover:shadow-lg hover:translate-x-2 max-md:flex-col max-md:gap-4 max-md:hover:translate-x-0 max-md:hover:-translate-y-1 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`flex items-start gap-6 p-8 bg-white rounded-xl shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 max-md:flex-col max-md:gap-4 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <div className="shrink-0 w-14 h-14 flex items-center justify-center bg-parchment rounded-xl text-2xl">{step.icon}</div>

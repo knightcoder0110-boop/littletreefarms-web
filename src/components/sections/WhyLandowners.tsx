@@ -29,7 +29,7 @@ export function WhyLandowners() {
           {reasons.map((reason, i) => (
             <div
               key={i}
-              className={`p-8 bg-white/[0.05] border-l-4 border-transparent rounded-xl transition-all duration-300 hover:bg-white/[0.08] hover:border-gold hover:-translate-y-1 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`p-8 bg-white/[0.05] rounded-xl transition-all duration-300 hover:bg-white/[0.08] hover:-translate-y-1 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <span className="inline-block font-display text-[3rem] font-bold text-gold opacity-35 leading-none mb-4">{reason.number}</span>

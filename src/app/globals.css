@@ -237,8 +237,9 @@
   }
 
   .prose-blog blockquote {
-    border-left: 3px solid var(--color-gold);
-    padding-left: 1.25rem;
+    background: rgba(200, 169, 110, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
     margin: 1.5rem 0;
     font-style: italic;
     color: var(--color-walnut);

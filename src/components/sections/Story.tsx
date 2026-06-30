@@ -40,7 +40,7 @@ export function Story() {
               Decades later, his grandchildren had those trees appraised. The timber cruiser walked the row, measured the trunks, checked the grain. Then he handed over a number that made the family go quiet.
             </p>
 
-            <blockquote className="text-2xl italic text-walnut py-8 px-10 border-l-4 border-gold my-10 w-full bg-gold/[0.06] rounded-r-xl shadow-sm max-md:px-5">
+            <blockquote className="text-2xl italic text-walnut py-8 px-10 my-10 w-full bg-gold/[0.06] rounded-xl shadow-sm max-md:px-5">
               &ldquo;Those trees — planted with a shovel and a little patience — were worth more per acre than most of the farmland in the county.&rdquo;
             </blockquote>
 

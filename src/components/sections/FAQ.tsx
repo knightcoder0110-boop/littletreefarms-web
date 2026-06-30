@@ -158,8 +158,8 @@ export function FAQ() {
             {faqs.map((faq, i) => (
               <div
                 key={i}
-                className={`bg-white rounded-xl border-l-4 border-transparent shadow-sm transition-all duration-300 overflow-hidden ${
-                  openIndex === i ? "border-gold shadow-md" : "hover:border-gold/50 hover:shadow-md"
+                className={`bg-white rounded-xl shadow-sm transition-all duration-300 overflow-hidden ${
+                  openIndex === i ? "shadow-md ring-1 ring-gold/30" : "hover:shadow-md"
                 } ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
                 style={{ transitionDelay: `${i * 50}ms` }}
                 itemScope

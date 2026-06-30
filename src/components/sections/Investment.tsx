@@ -72,7 +72,7 @@ export function Investment({ onOpenLeadForm }: InvestmentProps) {
           {cards.map((card, i) => (
             <div
               key={i}
-              className={`bg-white rounded-xl p-8 shadow-md border-l-4 border-transparent transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-gold ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`bg-white rounded-xl p-8 shadow-md transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <div className="w-14 h-14 text-forest mb-5">{card.icon}</div>

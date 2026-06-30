@@ -40,7 +40,7 @@ export function HonestTruth() {
           </p>
 
           <blockquote
-            className="text-2xl italic text-cream py-10 px-12 mx-auto my-10 max-w-[55ch] rounded-2xl border-l-4 border-gold shadow-xl max-md:px-6"
+            className="text-2xl italic text-cream py-10 px-12 mx-auto my-10 max-w-[55ch] rounded-2xl shadow-xl max-md:px-6"
             style={{ background: "rgba(10,30,15,0.58)", backdropFilter: "blur(12px)" }}
           >
             <span className="text-gold text-[1.8rem] leading-none block mb-2 opacity-50 font-display">&ldquo;</span>

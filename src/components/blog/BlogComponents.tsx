@@ -133,7 +133,7 @@ export function TableOfContents({ sections }: TableOfContentsProps) {
       className="hidden xl:block sticky top-28 self-start w-56 shrink-0"
     >
       <p className="kicker-label text-forest/60 mb-3">In this article</p>
-      <ul className="space-y-2 border-l-2 border-gold/20 pl-4">
+      <ul className="space-y-2.5">
         {headings.map((h) => (
           <li key={h.headingId}>
             <a
