@@ -1,5 +1,12 @@
-import Link from "next/link";
 import { businessInfo } from "@/lib/config/business";
+import { CopyableDomain } from "@/components/system/CopyableDomain";
+
+// This investment site is hosted at timber-investment.littletreefarmns.com.
+// Recovery links use the absolute canonical URL so a visitor who lands on an
+// unapproved host (e.g. an old invest.* link) is sent to the live site instead
+// of looping back onto this page via a relative link.
+const CANONICAL_DOMAIN = "timber-investment.littletreefarmns.com";
+const CANONICAL_URL = `https://${CANONICAL_DOMAIN}`;
 
 type AccessFallbackPageProps = {
   badge: string;
@@ -33,8 +40,8 @@ const quickLinks = [
 ];
 
 const approvedDomains = [
+  CANONICAL_DOMAIN,
   businessInfo.domain,
-  "timber-investment.littletreefarmns.com",
   businessInfo.mainDomain,
   `www.${businessInfo.mainDomain}`,
 ];
@@ -83,21 +90,21 @@ export function AccessFallbackPage({
             ) : null}
 
             <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/"
+              <a
+                href={`${CANONICAL_URL}/`}
                 className="inline-flex items-center gap-2 rounded-xl border-2 border-gold bg-gold px-7 py-4 font-ui text-sm font-bold uppercase tracking-[0.08em] text-forest-dark transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold-dark hover:border-gold-dark hover:shadow-lg"
               >
                 Return Home
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </Link>
-              <Link
-                href="/contact"
+              </a>
+              <a
+                href={`${CANONICAL_URL}/contact`}
                 className="inline-flex items-center gap-2 rounded-xl border-2 border-forest/15 bg-white/75 px-7 py-4 font-ui text-sm font-bold uppercase tracking-[0.08em] text-forest transition-all duration-300 hover:-translate-y-0.5 hover:border-forest hover:bg-white hover:shadow-lg"
               >
                 Contact Us
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -120,9 +127,9 @@ export function AccessFallbackPage({
 
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
                 {quickLinks.map((link) => (
-                  <Link
+                  <a
                     key={link.href}
-                    href={link.href}
+                    href={`${CANONICAL_URL}${link.href}`}
                     className="group rounded-2xl border border-parchment bg-cream/70 p-5 transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:bg-white hover:shadow-lg"
                   >
                     <div className="flex items-center justify-between gap-3">
@@ -134,7 +141,7 @@ export function AccessFallbackPage({
                       </svg>
                     </div>
                     <p className="mt-3 text-sm text-ink-light">{link.description}</p>
-                  </Link>
+                  </a>
                 ))}
               </div>
             </div>
@@ -158,12 +165,8 @@ export function AccessFallbackPage({
                   Verified Entry Points
                 </p>
                 <div className="mt-4 space-y-3 text-sm text-forest">
-                  <a href={businessInfo.url} className="block rounded-xl bg-white/80 px-4 py-3 transition-colors duration-300 hover:bg-white">
-                    {businessInfo.domain}
-                  </a>
-                  <a href={businessInfo.mainUrl} className="block rounded-xl bg-white/80 px-4 py-3 transition-colors duration-300 hover:bg-white">
-                    {businessInfo.mainDomain}
-                  </a>
+                  <CopyableDomain domain={CANONICAL_DOMAIN} variant="row" />
+                  <CopyableDomain domain={businessInfo.mainDomain} variant="row" />
                 </div>
               </div>
             </div>
@@ -175,12 +178,7 @@ export function AccessFallbackPage({
                 </p>
                 <div className="mt-4 flex flex-wrap gap-3">
                   {approvedDomains.map((domain) => (
-                    <span
-                      key={domain}
-                      className="rounded-full border border-parchment bg-cream px-4 py-2 text-sm text-forest"
-                    >
-                      {domain}
-                    </span>
+                    <CopyableDomain key={domain} domain={domain} variant="chip" />
                   ))}
                 </div>
               </div>
