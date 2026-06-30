@@ -11,9 +11,9 @@ export const businessInfo = {
   legalName: "Little Tree Farm Nursery",
   
   // Domain & URLs
-  domain: "investment.littletreefarmns.com",
+  domain: "timber-investment.littletreefarmns.com",
   mainDomain: "littletreefarmns.com",
-  url: "https://investment.littletreefarmns.com",
+  url: "https://timber-investment.littletreefarmns.com",
   mainUrl: "https://littletreefarmns.com",
   
   // Contact & NAP (Critical for Local SEO)

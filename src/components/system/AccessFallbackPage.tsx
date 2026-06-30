@@ -39,9 +39,10 @@ const quickLinks = [
   },
 ];
 
+// Mirrors the host allow-list in src/proxy.ts (public domains only).
 const approvedDomains = [
   CANONICAL_DOMAIN,
-  businessInfo.domain,
+  "investment.littletreefarmns.com",
   businessInfo.mainDomain,
   `www.${businessInfo.mainDomain}`,
 ];
