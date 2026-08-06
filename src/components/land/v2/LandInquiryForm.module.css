@@ -112,7 +112,7 @@
   line-height: 1.55;
 }
 
-.safetyNote span {
+.safetyNote > span:first-child {
   display: grid;
   width: 1.55rem;
   height: 1.55rem;
@@ -121,6 +121,12 @@
   color: var(--form-walnut);
   background: rgba(200, 169, 110, 0.24);
   font-weight: 900;
+}
+
+.safetyNote > span:last-child,
+.consent > span {
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .consent {
