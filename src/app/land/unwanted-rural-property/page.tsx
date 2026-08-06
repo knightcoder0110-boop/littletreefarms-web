@@ -278,7 +278,8 @@ function jsonLd() {
         "@id": `${pageUrl}#breadcrumbs`,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: businessInfo.url },
-          { "@type": "ListItem", position: 2, name: "Options for unwanted rural property", item: pageUrl },
+          { "@type": "ListItem", position: 2, name: "Land Stewardship", item: `${businessInfo.url}/land` },
+          { "@type": "ListItem", position: 3, name: "Options for unwanted rural property", item: pageUrl },
         ],
       },
       {
@@ -313,7 +314,7 @@ export default function UnwantedRuralPropertyPage() {
         <div className={styles.heroInner}>
           <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
             <Link href="/">Home</Link><span aria-hidden="true">/</span>
-            <span>Land stewardship</span><span aria-hidden="true">/</span>
+            <Link href="/land">Land stewardship</Link><span aria-hidden="true">/</span>
             <span aria-current="page">Options for unwanted rural property</span>
           </nav>
           <p className={styles.eyebrow}>Land Stewardship Knowledge Centre</p>

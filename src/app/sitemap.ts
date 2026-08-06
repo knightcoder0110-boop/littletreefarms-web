@@ -85,7 +85,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
 
-    // Land stewardship knowledge centre
+    // Land stewardship hub + knowledge centre
+    {
+      url: `${baseUrl}/land`,
+      lastModified: "2026-08-06",
+      changeFrequency: "monthly",
+      priority: 0.9,
+      images: [`${baseUrl}/main-landing-page/big-farmland.jpg`],
+    },
     {
       url: `${baseUrl}/land/leave-land-in-your-will`,
       lastModified: "2026-08-06",

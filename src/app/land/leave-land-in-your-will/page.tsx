@@ -274,7 +274,8 @@ function jsonLd() {
         "@id": `${pageUrl}#breadcrumbs`,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: businessInfo.url },
-          { "@type": "ListItem", position: 2, name: "Leave land in your will", item: pageUrl },
+          { "@type": "ListItem", position: 2, name: "Land Stewardship", item: `${businessInfo.url}/land` },
+          { "@type": "ListItem", position: 3, name: "Leave land in your will", item: pageUrl },
         ],
       },
       {
@@ -294,7 +295,7 @@ export default function LeaveLandInYourWillPage() {
   const schema = JSON.stringify(jsonLd()).replace(/</g, "\\u003c");
 
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schema }} />
 
       <header className={styles.hero}>
@@ -309,7 +310,7 @@ export default function LeaveLandInYourWillPage() {
         <div className={styles.heroInner}>
           <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
             <Link href="/">Home</Link><span aria-hidden="true">/</span>
-            <span>Land stewardship</span><span aria-hidden="true">/</span>
+            <Link href="/land">Land stewardship</Link><span aria-hidden="true">/</span>
             <span aria-current="page">Leave land in your will</span>
           </nav>
           <p className={styles.eyebrow}>Land Stewardship Knowledge Centre</p>
@@ -539,6 +540,6 @@ export default function LeaveLandInYourWillPage() {
           </section>
         </article>
       </div>
-    </main>
+    </div>
   );
 }

@@ -17,6 +17,14 @@ const startLinks = [
   { href: "/ontario", label: "Ontario" },
 ];
 
+const landLinks = [
+  { href: "/land", label: "Program Overview" },
+  { href: "/land/leave-land-in-your-will", label: "Leave Land in Your Will" },
+  { href: "/land/donate-land", label: "Donate Land" },
+  { href: "/land/what-happens-to-my-land-when-i-die", label: "Land After You Die" },
+  { href: "/land/unwanted-rural-property", label: "Unwanted Property Options" },
+];
+
 export function Footer() {
   return (
     <footer
@@ -117,10 +125,11 @@ export function Footer() {
           </div>
 
           {/* Link cols */}
-          <div className="grid grid-cols-3 gap-10 max-[900px]:grid-cols-2 max-[900px]:gap-8 max-[600px]:grid-cols-1">
+          <div className="grid grid-cols-4 gap-10 max-[1100px]:grid-cols-2 max-[1100px]:gap-8 max-[600px]:grid-cols-1">
             {[
               { title: "Learn", links: learnLinks },
               { title: "Get Started", links: startLinks },
+              { title: "Land Stewardship", links: landLinks },
               {
                 title: "Hours & Info",
                 links: [

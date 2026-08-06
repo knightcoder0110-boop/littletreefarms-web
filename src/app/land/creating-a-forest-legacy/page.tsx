@@ -270,7 +270,8 @@ function jsonLd() {
         "@id": `${pageUrl}#breadcrumbs`,
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: businessInfo.url },
-          { "@type": "ListItem", position: 2, name: "Creating a forest legacy", item: pageUrl },
+          { "@type": "ListItem", position: 2, name: "Land Stewardship", item: `${businessInfo.url}/land` },
+          { "@type": "ListItem", position: 3, name: "Creating a forest legacy", item: pageUrl },
         ],
       },
       {
@@ -305,7 +306,7 @@ export default function CreatingAForestLegacyPage() {
         <div className={styles.heroInner}>
           <nav className={styles.breadcrumbs} aria-label="Breadcrumb">
             <Link href="/">Home</Link><span aria-hidden="true">/</span>
-            <span>Land stewardship</span><span aria-hidden="true">/</span>
+            <Link href="/land">Land stewardship</Link><span aria-hidden="true">/</span>
             <span aria-current="page">Creating a forest legacy</span>
           </nav>
           <p className={styles.eyebrow}>Land Stewardship Knowledge Centre</p>

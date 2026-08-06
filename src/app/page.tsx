@@ -11,6 +11,7 @@ import { Outcomes } from "@/components/sections/Outcomes";
 import { WhyLandowners } from "@/components/sections/WhyLandowners";
 import { LandQualifies } from "@/components/sections/LandQualifies";
 import { HonestTruth } from "@/components/sections/HonestTruth";
+import { LandStewardship } from "@/components/sections/LandStewardship";
 import { TripleCTA } from "@/components/sections/TripleCTA";
 import { ImageBanner } from "@/components/sections/ImageBanner";
 import { QuickFacts } from "@/components/sections/QuickFacts";
@@ -58,7 +59,10 @@ export default function Home() {
       <WhyLandowners />
       <LandQualifies onOpenLeadForm={() => setIsLeadFormOpen(true)} />
       <HonestTruth />
-      
+
+      {/* Land Stewardship Program — the other audience: owners of unwanted rural land */}
+      <LandStewardship />
+
       {/* Comprehensive FAQ with Schema markup for SEO */}
       <FAQ />
 

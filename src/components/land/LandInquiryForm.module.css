@@ -1,0 +1,382 @@
+.shell {
+  max-width: 780px;
+  margin: clamp(2.5rem, 5vw, 3.5rem) auto 0;
+  border: 1px solid rgba(34, 58, 46, 0.16);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(15, 36, 25, 0.09);
+  overflow: hidden;
+}
+
+/* ── Progress ─────────────────────────────────── */
+.progress {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid rgba(34, 58, 46, 0.12);
+}
+
+.progressItem {
+  flex: 1;
+  padding: 1rem 0.4rem;
+  border-bottom: 3px solid transparent;
+  color: #6d7768;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.progressActive {
+  border-bottom-color: var(--color-gold);
+  color: var(--color-forest-dark);
+}
+
+.progressDone {
+  color: var(--color-moss);
+}
+
+/* ── Body ─────────────────────────────────────── */
+.body {
+  padding: clamp(1.8rem, 4vw, 2.6rem) clamp(1.4rem, 4vw, 2.6rem) clamp(1.4rem, 3vw, 2rem);
+}
+
+.stepPanel {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.stepLegend {
+  padding: 0;
+}
+
+.stepHeading {
+  margin: 0 0 1.4rem;
+  color: var(--color-forest-dark);
+  font-size: clamp(1.4rem, 2.6vw, 1.7rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  outline: none;
+}
+
+.stepHeading:focus-visible {
+  text-decoration: underline;
+  text-decoration-color: var(--color-gold);
+  text-underline-offset: 6px;
+}
+
+.errorRegion {
+  min-height: 0;
+}
+
+.error {
+  margin: 0 0 1.2rem;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid rgba(139, 74, 52, 0.4);
+  border-left: 4px solid #8b4a34;
+  border-radius: 10px;
+  background: rgba(139, 74, 52, 0.07);
+  color: #6b3a28;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+/* ── Fields ───────────────────────────────────── */
+.field {
+  margin-bottom: 1.15rem;
+}
+
+.fieldRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field label,
+.checkGroup legend {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--color-forest-dark);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.req {
+  color: #8b4a34;
+}
+
+.hint {
+  display: inline;
+  margin-left: 0.35rem;
+  color: #6d7768;
+  font-weight: 500;
+  font-size: 0.74rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 0.8rem 0.95rem;
+  border: 1px solid rgba(34, 58, 46, 0.22);
+  border-radius: 10px;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.25);
+}
+
+.checkGroup {
+  margin: 0 0 1.15rem;
+  padding: 0;
+  border: none;
+}
+
+.checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem 1.2rem;
+}
+
+.chk {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #3d473b;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.chk:hover {
+  background: rgba(200, 169, 110, 0.08);
+  border-color: rgba(200, 169, 110, 0.35);
+}
+
+.chk input {
+  margin-top: 0.18em;
+  accent-color: var(--color-forest);
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+/* ── Review summary ───────────────────────────── */
+.reviewIntro {
+  margin: -0.4rem 0 1.4rem;
+  color: #4a5548;
+  font-size: 0.93rem;
+  line-height: 1.65;
+}
+
+.summary {
+  margin: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.summaryGroup {
+  margin: 0;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(34, 58, 46, 0.14);
+  border-radius: 12px;
+  background: var(--color-cream);
+}
+
+.summaryHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.summaryHead dt {
+  color: var(--color-walnut);
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.summaryHead button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-forest);
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.summaryHead button:hover {
+  color: var(--color-forest-dark);
+}
+
+.summaryGroup dd {
+  margin: 0;
+  color: #3d473b;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* ── Nav ──────────────────────────────────────── */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.navBack {
+  padding: 0.85rem 1.7rem;
+  border: 1px solid rgba(34, 58, 46, 0.35);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--color-forest-dark);
+  font-family: var(--font-ui);
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.navBack:hover:not(:disabled) {
+  background: rgba(34, 58, 46, 0.06);
+}
+
+.navBack:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.navNext {
+  padding: 0.85rem 1.9rem;
+  border: 2px solid var(--color-gold);
+  border-radius: 12px;
+  background: var(--color-gold);
+  color: var(--color-forest-dark);
+  font-family: var(--font-ui);
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.navNext:hover {
+  background: var(--color-gold-light);
+  border-color: var(--color-gold-light);
+  transform: translateY(-1px);
+}
+
+.privacyNote {
+  margin: 1.4rem 0 0;
+  color: #6d7768;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ── Thanks ───────────────────────────────────── */
+.thanks {
+  padding: 1rem 0.5rem 0.6rem;
+  text-align: center;
+}
+
+.thanks h3 {
+  margin: 1.1rem 0 0.8rem;
+  color: var(--color-forest-dark);
+  font-size: 1.6rem;
+  font-weight: 600;
+  outline: none;
+}
+
+.thanks p {
+  margin: 0 auto 0.9rem;
+  max-width: 54ch;
+  color: #3d473b;
+  font-size: 0.97rem;
+  line-height: 1.7;
+}
+
+.thanks a {
+  color: var(--color-forest);
+  font-weight: 600;
+}
+
+.thanksNote {
+  color: #6d7768;
+  font-size: 0.88rem !important;
+}
+
+.restart {
+  margin-top: 0.6rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(34, 58, 46, 0.35);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--color-forest-dark);
+  font-family: var(--font-ui);
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.restart:hover {
+  background: rgba(34, 58, 46, 0.06);
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 640px) {
+  .fieldRow,
+  .checks {
+    grid-template-columns: 1fr;
+  }
+
+  .progressItem {
+    font-size: 0.6rem;
+    padding: 0.8rem 0.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navNext,
+  .chk,
+  .field input,
+  .field select,
+  .field textarea {
+    transition: none;
+  }
+}
