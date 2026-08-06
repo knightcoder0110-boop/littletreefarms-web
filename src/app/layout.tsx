@@ -247,10 +247,6 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <head>
-        {/* Hreflang tags for international SEO */}
-        <link rel="alternate" hrefLang="en-CA" href={businessInfo.url} />
-        <link rel="alternate" hrefLang="x-default" href={businessInfo.url} />
-        
         {/* Preconnect to external domains for performance */}
         <link rel="preconnect" href="https://images.unsplash.com" />
         <link rel="preconnect" href="https://images.pexels.com" />

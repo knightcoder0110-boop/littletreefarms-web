@@ -1,30 +1,164 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Give Your Land a Lasting Purpose — Rural Land Stewardship in Canada, from Little Tree Farm";
+export const alt = "Give Your Land a Lasting Purpose — Rural Land Stewardship in Canada by Little Tree Farm";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default function OpenGraphImage() {
   return new ImageResponse(
-    <div style={{ width: "100%", height: "100%", display: "flex", position: "relative", padding: "64px 72px", color: "#faf6f0", background: "linear-gradient(135deg, #3a241a 0%, #1a3a2a 55%, #0f2419 100%)", fontFamily: "Georgia, serif" }}>
-      <div style={{ position: "absolute", inset: 26, border: "1px solid rgba(200,169,110,.55)", borderRadius: 24 }} />
-      {/* Growth rings, top right */}
-      <div style={{ position: "absolute", top: -90, right: -70, width: 420, height: 420, display: "flex" }}>
-        {[150, 118, 88, 62, 40].map((r) => (
-          <div key={r} style={{ position: "absolute", top: "50%", left: "50%", width: r * 2, height: r * 2, marginTop: -r, marginLeft: -r, border: "1px solid rgba(219,195,152,.35)", borderRadius: "50%" }} />
-        ))}
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", width: "100%" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 14, color: "#dbc398", fontFamily: "Arial, sans-serif", fontSize: 22, fontWeight: 700, letterSpacing: 5, textTransform: "uppercase" }}>
-          <span style={{ width: 42, height: 2, background: "#c8a96e" }} />
-          Land Stewardship Program
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        padding: "34px",
+        color: "#102619",
+        background: "linear-gradient(145deg, #214a35 0%, #0d2418 100%)",
+        fontFamily: "Georgia, serif",
+      }}
+    >
+      <div
+        style={{
+          position: "relative",
+          display: "flex",
+          width: "100%",
+          height: "100%",
+          overflow: "hidden",
+          border: "1px solid rgba(226,207,170,.55)",
+          borderRadius: "22px",
+          background: "#fffdf8",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            width: "62%",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            padding: "48px 52px 42px",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "13px",
+              color: "#57392c",
+              fontFamily: "Arial, sans-serif",
+              fontSize: "15px",
+              fontWeight: 700,
+              letterSpacing: "3px",
+              textTransform: "uppercase",
+            }}
+          >
+            <span style={{ display: "flex", width: "38px", height: "2px", background: "#c8a96e" }} />
+            Land Stewardship · Canada
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", color: "#173a29", fontSize: "69px", lineHeight: 0.96, letterSpacing: "-2.7px" }}>
+              Give Your Land a Lasting Purpose
+            </div>
+            <div
+              style={{
+                display: "flex",
+                marginTop: "24px",
+                color: "#58655c",
+                fontFamily: "Arial, sans-serif",
+                fontSize: "21px",
+                lineHeight: 1.45,
+              }}
+            >
+              Responsible transfer, restoration and long-term stewardship options for rural landowners.
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              paddingTop: "15px",
+              borderTop: "1px solid rgba(23,58,41,.22)",
+              color: "#173a29",
+              fontFamily: "Arial, sans-serif",
+              fontSize: "16px",
+              fontWeight: 700,
+            }}
+          >
+            <span>Little Tree Farm</span>
+            <span style={{ color: "#8b6f56" }}>Land Futures Atlas · 01</span>
+          </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", maxWidth: 940 }}>
-          <div style={{ fontSize: 76, lineHeight: 1.0, letterSpacing: -2.5 }}>Give Your Land a Lasting Purpose</div>
-          <div style={{ marginTop: 22, color: "rgba(250,246,240,.76)", fontFamily: "Arial, sans-serif", fontSize: 26 }}>Donation, legacy, transfer and long-term stewardship options for rural landowners</div>
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontFamily: "Arial, sans-serif", fontSize: 22 }}>
-          <span>Little Tree Farm</span><span style={{ color: "#dbc398" }}>Rural Land Stewardship · Canada</span>
+
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            width: "38%",
+            overflow: "hidden",
+            background: "#e9e0d3",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: "42px",
+              right: "-26px",
+              bottom: "48px",
+              left: "20px",
+              display: "flex",
+              overflow: "hidden",
+              clipPath: "polygon(9% 4%, 81% 0, 100% 18%, 92% 91%, 30% 100%, 0 73%, 3% 22%)",
+              background: "linear-gradient(165deg, #a7b986 0%, #496b4d 46%, #173a29 100%)",
+            }}
+          >
+            {[0, 1, 2, 3, 4, 5].map((ring) => (
+              <div
+                key={ring}
+                style={{
+                  position: "absolute",
+                  top: `${62 + ring * 24}px`,
+                  left: `${-86 + ring * 6}px`,
+                  display: "flex",
+                  width: `${500 - ring * 18}px`,
+                  height: `${250 - ring * 10}px`,
+                  border: "2px solid rgba(255,253,248,.34)",
+                  borderRadius: "50%",
+                  transform: `rotate(${-12 + ring * 2}deg)`,
+                }}
+              />
+            ))}
+            <div
+              style={{
+                position: "absolute",
+                right: "34px",
+                bottom: "34px",
+                display: "flex",
+                flexDirection: "column",
+                color: "#fffdf8",
+                fontFamily: "Arial, sans-serif",
+                textTransform: "uppercase",
+              }}
+            >
+              <span style={{ display: "flex", fontSize: "13px", letterSpacing: "2px", opacity: 0.72 }}>Future use</span>
+              <span style={{ display: "flex", marginTop: "5px", fontSize: "20px", fontWeight: 700 }}>Not yet written</span>
+            </div>
+          </div>
+
+          <div
+            style={{
+              position: "absolute",
+              top: "28px",
+              right: "26px",
+              display: "flex",
+              color: "#57392c",
+              fontFamily: "monospace",
+              fontSize: "11px",
+              letterSpacing: "1px",
+            }}
+          >
+            44.4699° N · 64.6304° W
+          </div>
         </div>
       </div>
     </div>,
