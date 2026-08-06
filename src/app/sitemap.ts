@@ -85,6 +85,50 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
 
+    // Land stewardship knowledge centre
+    {
+      url: `${baseUrl}/land/leave-land-in-your-will`,
+      lastModified: "2026-08-06",
+      changeFrequency: "yearly",
+      priority: 0.8,
+      images: [`${baseUrl}/main-landing-page/big-farmland.jpg`],
+    },
+    {
+      url: `${baseUrl}/land/donate-land`,
+      lastModified: "2026-08-06",
+      changeFrequency: "yearly",
+      priority: 0.8,
+      images: [`${baseUrl}/main-landing-page/mature-black-walnut-nova-scotia.jpg`],
+    },
+    {
+      url: `${baseUrl}/land/unwanted-rural-property`,
+      lastModified: "2026-08-06",
+      changeFrequency: "yearly",
+      priority: 0.8,
+      images: [`${baseUrl}/main-landing-page/walnut-tree-with-fruits.jpg`],
+    },
+    {
+      url: `${baseUrl}/land/creating-a-forest-legacy`,
+      lastModified: "2026-08-06",
+      changeFrequency: "yearly",
+      priority: 0.8,
+      images: [`${baseUrl}/main-landing-page/trees-from-groundview.jpg`],
+    },
+    {
+      url: `${baseUrl}/land/i-dont-want-my-woodland-anymore`,
+      lastModified: "2026-08-06",
+      changeFrequency: "yearly",
+      priority: 0.8,
+      images: [`${baseUrl}/main-landing-page/black-walnut-tree.jpg`],
+    },
+    {
+      url: `${baseUrl}/land/what-happens-to-my-land-when-i-die`,
+      lastModified: "2026-08-06",
+      changeFrequency: "yearly",
+      priority: 0.8,
+      images: [`${baseUrl}/main-landing-page/black-walnut-tree.jpg`],
+    },
+
     // Blog posts
     ...getAllPosts().map((post) => ({
       url: `${baseUrl}/blog/${post.slug}`,
