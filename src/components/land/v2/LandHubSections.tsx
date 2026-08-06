@@ -70,22 +70,16 @@ const boundaries = [
 export function LandStewardshipCharter() {
   return (
     <section className={styles.charterSection} aria-labelledby="charter-title">
-      <div className={styles.charterRings} aria-hidden="true">
-        <i /><i /><i /><i /><i />
-      </div>
       <div className={`${styles.sectionWrap} ${styles.charterGrid}`}>
         <div className={styles.charterStatement}>
-          <p className={`${styles.eyebrow} ${styles.eyebrowLight}`}>The stewardship charter</p>
-          <h2 id="charter-title">Plain intentions.<br />Plain limits.</h2>
-          <blockquote>
-            A meaningful land legacy is not created by a beautiful sentence. It
-            is created by a workable plan, honest due diligence and care that can
-            endure after ownership changes.
-          </blockquote>
+          <div>
+            <p className={styles.eyebrow}>How we approach stewardship</p>
+            <h2 id="charter-title">Care for the land begins with a careful conversation.</h2>
+          </div>
           <p>
-            Little Tree Farm is developing this program from practical experience
-            with trees, seed, nursery production, planting and restoration work.
-            Land transfer itself requires the right legal, tax and property expertise.
+            No two properties carry the same history, constraints or possibilities.
+            Our role is to listen, review the facts honestly and help identify a
+            path that is practical for both the landowner and the land.
           </p>
         </div>
 
@@ -103,8 +97,8 @@ export function LandStewardshipCharter() {
 
         <aside className={styles.boundaryNote} aria-label="Important program limits">
           <div className={styles.boundaryHeader}>
-            <span>Before any conversation</span>
-            <strong>What this page does not promise</strong>
+            <span>Clear from the beginning</span>
+            <strong>A conversation is an exploration, not an agreement.</strong>
           </div>
           <ul>
             {boundaries.map((boundary) => <li key={boundary}>{boundary}</li>)}

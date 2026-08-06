@@ -12,13 +12,8 @@ const categoryLabels: Record<LandGuideCategory, string> = {
 };
 
 export function LandGuideLibrary() {
-  const primary = landGuides.find((guide) => guide.featured === "primary");
-  const secondary = landGuides.filter((guide) => guide.featured === "secondary");
+  const featured = landGuides.filter((guide) => Boolean(guide.featured));
   const remaining = landGuides.filter((guide) => !guide.featured);
-
-  if (!primary) {
-    return null;
-  }
 
   return (
     <section className={styles.librarySection} id="guides">
@@ -35,43 +30,36 @@ export function LandGuideLibrary() {
         </div>
 
         <div className={styles.libraryFeatures}>
-          <Link className={styles.libraryPrimary} href={primary.href}>
-            <div className={styles.libraryPrimaryImage}>
-              <Image
-                src={primary.image}
-                alt={primary.imageAlt}
-                fill
-                sizes="(max-width: 900px) 94vw, 58vw"
-              />
-              <span className={styles.startRibbon}>Start here</span>
-            </div>
-            <div className={styles.libraryPrimaryCopy}>
-              <div className={styles.guideMeta}>
-                <span>{categoryLabels[primary.category]}</span>
-                <span>{primary.kind}</span>
+          {featured.map((guide, index) => (
+            <Link
+              className={styles.libraryCard}
+              href={guide.href}
+              key={guide.id}
+              aria-label={`${guide.title} — ${guide.kind}`}
+            >
+              <div className={styles.libraryCardImage}>
+                <Image
+                  src={guide.image}
+                  alt={guide.imageAlt}
+                  fill
+                  sizes="(max-width: 720px) 84vw, (max-width: 1100px) 44vw, 29vw"
+                />
+                <span className={styles.featureNumber}>{String(index + 1).padStart(2, "0")}</span>
+                {guide.featured === "primary" ? (
+                  <span className={styles.startRibbon}>Start here</span>
+                ) : null}
               </div>
-              <h3>{primary.title}</h3>
-              <p>{primary.hook}</p>
-              <span className={styles.readLink}>Open the guide <i aria-hidden="true">→</i></span>
-            </div>
-          </Link>
-
-          <div className={styles.librarySecondary}>
-            {secondary.map((guide, index) => (
-              <Link href={guide.href} key={guide.id}>
-                <div className={styles.secondaryNumber}>{String(index + 2).padStart(2, "0")}</div>
-                <div>
-                  <div className={styles.guideMeta}>
-                    <span>{categoryLabels[guide.category]}</span>
-                    <span>{guide.kind}</span>
-                  </div>
-                  <h3>{guide.shortTitle}</h3>
-                  <p>{guide.hook}</p>
-                  <span className={styles.readLink}>Read <i aria-hidden="true">→</i></span>
+              <div className={styles.libraryCardCopy}>
+                <div className={styles.guideMeta}>
+                  <span>{categoryLabels[guide.category]}</span>
+                  <span>{guide.kind}</span>
                 </div>
-              </Link>
-            ))}
-          </div>
+                <h3>{guide.shortTitle}</h3>
+                <p>{guide.hook}</p>
+                <span className={styles.readLink}>Read the guide <i aria-hidden="true">→</i></span>
+              </div>
+            </Link>
+          ))}
         </div>
 
         <div className={styles.libraryIndex}>
@@ -83,10 +71,20 @@ export function LandGuideLibrary() {
           {remaining.map((guide, index) => (
             <Link className={styles.indexRow} href={guide.href} key={guide.id}>
               <span className={styles.indexNumber}>{String(index + 4).padStart(2, "0")}</span>
-              <span className={styles.indexTitle}>
-                <small>{categoryLabels[guide.category]}</small>
-                <strong>{guide.title}</strong>
-                <em>{guide.hook}</em>
+              <span className={styles.indexGuide}>
+                <span className={styles.indexThumb}>
+                  <Image
+                    src={guide.image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 720px) 88px, 112px"
+                  />
+                </span>
+                <span className={styles.indexTitle}>
+                  <small>{categoryLabels[guide.category]}</small>
+                  <strong>{guide.title}</strong>
+                  <em>{guide.hook}</em>
+                </span>
               </span>
               <span className={styles.indexKind}>{guide.kind}</span>
               <svg viewBox="0 0 24 24" aria-hidden="true">

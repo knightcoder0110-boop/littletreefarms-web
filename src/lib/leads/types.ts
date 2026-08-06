@@ -2,12 +2,14 @@ export type LeadSource =
   | "homepage-guide-modal"
   | "guide-page"
   | "calculator-report"
-  | "contact-form";
+  | "contact-form"
+  | "land-stewardship";
 
 export type RequestedAsset =
   | "planting-guide"
   | "calculator-report"
-  | "contact-response";
+  | "contact-response"
+  | "land-stewardship-response";
 
 export interface CalculatorLeadSnapshot {
   acres: number;
@@ -16,6 +18,12 @@ export interface CalculatorLeadSnapshot {
   conservativeReturn: number;
   midRangeReturn: number;
   premiumReturn: number;
+}
+
+export interface LandInquirySnapshot {
+  situation: string;
+  acreageRange?: string;
+  description: string;
 }
 
 export interface LeadSubmissionRequest {
@@ -29,7 +37,9 @@ export interface LeadSubmissionRequest {
   message?: string;
   requestedAsset?: RequestedAsset;
   newsletterConsent?: boolean;
+  privacyConsent?: boolean;
   calculator?: CalculatorLeadSnapshot;
+  landInquiry?: LandInquirySnapshot;
 }
 
 export interface LeadSubmissionResponse {

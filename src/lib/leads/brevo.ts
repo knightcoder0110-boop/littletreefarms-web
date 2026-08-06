@@ -53,6 +53,11 @@ const SOURCE_CONFIG: Record<LeadSource, BrevoSourceConfig> = {
     primaryListEnv: "BREVO_CONTACT_LIST_ID",
     templateEnv: "BREVO_CONTACT_AUTO_REPLY_TEMPLATE_ID",
   },
+  "land-stewardship": {
+    label: "Land Stewardship Inquiry",
+    primaryListEnv: "BREVO_LAND_STEWARDSHIP_LIST_ID",
+    templateEnv: "BREVO_LAND_STEWARDSHIP_AUTO_REPLY_TEMPLATE_ID",
+  },
 };
 
 export const requiredBrevoEnv = ["BREVO_API_KEY"] as const;
@@ -131,6 +136,10 @@ function splitName(payload: LeadSubmissionRequest) {
 }
 
 function validateLeadSubmission(payload: LeadSubmissionRequest): string | null {
+  if (!payload.source || !(payload.source in SOURCE_CONFIG)) {
+    return "Please submit this form from a valid page.";
+  }
+
   const email = cleanText(payload.email, 320).toLowerCase();
   if (!email || !isValidEmail(email)) {
     return "Please provide a valid email address.";
@@ -141,7 +150,9 @@ function validateLeadSubmission(payload: LeadSubmissionRequest): string | null {
   }
 
   if (
-    (payload.source === "homepage-guide-modal" || payload.source === "contact-form") &&
+    (payload.source === "homepage-guide-modal" ||
+      payload.source === "contact-form" ||
+      payload.source === "land-stewardship") &&
     !cleanText(payload.fullName, 160)
   ) {
     return "Please provide your name.";
@@ -161,6 +172,24 @@ function validateLeadSubmission(payload: LeadSubmissionRequest): string | null {
     }
   }
 
+  if (payload.source === "land-stewardship") {
+    if (!cleanText(payload.stateOrProvince, 80)) {
+      return "Please choose the province or territory where the land is located.";
+    }
+
+    if (!cleanText(payload.landInquiry?.situation, 160)) {
+      return "Please choose the situation that best describes your inquiry.";
+    }
+
+    if (cleanText(payload.landInquiry?.description, 4000).length < 20) {
+      return "Please tell us a little more about the property and the future you hope to explore.";
+    }
+
+    if (payload.privacyConsent !== true) {
+      return "Please confirm that we may use these details to respond to your inquiry.";
+    }
+  }
+
   return null;
 }
 
@@ -172,7 +201,9 @@ function getListIds(payload: LeadSubmissionRequest): number[] {
     ? parseListId("BREVO_NEWSLETTER_LIST_ID")
     : null;
   const highIntentListId =
-    payload.source === "calculator-report" || payload.source === "contact-form"
+    payload.source === "calculator-report" ||
+    payload.source === "contact-form" ||
+    payload.source === "land-stewardship"
       ? parseListId("BREVO_HIGH_INTENT_LIST_ID")
       : null;
 
@@ -316,9 +347,10 @@ function getLeadNotificationHtml(payload: LeadSubmissionRequest): string {
     ["Name", name],
     ["Email", email],
     ["Phone", phone],
-    ["State / Province", province],
+    ["Province / Territory", province],
     ["Requested asset", cleanText(payload.requestedAsset, 80)],
     ["Newsletter opt-in", payload.newsletterConsent ? "Yes" : "No"],
+    ["Response consent", payload.privacyConsent ? "Yes" : "No"],
     ["Subject", subject],
   ].filter(([, value]) => Boolean(value));
 
@@ -336,7 +368,29 @@ function getLeadNotificationHtml(payload: LeadSubmissionRequest): string {
     `
     : "";
 
-  const messageHtml = message
+  const landInquiryHtml = payload.landInquiry
+    ? `
+      <h3 style="margin:24px 0 8px;font-size:16px;color:#23412f;">Land Stewardship Overview</h3>
+      <table style="width:100%;border-collapse:collapse;background:#ffffff;border:1px solid #eadfc7;">
+        <tbody>
+          <tr>
+            <td style="padding:10px 12px;border-bottom:1px solid #f0e7d6;font-weight:700;width:180px;">Situation</td>
+            <td style="padding:10px 12px;border-bottom:1px solid #f0e7d6;">${escapeHtml(cleanText(payload.landInquiry.situation, 160))}</td>
+          </tr>
+          ${payload.landInquiry.acreageRange ? `
+            <tr>
+              <td style="padding:10px 12px;border-bottom:1px solid #f0e7d6;font-weight:700;width:180px;">Approximate acreage</td>
+              <td style="padding:10px 12px;border-bottom:1px solid #f0e7d6;">${escapeHtml(cleanText(payload.landInquiry.acreageRange, 80))}</td>
+            </tr>
+          ` : ""}
+        </tbody>
+      </table>
+      <h3 style="margin:24px 0 8px;font-size:16px;color:#23412f;">Property overview</h3>
+      <p style="white-space:pre-wrap;color:#2f332d;line-height:1.6;">${escapeHtml(cleanText(payload.landInquiry.description, 4000))}</p>
+    `
+    : "";
+
+  const messageHtml = message && !payload.landInquiry
     ? `
       <h3 style="margin:24px 0 8px;font-size:16px;color:#23412f;">Message</h3>
       <p style="white-space:pre-wrap;color:#2f332d;line-height:1.6;">${escapeHtml(message)}</p>
@@ -361,6 +415,7 @@ function getLeadNotificationHtml(payload: LeadSubmissionRequest): string {
         </tbody>
       </table>
       ${messageHtml}
+      ${landInquiryHtml}
       ${calculatorHtml}
     </div>
   `;
@@ -439,6 +494,9 @@ async function sendFollowUpTemplate(payload: LeadSubmissionRequest): Promise<boo
           payload.calculator?.initialInvestment ?? "",
         CALCULATOR_MID_RANGE_RETURN:
           payload.calculator?.midRangeReturn ?? "",
+        LAND_SITUATION: cleanText(payload.landInquiry?.situation, 160),
+        LAND_ACREAGE_RANGE: cleanText(payload.landInquiry?.acreageRange, 80),
+        LAND_DESCRIPTION: cleanText(payload.landInquiry?.description, 4000),
       },
       sender: senderEmail
         ? {
