@@ -1,5 +1,7 @@
 import { businessInfo } from "@/lib/config/business";
 import { normalizeLeadPhone } from "@/lib/leads/phone";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import type {
   LeadSource,
   LeadSubmissionRequest,
@@ -18,6 +20,7 @@ type BrevoTransactionalEmailPayload = {
   htmlContent?: string;
   templateId?: number;
   params?: Record<string, string | number | boolean>;
+  attachment?: Array<{ content: string; name: string }>;
 };
 
 const BREVO_API_BASE_URL = "https://api.brevo.com/v3";
@@ -465,7 +468,7 @@ async function sendFollowUpTemplate(payload: LeadSubmissionRequest): Promise<boo
   const sourceConfig = SOURCE_CONFIG[payload.source];
   const templateId = parseTemplateId(sourceConfig.templateEnv);
 
-  if (!templateId) {
+  if (!templateId && payload.source !== "guide-page") {
     return false;
   }
 
@@ -473,12 +476,36 @@ async function sendFollowUpTemplate(payload: LeadSubmissionRequest): Promise<boo
   const email = cleanText(payload.email, 320).toLowerCase();
   const senderEmail = process.env.BREVO_NOTIFY_FROM_EMAIL?.trim();
   const senderName = process.env.BREVO_NOTIFY_FROM_NAME?.trim();
+  const guideAttachment =
+    payload.requestedAsset === "planting-guide"
+      ? {
+          content: (
+            await readFile(
+              path.join(process.cwd(), "public", "black-walnut-planting-guide.pdf"),
+            )
+          ).toString("base64"),
+          name: "black-walnut-planting-guide.pdf",
+        }
+      : undefined;
+
+  const inlineGuideHtml = `
+    <html>
+      <body style="margin:0;background:#f4ede3;color:#183628;font-family:Arial,sans-serif;">
+        <div style="max-width:640px;margin:0 auto;padding:40px 24px;">
+          <h1 style="margin:0 0 16px;color:#183628;font-size:30px;">Your Black Walnut Planting Guide</h1>
+          <p style="font-size:16px;line-height:1.6;">Hi ${escapeHtml(firstName || "there")},</p>
+          <p style="font-size:16px;line-height:1.6;">Thanks for requesting the free guide. We have attached your planting guide to this email.</p>
+          <p style="font-size:16px;line-height:1.6;">If you have questions about your land or planting plans, reply to this email or contact Little Tree Farm.</p>
+          <p style="font-size:16px;line-height:1.6;">— The Little Tree Farm Team</p>
+        </div>
+      </body>
+    </html>`;
 
   const response = await brevoFetch("/smtp/email", {
     method: "POST",
     body: JSON.stringify({
       to: [{ email, name: displayName || firstName || undefined }],
-      templateId,
+      ...(templateId ? { templateId } : { subject: "Your Black Walnut Planting Guide", htmlContent: inlineGuideHtml }),
       params: {
         FIRSTNAME: firstName,
         LASTNAME: lastName,
@@ -504,6 +531,7 @@ async function sendFollowUpTemplate(payload: LeadSubmissionRequest): Promise<boo
             name: senderName || businessInfo.name,
           }
         : undefined,
+      ...(guideAttachment ? { attachment: [guideAttachment] } : {}),
     }),
   });
 

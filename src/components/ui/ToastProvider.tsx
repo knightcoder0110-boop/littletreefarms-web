@@ -37,19 +37,11 @@ const variantClasses: Record<ToastVariant, string> = {
     "border-gold/35 bg-[linear-gradient(135deg,rgba(250,246,240,0.98),rgba(200,169,110,0.18))] text-forest-dark",
 };
 
-function ToastIcon({ variant }: { variant: ToastVariant }) {
+function ToastIcon({ variant }: { variant: Exclude<ToastVariant, "error"> }) {
   if (variant === "success") {
     return (
       <svg className="h-5 w-5 text-sage" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.4">
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-      </svg>
-    );
-  }
-
-  if (variant === "error") {
-    return (
-      <svg className="h-5 w-5 text-walnut" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v4m0 4h.01M10.29 3.86l-7.5 13A1 1 0 003.66 18h16.68a1 1 0 00.87-1.5l-7.5-13a1 1 0 00-1.74 0z" />
       </svg>
     );
   }
@@ -105,9 +97,11 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             className={`pointer-events-auto animate-toast-in overflow-hidden rounded-2xl border shadow-xl backdrop-blur-md ${variantClasses[toastRecord.variant]}`}
           >
             <div className="flex items-start gap-3 p-4 sm:p-4.5">
-              <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/70 shadow-sm">
-                <ToastIcon variant={toastRecord.variant} />
-              </div>
+              {toastRecord.variant !== "error" ? (
+                <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/70 shadow-sm">
+                  <ToastIcon variant={toastRecord.variant} />
+                </div>
+              ) : null}
               <div className="min-w-0 flex-1">
                 <p className="font-ui text-[0.72rem] font-bold uppercase tracking-[0.16em] text-gold-dark">
                   {toastRecord.variant === "success"
