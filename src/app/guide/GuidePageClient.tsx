@@ -11,8 +11,8 @@ import {
 } from "@/lib/leads/phone";
 import { useToast } from "@/components/ui/ToastProvider";
 import { PlantingGrid } from "@/components/sections/PlantingGrid";
+import { Brand } from "@/components/layout/Brand";
 import Link from "next/link";
-import Image from "next/image";
 
 /**
  * Guide Page Client Component - Lead Magnet
@@ -412,14 +412,7 @@ export default function GuidePageClient() {
               <div className="bg-white rounded-xl shadow-xl p-8 transform rotate-2 hover:rotate-0 transition-transform duration-500">
                 <div className="aspect-[3/4] bg-parchment rounded-lg flex items-center justify-center relative overflow-hidden">
                   <div className="text-center p-8">
-                    <div className="w-20 h-20 mx-auto mb-4 relative">
-                      <Image
-                        src="/little-tree-farms-logo.png"
-                        alt="Little Tree Farm"
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
+                    <Brand variant="full" tone="light" className="mx-auto mb-4 items-center text-center" />
                     <h4 className="text-forest font-display text-xl mb-2">Black Walnut</h4>
                     <p className="text-ink-muted text-sm">Planting Guide 2026</p>
                     <div className="mt-8 space-y-2">

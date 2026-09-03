@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect } from "react";
-import { businessInfo } from "@/lib/config/business";
+import { Brand } from "@/components/layout/Brand";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -46,23 +45,7 @@ export function Navbar() {
         />
 
         <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between">
-          {/* Logo - Rectangular format */}
-          <Link
-            href="/"
-            className="flex items-center z-[1001] transition-opacity hover:opacity-80"
-            aria-label="Home"
-          >
-            <div className="w-36 h-12 shrink-0 relative">
-              <Image
-                src={isScrolled ? "/little-tree-farms-logo.png" : "/little-tree-farms-logo-dark-theme.png"}
-                alt="Little Tree Farm Logo"
-                fill
-                className="object-contain"
-                priority
-                sizes="(max-width: 768px) 144px, 144px"
-              />
-            </div>
-          </Link>
+          <Brand tone={isScrolled ? "light" : "dark"} className="z-[1001]" />
 
           {/* Desktop nav (Hidden on mobile) */}
           <nav className="flex items-center gap-8 max-[900px]:hidden">

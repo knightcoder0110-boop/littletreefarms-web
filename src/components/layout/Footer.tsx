@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import { businessInfo } from "@/lib/config/business";
+import { Brand } from "@/components/layout/Brand";
 
 const learnLinks = [
   { href: "/about", label: "About Us" },
@@ -47,22 +47,7 @@ export function Footer() {
 
           {/* Brand col */}
           <div className="flex flex-col gap-6">
-            <Link
-              href="/"
-              className="flex flex-col items-start gap-4 text-cream transition-opacity hover:opacity-80"
-              aria-label="Home"
-            >
-              <div className="w-32 h-32 shrink-0 relative">
-                <Image
-                  src="/little-tree-farms-logo-dark-theme.png"
-                  alt="Little Tree Farm Logo"
-                  fill
-                  className="object-contain"
-                  sizes="(max-width: 768px) 128px, 128px"
-                />
-              </div>
-              <span className="font-display text-2xl font-bold">{businessInfo.name}</span>
-            </Link>
+            <Brand variant="full" tone="dark" />
             <p className="text-intro text-white/90 max-w-[26ch] font-medium">
               {businessInfo.tagline}
             </p>
